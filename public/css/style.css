@@ -78,8 +78,18 @@ header {
 	margin-bottom: 40px;
 }
 
-.logo {
+.logo-text {
 	float: left;
+    font-family: Indie Flower, Neucha;
+    width: 189px;
+    text-decoration: none;
+    color: #723e91;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+header {
+    background-color: rgba(232, 62, 140, 0.2);
 }
 
 .header-mid {
@@ -103,7 +113,7 @@ header {
 	text-decoration: none;
 	display: block;
 	cursor: pointer;
-	padding-left: 40px;
+	/*padding-left: 40px;*/
 	background: url(images/phone-ico.png) left center no-repeat;
 }
 
@@ -929,6 +939,11 @@ header {
 	top: 0;
 }
 
+.company-bg img {
+    height: 370px;
+    width: 1050px;
+}
+
 .company-text {
 	float: left;
 	width: 100%;
@@ -937,7 +952,7 @@ header {
 	font-size: 20px;
 	font-weight: 500;
 	color: #fff;
-	background-color: #723e91;
+	background-color: rgba(114, 62, 145, 0.8);
 	padding: 24px 24px 122px;
 	line-height: 1.5;
 }
@@ -994,7 +1009,7 @@ header {
 }
 
 footer {
-	background-color: #F0F0F2;
+	background-color: rgba(232, 62, 140, 0.2);
 	float: left;
 	width: 100%;
 	padding: 20px 0;
@@ -1052,7 +1067,7 @@ footer {
 	text-decoration: none;
 	display: block;
 	cursor: pointer;
-	padding-left: 40px;
+	/*padding-left: 40px;*/
 	background: url(images/phone-ico.png) left center no-repeat;
 }
 
