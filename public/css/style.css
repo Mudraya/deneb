@@ -3329,7 +3329,8 @@ img.center {
 }
 
 .modal-item-number .num-in span {
-	height: 40px;
+	height: 15px;
+	width: 11px;
 }
 
 .modal-item-number .num-in input {
@@ -7996,6 +7997,15 @@ aside.sidebar {
 
 div.form-inline form {
     display: inline;
+}
+
+div.form-inline {
+    flex-flow: unset;
+}
+
+.in-num {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .alert {

@@ -10,11 +10,9 @@ class BasketController extends Controller
 {
     public function basket()
     {
-        $orderId = session('orderId');
-        if (!is_null($orderId)) {
-            $order = Order::findOrFail($orderId);
-        }
-        return view('basket', compact('order'));
+        $order = $this->getBasket();
+        $categories = $this->getCategories();
+        return view('basket', compact('order', 'categories'));
     }
 
     public function basketConfirm(Request $request)
@@ -57,7 +55,7 @@ class BasketController extends Controller
 
         session()->flash('success', 'Добавлен товар ' . $product->name);
 
-        return redirect()->route('basket');
+        return back();
     }
 
     public function basketRemove($productId)
@@ -82,7 +80,7 @@ class BasketController extends Controller
 
         session()->flash('warning', 'Удален товар  ' . $product->name);
 
-        return redirect()->route('basket');
+        return back();
     }
 
 }

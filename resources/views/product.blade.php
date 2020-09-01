@@ -9,9 +9,9 @@
     <div class="broad">
         <div class="container">
             <ul>
-                <li><a href="#"><span>Главная</span></a></li>
-                <li><a href="#"><span>Инсектициды</span></a></li>
-                <li>Антиколорад</li>
+                <li><a href="{{ route('index') }}"><span>Главная</span></a></li>
+                <li><a href="{{ route('catalog', $category->code) }}"><span>{{ $category->name }}</span></a></li>
+                <li>{{ $product->name }}</li>
             </ul>
         </div>
     </div>
@@ -26,54 +26,43 @@
                 <div class="product-top">
 
                     <div class="mobile-title">
-                        Антиколорад
+                        {{ $product->name }}
                     </div>
 
                     <div class="product-thumb">
                         <a href="#">
-                            <img src="/images/prod-thumb.jpg" alt="">
+                            <img src="{{ $product->image }}" alt="">
                         </a>
                     </div>
                     <div class="product-descr">
                         <div class="product-tit">
                             <h1>
-                                Антиколорад
+                                {{ $product->name }}
                             </h1>
                         </div>
 
                         <div class="product-text">
-                            Комбінований високоефективний контактно-системний інсектицид широкого спектру дії з акарицидними та репелентними властивостями для захисту широкого спектру культур від комплексу шкідників.
+                            {{ $product->description }}
                         </div>
 
                         <div class="product-info">
                             <div class="price-wrap">
                                 <div class="product-price">
-                                    <span>24</span> грн
+                                    <span>{{ $product->price }}</span> грн
                                 </div>
                             </div>
 
                             <div class="btns-prod">
                                 <div class="product-bay">
-                                    <a href="#" class="def-bt" data-toggle="modal" data-target="#bask">
+                                    <form action="{{ route('basket-add', $product) }}" method="POST">
+                                    <button type="submit" class="def-bt" role="button">
                                         Купить
-                                    </a>
+                                    </button>
+                                    @csrf
+                                    </form>
                                 </div>
                             </div>
 
-                            <div class="product-number">
-                                <div class="num-name">
-                                    Количество, шт.
-                                </div>
-                                <div class="num-wrap">
-                                    <div class="num-block">
-                                        <div class="num-in">
-                                            <span class="minus dis"></span>
-                                            <input type="text" class="in-num" value="1" readonly="">
-                                            <span class="plus"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
