@@ -1933,7 +1933,7 @@ aside.sidebar {
 	font-weight: 600;
 	color: #6E6F7A;
 	font-size: 12px;
-	margin-bottom: 16px;
+	margin-bottom: 35px;
 }
 
 .one-item-price span {
@@ -1953,13 +1953,18 @@ aside.sidebar {
 	color: #000;
 }
 
-.one-item-bt {
-	float: left;
+.one-item-info {
+	float: right;
 	width: 100%;
 }
 
-.one-item-bt a {
-	float: left;
+.one-item-info a {
+    float: right;
+}
+
+.one-item-info button {
+    float: right;
+    margin-bottom: 10px;
 }
 
 .item-comp {
@@ -7981,4 +7986,24 @@ aside.sidebar {
 	width: 100%;
 }
 
+}
+
+.btn-order {
+    color: #fff;
+    background-color: #723e91;
+    border-color: #723e91;
+}
+
+div.form-inline form {
+    display: inline;
+}
+
+.alert {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: .75rem 10.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
 }

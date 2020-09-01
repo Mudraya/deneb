@@ -19,6 +19,8 @@
 
     <link rel="stylesheet" media="screen" href="/css/superfish.css">
 
+    {{--<link rel="stylesheet" media="screen" href="/css/bootstrap.min.css">--}}
+
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
 
 
@@ -335,6 +337,12 @@
     </header>
     <!-- / header -->
 
+    @if(session()->has('success'))
+        <p class="alert alert-success">{{ session()->get('success') }}</p>
+    @endif
+    @if(session()->has('warning'))
+        <p class="alert alert-warning">{{ session()->get('warning') }}</p>
+    @endif
 
     @yield('content')
 

@@ -8,7 +8,7 @@
     <div class="broad">
         <div class="container">
             <ul>
-                <li><a href="#"><span>Главная</span></a></li>
+                <li><a href="{{route('index')}}"><span>Главная</span></a></li>
                 <li>Оформление заказа</li>
             </ul>
         </div>
@@ -33,11 +33,92 @@
                     </div>
                 </div>
 
-                <form>
+                <form action="{{ route('basket-confirm') }}" method="POST">
+
                     <!-- one step -->
-                    <div class="one-step active">
+                    <div class="one-step  active">
                         <div class="one-step-title">
                             <i>1</i>
+                            <span>
+                                Корзина
+                            </span>
+
+                            <a class="change-step" href="#">
+                                Посмотреть
+                            </a>
+                        </div>
+                        <div class="one-step-descr" style="display: block;">
+
+                            <div class="basket-inside">
+                                <div class="one-lk-bask-table">
+                                    @foreach($order->products as $product)
+                                        <div class="one-lk-bask-tr">
+                                            <div class="one-lk-bask-td thumb-td">
+                                                <div class="one-lk-bask-thumb">
+                                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
+                                                        <img src="{{ $product->image }}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="one-lk-bask-td descr-td">
+                                                <div class="one-lk-bask-tit">
+                                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
+                                                        {{ $product->name }}
+                                                    </a>
+                                                </div>
+                                                <div class="one-lk-bask-price">
+                                                    <div class="one-lk-bask-price-in">
+                                                        <span>{{ $product->price }}</span>
+                                                        грн
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="one-lk-bask-td num-td">
+                                                <div class="one-lk-bask-num-name">
+                                                    Количество
+                                                </div>
+                                                <div class="one-lk-bask-num-val">
+                                                    <span>{{ $product->pivot->count }}</span> шт
+                                                </div>
+                                            </div>
+                                            <div class="one-lk-bask-td sum-td">
+                                                <div class="one-lk-bask-sum-name">
+                                                    Сумма
+                                                </div>
+                                                <div class="one-lk-bask-sum-val">
+                                                    <span>{{ $product->getPriceForCount() }}</span> грн
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <div class="last-inside-sum">
+                                    <div class="last-inside-sum-in">
+                                        <div class="inside-name">
+                                            Итого:
+                                        </div>
+                                        <div class="inside-val">
+                                            {{ $order->getFullPrice() }} грн
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="next-step">
+                                <a href="#" class="def-min-bt go-last">
+                                    Далее
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / one step -->
+
+                    <!-- one step -->
+                    <div class="one-step">
+                        <div class="one-step-title">
+                            <i>2</i>
                             <span>
                                         Контактные данные
                                     </span>
@@ -45,7 +126,7 @@
                                 Изменить
                             </a>
                         </div>
-                        <div class="one-step-descr" style="display: block;">
+                        <div class="one-step-descr" >
                             <div class="one-step-login">
                                 <ul class="nav nav-tabs" id="myTab-bask" role="tablist">
                                     <li class="nav-item">
@@ -59,7 +140,7 @@
                                     <div class="tab-pane fade show active" id="home-bask" role="tabpanel" aria-labelledby="home-tab-bask">
                                         <div class="modal-log-form">
                                             <div class="one-line">
-                                                <input type="text" placeholder="Имя и Фамилия">
+                                                <input name="name" id="name" value="" type="text" placeholder="Имя и Фамилия">
                                             </div>
                                             <div class="one-line">
                                                 <select>
@@ -70,7 +151,7 @@
                                                 </select>
                                             </div>
                                             <div class="one-line">
-                                                <input type="text" placeholder="Телефон">
+                                                <input name="phone" id="phone" value="" type="text" placeholder="Телефон">
                                             </div>
                                             <div class="one-line">
                                                 <input type="text" placeholder="Email">
@@ -136,45 +217,7 @@
                         </div>
                     </div>
                     <!-- / one step -->
-                    <!-- one step -->
-                    <div class="one-step">
-                        <div class="one-step-title">
-                            <i>2</i>
-                            <span>
-                                        Формат заказа
-                                    </span>
 
-                            <a class="change-step" href="#">
-                                Изменить
-                            </a>
-                        </div>
-                        <div class="one-step-descr">
-                            <div class="one-radio">
-                                <label>
-                                    <input name="form" type="radio">
-                                    <i></i>
-                                    <span>
-                                                Я оформляю заказ как физическое лицо
-                                            </span>
-                                </label>
-                            </div>
-                            <div class="one-radio">
-                                <label>
-                                    <input name="form" type="radio">
-                                    <i></i>
-                                    <span>
-                                                Я оформляю заказ как юридическое лицо
-                                            </span>
-                                </label>
-                            </div>
-                            <div class="next-step">
-                                <a href="#" class="def-min-bt go-last">
-                                    Далее
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / one step -->
                     <!-- one step -->
                     <div class="one-step">
                         <div class="one-step-title">
@@ -247,102 +290,14 @@
                                     </div>
                                 </div>
                             </div>
+                            @csrf
+                            <input type="submit" class="btn btn-order" value="Подтвердить заказ">
                         </div>
                     </div>
                     <!-- / one step -->
+
                 </form>
 
-                <div class="basket-inside">
-                    <div class="one-lk-bask-table">
-                        <div class="one-lk-bask-tr">
-                            <div class="one-lk-bask-td thumb-td">
-                                <div class="one-lk-bask-thumb">
-                                    <a href="#">
-                                        <img src="images/modal-bask-1.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="one-lk-bask-td descr-td">
-                                <div class="one-lk-bask-tit">
-                                    <a href="#">
-                                        Гольф
-                                    </a>
-                                </div>
-                                <div class="one-lk-bask-price">
-                                    <div class="one-lk-bask-price-in">
-                                        <span>24</span>
-                                        грн
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="one-lk-bask-td num-td">
-                                <div class="one-lk-bask-num-name">
-                                    Количество
-                                </div>
-                                <div class="one-lk-bask-num-val">
-                                    <span>2</span> шт
-                                </div>
-                            </div>
-                            <div class="one-lk-bask-td sum-td">
-                                <div class="one-lk-bask-sum-name">
-                                    Сумма
-                                </div>
-                                <div class="one-lk-bask-sum-val">
-                                    <span>24</span> грн
-                                </div>
-                            </div>
-                        </div>
-                        <div class="one-lk-bask-tr">
-                            <div class="one-lk-bask-td thumb-td">
-                                <div class="one-lk-bask-thumb">
-                                    <a href="#">
-                                        <img src="images/modal-bask-1.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="one-lk-bask-td descr-td">
-                                <div class="one-lk-bask-tit">
-                                    <a href="#">
-                                        Гольф
-                                    </a>
-                                </div>
-                                <div class="one-lk-bask-price">
-                                    <div class="one-lk-bask-price-in">
-                                        <span>24</span>
-                                        грн
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="one-lk-bask-td num-td">
-                                <div class="one-lk-bask-num-name">
-                                    Количество
-                                </div>
-                                <div class="one-lk-bask-num-val">
-                                    <span>2</span> шт
-                                </div>
-                            </div>
-                            <div class="one-lk-bask-td sum-td">
-                                <div class="one-lk-bask-sum-name">
-                                    Сумма
-                                </div>
-                                <div class="one-lk-bask-sum-val">
-                                    <span>24</span> грн
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="last-inside-sum">
-                        <div class="last-inside-sum-in">
-                            <div class="inside-name">
-                                Итого:
-                            </div>
-                            <div class="inside-val">
-                                48 грн
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
