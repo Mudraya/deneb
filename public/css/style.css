@@ -8017,3 +8017,12 @@ div.form-inline {
     border: 1px solid transparent;
     border-radius: .25rem;
 }
+
+.remember-me {
+    margin-left: 13px;
+}
+
+.form-check-label{
+    margin-left: 5px;
+}
+
