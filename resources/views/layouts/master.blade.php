@@ -158,7 +158,7 @@
                         Корзина
                     </div>
                     <div class="modal-bask-wrap">
-                        @if(isset($order))
+                        @if($order->products->count() != 0)
                             <div class="one-modal-bask-item">
 
                                 <div class="one-modal-item-table">
@@ -255,7 +255,12 @@
                                 </div>
 
                             </div>
+                        @else
+
+                            <h4>Ваша корзинка пуста</h4>
+
                         @endif
+
                     </div>
                 </div>
             </div>
