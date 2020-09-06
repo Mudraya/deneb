@@ -3,7 +3,6 @@
 @section('title', 'Продукт ' . $product->name)
 
 @section('content')
-    <div class="col-md-12">
         <h1>{{ $product->name }}</h1>
         <table class="table">
             <tbody>
@@ -41,5 +40,4 @@
             </tr>
             </tbody>
         </table>
-    </div>
 @endsection

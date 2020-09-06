@@ -3,7 +3,6 @@
 @section('title', 'Товары')
 
 @section('content')
-    <div class="col-md-12">
         <h1>Товары</h1>
         <table class="table">
             <tbody>
@@ -51,5 +50,4 @@
             </tbody>
         </table>
         <a class="btn btn-success" type="button" href="{{ route('products.create') }}">Добавить товар</a>
-    </div>
 @endsection

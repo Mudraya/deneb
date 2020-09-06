@@ -22,17 +22,31 @@ Auth::routes([
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout');
 
-Route::group([
-    'middleware' => 'auth',
-    'namespace' => 'Admin',
-    'prefix' => 'admin',
-], function () {
-    Route::group(['middleware' => 'is_admin'], function () {
-        Route::get('/orders', 'OrderController@index')->name('admin-orders');
+Route::middleware(['auth'])->group(function () {
+
+    Route::group([
+        'prefix' => 'person',
+        'namespace' => 'Person',
+        'as' => 'person.',
+    ], function () {
+        Route::get('/orders', 'OrderController@index')->name('orders.index');
+        Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
     });
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::resource('categories', 'CategoryController');
-    Route::resource('products', 'ProductController');
+
+    Route::group([
+        'namespace' => 'Admin',
+        'prefix' => 'admin',
+    ], function () {
+        Route::group(['middleware' => 'is_admin'], function () {
+            Route::get('/orders', 'OrderController@index')->name('admin_orders');
+            Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+        });
+
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('products', 'ProductController');
+    });
+
 });
 
 

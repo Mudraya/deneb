@@ -7,7 +7,6 @@
 @endisset
 
 @section('content')
-    <div class="col-md-12">
         @isset($product)
             <h1>Редактировать товар <b>{{ $product->name }}</b></h1>
         @else
@@ -97,5 +96,4 @@
                 <button class="btn btn-success">Сохранить</button>
             </div>
         </form>
-    </div>
 @endsection

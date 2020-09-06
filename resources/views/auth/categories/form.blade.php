@@ -7,7 +7,6 @@
 @endisset
 
 @section('content')
-    <div class="col-md-12">
         @isset($category)
             <h1>Редактировать Категорию <b>{{ $category->name }}</b></h1>
         @else
@@ -70,5 +69,4 @@
                 <button class="btn btn-success">Сохранить</button>
             </div>
         </form>
-    </div>
 @endsection

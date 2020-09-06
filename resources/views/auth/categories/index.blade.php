@@ -3,7 +3,6 @@
 @section('title', 'Категории')
 
 @section('content')
-    <div class="col-md-12">
         <h1>Категории</h1>
         <table class="table">
             <tbody>
@@ -42,5 +41,4 @@
         </table>
         <a class="btn btn-success" type="button"
            href="{{ route('categories.create') }}">Добавить категорию</a>
-    </div>
 @endsection

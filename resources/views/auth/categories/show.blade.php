@@ -3,7 +3,6 @@
 @section('title', 'Категория ' . $category->name)
 
 @section('content')
-    <div class="col-md-12">
         <h1>Категория Бытовая техника</h1>
         <table class="table">
             <tbody>
@@ -42,5 +41,4 @@
             </tr>
             </tbody>
         </table>
-    </div>
 @endsection
