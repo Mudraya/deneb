@@ -68,11 +68,11 @@
                                 </div>
 
                                 <div class="one-line remember-me">
-                                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                <label class="form-check-label" for="remember">
-                                    Запомнить меня
-                                </label>
+                                    <label class="form-check-label" for="remember">
+                                        Запомнить меня
+                                    </label>
                                 </div>
 
                                 <div class="forg-pass">
@@ -146,127 +146,6 @@
     </div>
 </div>
 
-<!-- Modal bask -->
-<div class="modal fade big-modal" id="basket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <span class="close-modal" data-dismiss="modal" aria-label="Close"></span>
-
-            <div class="modal-wrap">
-                <div class="modal-bask">
-                    <div class="modal-bask-tit">
-                        Корзина
-                    </div>
-                    <div class="modal-bask-wrap">
-                        @if(isset($order->products))
-                            <div class="one-modal-bask-item">
-
-                                <div class="one-modal-item-table">
-                                    @foreach($order->products as $product)
-                                        <!-- one item -->
-                                        <div class="modal-item-tr">
-                                            <div class="modal-item-td td-thumb">
-                                                <div class="modal-item-thumb">
-
-                                                    <div class="del-item"></div>
-                                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                                        <img src="{{ $product->image }}" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="modal-item-td td-descr">
-                                                <div class="modal-item-in-table">
-                                                    <div class="del-item mob"></div>
-                                                    <div class="modal-item-tr">
-                                                        <div class="modal-item-td td-wrap">
-                                                            <div class="modal-item-name">
-                                                                {{ $product->name }}
-                                                            </div>
-                                                            <div class="modal-item-info">
-                                                                <div class="modal-item-price">
-                                                                    <div class="modal-item-price-in">
-                                                                        <span>{{ $product->price }}</span> грн
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-item-number">
-                                                                    <div class="num-block">
-                                                                        <div class="num-in">
-
-                                                                            <div class="btn-group form-inline">
-                                                                                <form action="{{ route('basket-remove', $product) }}" method="POST">
-                                                                                    <button type="submit" class="btn btn-danger"
-                                                                                            href=""><span
-                                                                                            class="minus dis" aria-hidden="true"></span></button>
-                                                                                    @csrf
-                                                                                </form>
-                                                                                <input type="text" class="in-num" value="{{ $product->pivot->count }}" readonly="">
-                                                                                <form action="{{ route('basket-add', $product) }}" method="POST">
-                                                                                    <button type="submit" class="btn btn-success"
-                                                                                            href=""><span
-                                                                                            class="plus" aria-hidden="true"></span></button>
-                                                                                    @csrf
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-item-td td-sum">
-                                                            <div class="modal-item-sum">
-                                                                <div class="modal-item-sum-name">
-                                                                    Сумма
-                                                                </div>
-                                                                <div class="modal-item-sum-num">
-                                                                    <span>{{ $product->getPriceForCount() }}</span> грн
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- / one item -->
-                                    @endforeach
-                                </div>
-
-                                <div class="one-modal-item-bay-info">
-                                    <div class="one-modal-item-back">
-                                        <a href="#" class="back-bask def-big-bt"  data-dismiss="modal">
-                                            Продолжить покупки
-                                        </a>
-                                    </div>
-                                    <div class="one-modal-item-sum">
-                                        <div class="one-modal-item-top">
-                                            <div class="one-modal-item-name">
-                                                Итого:
-                                            </div>
-                                            <div class="one-modal-item-val">
-                                                {{ $order->getFullPrice() }} грн
-                                            </div>
-                                        </div>
-                                        <div class="one-modal-item-bt">
-                                            <a href="{{route('basket')}}" class="def-big-bt">
-                                                Оформить заказ
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        @else
-
-                            <h4>Ваша корзинка пуста</h4>
-
-                        @endif
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="wrapper">
     <!-- header -->
@@ -309,28 +188,6 @@
                             <h1 class="logo-text">Box for tea</h1>
                         </a>
                     </div>
-                    <ul class="sf-menu">
-
-                        <li class="no-sub">
-                            <a href="#">О нас</a>
-                        </li>
-                        <li>
-                            <a href="#">Каталог</a>
-
-                            <ul class="sub-menu">
-                                <li class="li-top-tablet">
-                                    <div class="back-menu"></div>
-                                    <div class="tit-menu">
-                                        Каталог
-                                    </div>
-                                    <div class="close-menu"></div>
-                                </li>
-                                @foreach($categories as $category)
-                                    <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    </ul>
 
                     <div class="tablet-mess">
                         <div class="header-icons">
@@ -387,38 +244,17 @@
                                 Мой кабинет
                             </span>
                         </a>
-                            <a href="{{route('logout')}}">
+                        <a href="{{route('logout')}}">
                                 <span>
                                     Выход
                                 </span>
-                            </a>
+                        </a>
                     @endauth
 
 
                 </div>
                 <div class="header-btns">
                     <div class="header-btns-in">
-                        <div class="header-search">
-                            <div class="header-btns-ico">
-                                <a href="#">
-                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M38.722 37.2673L29.202 27.3659C31.6497 24.4561 32.9909 20.795 32.9909 16.9836C32.9909 8.07864 25.7459 0.833618 16.8409 0.833618C7.93594 0.833618 0.690918 8.07864 0.690918 16.9836C0.690918 25.8886 7.93594 33.1336 16.8409 33.1336C20.184 33.1336 23.3697 32.1253 26.0934 30.2111L35.6858 40.1876C36.0868 40.604 36.626 40.8336 37.2039 40.8336C37.7509 40.8336 38.2698 40.6251 38.6637 40.2459C39.5007 39.4405 39.5274 38.105 38.722 37.2673ZM16.8409 5.04666C23.4231 5.04666 28.7778 10.4014 28.7778 16.9836C28.7778 23.5658 23.4231 28.9205 16.8409 28.9205C10.2587 28.9205 4.90396 23.5658 4.90396 16.9836C4.90396 10.4014 10.2587 5.04666 16.8409 5.04666Z" fill="#6E6F7A"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="search-body">
-                                <input type="text" placeholder="Я ищу...">
-                                <div class="close-search"></div>
-                                <div class="search-res">
-                                    <ul>
-                                        @foreach($categories as $category)
-                                            <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                         <div class="header-acc">
                             <div class="header-btns-ico">
                                 <a href="#">
@@ -436,18 +272,6 @@
                                         <path d="M12 0C15.315 0 18 2.685 18 6C18 9.315 15.315 12 12 12C8.685 12 6 9.315 6 6C6 2.685 8.685 0 12 0ZM12 24C12 24 24 24 24 21C24 17.4 18.15 13.5 12 13.5C5.85 13.5 0 17.4 0 21C0 24 12 24 12 24Z" fill="#723e91"/>
                                     </svg>
 
-                                </a>
-                            </div>
-                        </div>
-                        <!-- / for tablet -->
-                        <div class="header-bask">
-                            <div class="header-btns-ico">
-                                <a data-toggle="modal" href="#basket">
-                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12.8876 26.6933H12.8894C12.8909 26.6933 12.8925 26.693 12.894 26.693H34.1406C34.6637 26.693 35.1236 26.346 35.2673 25.8431L39.9548 9.43683C40.0558 9.08313 39.985 8.70288 39.7638 8.4093C39.5422 8.11572 39.1959 7.94299 38.8281 7.94299H10.1849L9.34723 4.17316C9.2279 3.63696 8.75244 3.25549 8.20312 3.25549H1.17187C0.524597 3.25549 0 3.78009 0 4.42737C0 5.07465 0.524597 5.59924 1.17187 5.59924H7.26318C7.4115 6.26727 11.272 23.6397 11.4941 24.6392C10.2487 25.1805 9.375 26.4223 9.375 27.8649C9.375 29.8033 10.9521 31.3805 12.8906 31.3805H34.1406C34.7879 31.3805 35.3125 30.8559 35.3125 30.2086C35.3125 29.5613 34.7879 29.0367 34.1406 29.0367H12.8906C12.2446 29.0367 11.7187 28.5109 11.7187 27.8649C11.7187 27.2197 12.2427 26.6948 12.8876 26.6933ZM37.2745 10.2867L33.2565 24.3492H13.8306L10.7056 10.2867H37.2745Z" fill="#723e91"/>
-                                        <path d="M11.7188 34.8961C11.7188 36.8346 13.2959 38.4117 15.2344 38.4117C17.1729 38.4117 18.75 36.8346 18.75 34.8961C18.75 32.9576 17.1729 31.3805 15.2344 31.3805C13.2959 31.3805 11.7188 32.9576 11.7188 34.8961ZM15.2344 33.7242C15.8804 33.7242 16.4063 34.2501 16.4063 34.8961C16.4063 35.5422 15.8804 36.068 15.2344 36.068C14.5883 36.068 14.0625 35.5422 14.0625 34.8961C14.0625 34.2501 14.5883 33.7242 15.2344 33.7242Z" fill="#723e91"/>
-                                        <path d="M28.2812 34.8961C28.2812 36.8346 29.8584 38.4117 31.7969 38.4117C33.7354 38.4117 35.3125 36.8346 35.3125 34.8961C35.3125 32.9576 33.7354 31.3805 31.7969 31.3805C29.8584 31.3805 28.2812 32.9576 28.2812 34.8961ZM31.7969 33.7242C32.4429 33.7242 32.9688 34.2501 32.9688 34.8961C32.9688 35.5422 32.4429 36.068 31.7969 36.068C31.1508 36.068 30.625 35.5422 30.625 34.8961C30.625 34.2501 31.1508 33.7242 31.7969 33.7242Z" fill="#723e91"/>
-                                    </svg>
                                 </a>
                             </div>
                         </div>
@@ -475,21 +299,6 @@
                     <span></span>
                     <span></span>
                 </div>
-                <div class="header-tabl-search">
-                    <div class="search-body">
-                        <input type="text" placeholder="Я ищу...">
-                        <!-- <div class="close-search"></div>
-                        <div class="search-res">
-                            <ul>
-                                <li><a href="#">Гербициды</a></li>
-                                <li><a href="#">Инсектициды</a></li>
-                                <li><a href="#">Протравители</a></li>
-                                <li><a href="#">Инсектициды</a></li>
-                                <li><a href="#">Протравители</a></li>
-                            </ul>
-                        </div> -->
-                    </div>
-                </div>
             </div>
         </div>
         <!-- / header line tablet -->
@@ -514,14 +323,6 @@
 
     <footer>
         <div class="container">
-            <div class="footer-menu">
-                <ul>
-                    <li><a href="#">О нас</a></li>
-                    @foreach($categories as $category)
-                        <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
             <div class="footer-cont">
                 <div class="footer-tel">
                     <a href="#">
