@@ -39,4 +39,14 @@ class Product extends Model
     {
         return $this->new === 1;
     }
+
+    public static function countHits()
+    {
+        return Product::where('hit',1)->count();
+    }
+
+    public static function countNews()
+    {
+        return Product::where('new',1)->count();
+    }
 }

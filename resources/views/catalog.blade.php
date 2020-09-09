@@ -42,36 +42,34 @@
 
                     <div class="you-choose">
                         <div class="you-choose-in">
+                            @if(request()->has('new'))
                             <a href="#">
-                                        <span>
-                                            Избирательное
-                                        </span>
-                                <i></i>
+                                <span>
+                                    Новые
+                                </span>
                             </a>
-                            <a href="#">
+                            @endif
+                                @if(request()->has('hit'))
+                                    <a href="#">
                                         <span>
-                                            Глифосат
+                                            Хит
                                         </span>
-                                <i></i>
-                            </a>
-                            <a href="#">
-                                        <span>
-                                            Дикамба
-                                        </span>
-                                <i></i>
-                            </a>
-                            <a href="#">
-                                        <span>
-                                            1000 мл
-                                        </span>
-                                <i></i>
-                            </a>
-                            <a href="#">
-                                        <span>
-                                            Капуста
-                                        </span>
-                                <i></i>
-                            </a>
+                                    </a>
+                                @endif
+                                @if(request()->price_from)
+                                    <a>
+                                <span>
+                                    от {{(request()->price_from)}}
+                                </span>
+                                    </a>
+                                @endif
+                                @if(request()->price_to)
+                                    <a>
+                                <span>
+                                    до {{(request()->price_to)}}
+                                </span>
+                                    </a>
+                                @endif
                         </div>
                     </div>
                     <!-- for mob -->
@@ -136,7 +134,7 @@
                                         <i></i>
                                         <span>Хиты</span>
                                         <span class="num-filt">
-                                                    (10)
+                                                    ({{App\Product::countHits()}})
                                         </span>
                                     </label>
                                 </div>
@@ -146,7 +144,7 @@
                                         <i></i>
                                         <span>Новые</span>
                                         <span class="num-filt">
-                                                    (5)
+                                                    ({{App\Product::countNews()}})
                                                 </span>
                                     </label>
                                 </div>
@@ -190,36 +188,34 @@
                         Ваш выбор
                     </div>
                     <div class="you-choose-in">
-                        <a href="#">
-                                    <span>
-                                        Избирательное
-                                    </span>
-                            <i></i>
-                        </a>
-                        <a href="#">
-                                    <span>
-                                        Глифосат
-                                    </span>
-                            <i></i>
-                        </a>
-                        <a href="#">
-                                    <span>
-                                        Дикамба
-                                    </span>
-                            <i></i>
-                        </a>
-                        <a href="#">
-                                    <span>
-                                        1000 мл
-                                    </span>
-                            <i></i>
-                        </a>
-                        <a href="#">
-                                    <span>
-                                        Капуста
-                                    </span>
-                            <i></i>
-                        </a>
+                        @if(request()->has('new'))
+                            <a>
+                                <span>
+                                    Новые
+                                </span>
+                            </a>
+                        @endif
+                        @if(request()->has('hit'))
+                            <a>
+                                <span>
+                                    Хит
+                                </span>
+                            </a>
+                        @endif
+                            @if(request()->price_from)
+                                <a>
+                                <span>
+                                    от {{(request()->price_from)}}
+                                </span>
+                                </a>
+                            @endif
+                            @if(request()->price_to)
+                                <a>
+                                <span>
+                                    до {{(request()->price_to)}}
+                                </span>
+                                </a>
+                            @endif
                     </div>
                 </div>
                 <!-- / active filter -->
