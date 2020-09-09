@@ -88,7 +88,7 @@
                                         <li>
                                             <a {{ ($category->code==$current_category->code) ? 'class=active' : '' }} href="{{ route('catalog', $category->code) }}">
                                                 <i>
-                                                    <img src="{{ $category->svg }}" alt="">
+                                                    <img src="{{ Storage::url($category->svg) }}" alt="">
                                                 </i>
                                                 <span>
                                                         {{ $category->name }}
@@ -455,7 +455,7 @@
                 <!-- about -->
                 <div class="catalog-about desc">
                     <div class="catalog-about-thumb">
-                        <img src="{{$current_category->image}}" alt="">
+                        <img src="{{Storage::url($current_category->image)}}" alt="">
                     </div>
                     <div class="catalog-about-descr">
                         <h1>
