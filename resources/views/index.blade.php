@@ -19,7 +19,7 @@
                         <div class="col-md-3 col-6">
                             <div class="one-home-cat">
                                 <a href="{{ route('catalog', $category->code) }}"></a>
-                                <img src="{{ $category->image }}" alt="">
+                                <img src="{{ Storage::url($category->image) }}" alt="">
                                 <div class="one-home-cat-in">
                                     <div class="one-home-cat-tit">
                                         {{ $category->name }}

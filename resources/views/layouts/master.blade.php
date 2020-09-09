@@ -170,7 +170,7 @@
 
                                                     <div class="del-item"></div>
                                                     <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                                        <img src="{{ $product->image }}" alt="">
+                                                        <img src="{{ Storage::url($product->image) }}" alt="">
                                                     </a>
                                                 </div>
                                             </div>

@@ -203,7 +203,7 @@ $('.one-filter-top').click(function(event) {
 	});
 })(jQuery);
 
-// catalog page show more about
+// products page show more about
 $('.show-all-detal span').click(function(event) {
 	$(this).toggleClass('open');
 	$('.page-detal').toggleClass('open');

@@ -17,7 +17,7 @@
     </div>
     <!-- broad -->
 
-    <!-- catalog -->
+    <!--productsg -->
     <main class="catalog">
         <div class="container">
             <div class="product">
@@ -31,7 +31,7 @@
 
                     <div class="product-thumb">
                         <a href="#">
-                            <img src="{{ $product->image }}" alt="">
+                            <img src="{{ Storage::url($product->image) }}" alt="">
                         </a>
                     </div>
                     <div class="product-descr">
@@ -71,6 +71,6 @@
             </div>
         </div>
     </main>
-    <!-- / catalog -->
+    <!-- /productsg -->
 
 @endsection

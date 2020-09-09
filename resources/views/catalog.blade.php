@@ -16,7 +16,7 @@
     </div>
     <!-- broad -->
 
-    <!-- catalog -->
+    <!-- products -->
     <main class="catalog">
         <div class="container">
             <aside class="sidebar">
@@ -450,7 +450,7 @@
                 </div>
             </aside>
 
-            <!-- catalog body -->
+            <!--productsg body -->
             <div class="catalog-body">
                 <!-- about -->
                 <div class="catalog-about desc">
@@ -505,7 +505,7 @@
                 </div>
                 <!-- / active filter -->
 
-                <!-- catalog items -->
+                <!--productsg items -->
                 <div class="catalog-body-wrap">
                     <div class="catalog-body-wrap-in">
                         @foreach($current_category->products as $product)
@@ -534,12 +534,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- / catalog items -->
+                <!-- /productsg items -->
             </div>
-            <!-- / catalog body -->
+            <!-- /productsg body -->
 
         </div>
     </main>
-    <!-- / catalog -->
+    <!-- /productsg -->
 
 @endsection

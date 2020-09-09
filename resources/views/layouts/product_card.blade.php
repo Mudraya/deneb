@@ -3,7 +3,7 @@
     <div class="one-item-in">
         <div class="one-item-thumb">
             <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                <img src="{{ $product->image }}" alt="">
+                <img src="{{ Storage::url($product->image) }}" alt="">
             </a>
         </div>
         <div class="one-item-descr">
