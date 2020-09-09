@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         $order = $this->getBasket();
         $categories = $this->getCategories();
-        $orders = Order::where('status', 1)->get();
+        $orders = Order::where('status', 1)->paginate(10);
         return view('auth.orders.index', compact('orders', 'oreder', 'categories'));
     }
 
