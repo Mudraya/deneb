@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -30,7 +31,7 @@ class ProductRequest extends FormRequest
             'price' => 'required|numeric|min:1'
         ];
 
-        if ($this->route()->named('products.update')) {
+        if ($this->route()->named('admin.products.update')) {
             $rules['code'] .= ',' . $this->route()->parameter('product')->id;
         }
 

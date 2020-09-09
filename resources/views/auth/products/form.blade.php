@@ -93,6 +93,23 @@
                                value="{{ old('price', isset($product) ? $product->price : null) }}">
                     </div>
                 </div>
+                    <br>
+                    @foreach ([
+                    'hit' => 'Хит',
+                    'new' => 'Новинка',
+                    ] as $field => $title)
+                        <div class="form-group row">
+                            <label for="code" class="col-sm-2 col-form-label">{{ $title }}: </label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" name="{{$field}}" id="{{$field}}"
+                                       @if(isset($product) && $product->$field === 1)
+                                       checked="'checked"
+                                    @endif
+                                >
+                            </div>
+                        </div>
+                        <br>
+                    @endforeach
                 <button class="btn btn-success">Сохранить</button>
             </div>
         </form>

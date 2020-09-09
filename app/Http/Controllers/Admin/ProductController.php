@@ -88,6 +88,13 @@ class ProductController extends Controller
             Storage::delete(Storage::url($product->image));
             $params['image'] = $request->file('image')->store('products');
         }
+
+        foreach (['new', 'hit'] as $fieldName) {
+            if (!isset($params[$fieldName])) {
+                $params[$fieldName] = 0;
+            }
+        }
+
         $product->update($params);
         return redirect()->route('admin.products.index');
     }
