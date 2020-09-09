@@ -42,7 +42,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (Auth::user()->isAdmin()) {
-            return route('home');
+            return route('admin.orders.index');
         } else {
             return route('person.orders.index');
         }

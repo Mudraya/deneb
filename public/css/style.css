@@ -8022,7 +8022,12 @@ div.form-inline {
     margin-left: 13px;
 }
 
-.form-check-label{
+.form-check-label {
     margin-left: 5px;
 }
+
+#adminka-footer {
+    margin-top: 40px;
+}
+
 

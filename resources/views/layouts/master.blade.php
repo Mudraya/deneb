@@ -382,7 +382,12 @@
                     @endguest
 
                     @auth
-                        <a href="{{route('home')}}">
+                            @admin
+                                <a href="{{route('admin.orders.index')}}">
+                            @else
+                                <a href="{{route('person.orders.index')}}">
+                            @endadmin
+
                             <span>
                                 Мой кабинет
                             </span>

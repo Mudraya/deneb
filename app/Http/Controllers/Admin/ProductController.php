@@ -47,7 +47,7 @@ class ProductController extends Controller
             $params['image'] = $request->file('image')->store('products');
         }
         Product::create($params);
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -89,7 +89,7 @@ class ProductController extends Controller
             $params['image'] = $request->file('image')->store('products');
         }
         $product->update($params);
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -101,6 +101,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 }

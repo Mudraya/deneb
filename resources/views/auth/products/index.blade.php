@@ -35,11 +35,11 @@
                     <td>{{ $product->price }}</td>
                     <td>
                         <div class="btn-group" role="group">
-                            <form action="{{ route('products.destroy', $product) }}" method="POST">
+                            <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
                                 <a class="btn btn-success" type="button"
-                                   href="{{ route('products.show', $product) }}">Открыть</a>
+                                   href="{{ route('admin.products.show', $product) }}">Открыть</a>
                                 <a class="btn btn-warning" type="button"
-                                   href="{{ route('products.edit', $product) }}">Редактировать</a>
+                                   href="{{ route('admin.products.edit', $product) }}">Редактировать</a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="Удалить"></form>
@@ -49,5 +49,5 @@
             @endforeach
             </tbody>
         </table>
-        <a class="btn btn-success" type="button" href="{{ route('products.create') }}">Добавить товар</a>
+        <a class="btn btn-success" type="button" href="{{ route('admin.products.create') }}">Добавить товар</a>
 @endsection

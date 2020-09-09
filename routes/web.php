@@ -36,21 +36,17 @@ Route::middleware(['auth'])->group(function () {
     Route::group([
         'namespace' => 'Admin',
         'prefix' => 'admin',
+        'as' => 'admin.'
     ], function () {
         Route::group(['middleware' => 'is_admin'], function () {
-            Route::get('/orders', 'OrderController@index')->name('admin_orders');
+            Route::get('/orders', 'OrderController@index')->name('orders.index');
             Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+            Route::resource('categories', 'CategoryController');
+            Route::resource('products', 'ProductController');
         });
-
-        Route::get('/home', 'HomeController@index')->name('home');
-        Route::resource('categories', 'CategoryController');
-        Route::resource('products', 'ProductController');
     });
 
 });
-
-
-
 
 Route::group(['prefix' => 'basket'], function () {
     Route::post('/add/{id}', 'BasketController@basketAdd')->name('basket-add');
@@ -66,14 +62,6 @@ Route::group(['prefix' => 'basket'], function () {
 });
 
 Route::get('/', 'MainController@index')->name('index');
-//Route::get('/categories', 'MainController@categories')->name('categories');
-
-//Route::get('/basket', 'BasketController@basket')->name('basket');
-//Route::get('/basket/place', 'BasketController@basketPlace')->name('basket-place');
-//Route::post('/basket/add/{id}', 'BasketController@basketAdd')->name('basket-add');
-//Route::post('/basket/remove/{id}', 'BasketController@basketRemove')->name('basket-remove');
-//Route::post('/basket/place', 'BasketController@basketConfirm')->name('basket-confirm');
-
 
 Route::get('/{catalog}', 'MainController@catalog')->name('catalog');
 Route::get('/{category}/{product?}', 'MainController@product')->name('product');
