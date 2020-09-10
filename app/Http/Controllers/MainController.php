@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
-use App\Order;
-use App\Product;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller

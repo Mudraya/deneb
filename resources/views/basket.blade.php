@@ -51,7 +51,7 @@
 
                             <div class="basket-inside">
                                 <div class="one-lk-bask-table">
-                                    @foreach($order->products as $product)
+                                    @foreach($order->products()->with('category')->get() as $product)
                                         <div class="one-lk-bask-tr">
                                             <div class="one-lk-bask-td thumb-td">
                                                 <div class="one-lk-bask-thumb">
@@ -99,7 +99,7 @@
                                             Итого:
                                         </div>
                                         <div class="inside-val">
-                                            {{ $order->getFullPrice() }} грн
+                                            {{ $order->calculateFullSum() }} грн
                                         </div>
                                     </div>
                                 </div>

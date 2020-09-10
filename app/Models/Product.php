@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -48,5 +49,15 @@ class Product extends Model
     public static function countNews()
     {
         return Product::where('new',1)->count();
+    }
+
+    public function scopeHit($query)
+    {
+        return $query->where('hit', 1);
+    }
+
+    public function scopeNew($query)
+    {
+        return $query->where('new', 1);
     }
 }

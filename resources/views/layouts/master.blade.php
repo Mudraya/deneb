@@ -243,7 +243,7 @@
                                                 Итого:
                                             </div>
                                             <div class="one-modal-item-val">
-                                                {{ $order->getFullPrice() }} грн
+                                                {{ $order->getFullSum() }} грн
                                             </div>
                                         </div>
                                         <div class="one-modal-item-bt">

@@ -28,7 +28,7 @@
                         Купить
                     </button>
                     <br/>
-                    <a href="{{ route('product', [$product->category->code, $product->code]) }}" class="def-min-bt">
+                    <a href="{{ route('product', [isset($current_category) ? $current_category->code : $product->category->code, $product->code]) }}" class="def-min-bt">
                         Подробнее
                     </a>
                     @csrf

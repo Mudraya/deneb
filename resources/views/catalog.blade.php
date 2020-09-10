@@ -134,7 +134,7 @@
                                         <i></i>
                                         <span>Хиты</span>
                                         <span class="num-filt">
-                                                    ({{App\Product::countHits()}})
+                                                    ({{App\Models\Product::countHits()}})
                                         </span>
                                     </label>
                                 </div>
@@ -144,7 +144,7 @@
                                         <i></i>
                                         <span>Новые</span>
                                         <span class="num-filt">
-                                                    ({{App\Product::countNews()}})
+                                                    ({{App\Models\Product::countNews()}})
                                                 </span>
                                     </label>
                                 </div>
