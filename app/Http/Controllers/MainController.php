@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubscriptionRequest;
 use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -59,5 +61,15 @@ class MainController extends Controller
         $categories = $this->getCategories();
         $product = Product::withTrashed()->byCode($productCode)->first();
         return view('product', compact('categories', 'order', 'product', 'category'));
+    }
+
+    public function subscribe(SubscriptionRequest $request, Product $product)
+    {
+        Subscription::create([
+            'email' => $request->email,
+            'product_id' => $product->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Спасибо, мы сообщим вам о поступлении товара');
     }
 }

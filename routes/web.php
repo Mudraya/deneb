@@ -21,6 +21,7 @@ Auth::routes([
 ]);
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout');
+Route::post('subscription/{product}', 'MainController@subscribe')->name('subscription');
 
 Route::middleware(['auth'])->group(function () {
 

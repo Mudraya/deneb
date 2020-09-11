@@ -54,16 +54,31 @@
 
                             <div class="btns-prod">
                                 <div class="product-bay">
-                                    <form action="{{ route('basket-add', $product) }}" method="POST">
                                         @if($product->isAvailable())
-                                    <button type="submit" class="def-bt" role="button">
-                                        Купить
-                                    </button>
+                                        <form action="{{ route('basket-add', $product) }}" method="POST">
+                                            <button type="submit" class="def-bt" role="button">
+                                                Купить
+                                            </button>
+                                            @csrf
+                                        </form>
                                         @else
-                                            Не доступен
+                                            <span>Не доступен</span>
+                                            <br>
+                                            <span>Сообщить мне, когда товар появится в наличии:</span>
+                                            <div class="warning">
+                                                @if($errors->get('email'))
+                                                    {!! $errors->get('email')[0] !!}
+                                                @endif
+                                            </div>
+                                            <form method="POST" action="{{ route('subscription', $product) }}">
+                                                @csrf
+                                                <div class="one-line">
+                                                <input type="text" name="email" id="email">
+                                                </div>
+                                                <button type="submit" class="def-bt" role="button">Отправить</button>
+                                            </form>
                                         @endif
-                                    @csrf
-                                    </form>
+
                                 </div>
                             </div>
 
