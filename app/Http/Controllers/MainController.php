@@ -54,7 +54,7 @@ class MainController extends Controller
 
     public function product($category, $productCode)
     {
-        $category = Category::where('code', $category)->first();
+        $category = Category::where('code', $category)->firstOrFail();
         $order = $this->getBasket();
         $categories = $this->getCategories();
         $product = Product::withTrashed()->byCode($productCode)->first();

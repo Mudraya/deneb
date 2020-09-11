@@ -154,7 +154,7 @@
                                                 <input name="phone" id="phone" value="" type="text" placeholder="Телефон">
                                             </div>
                                             <div class="one-line">
-                                                <input type="text" placeholder="Email">
+                                                <input name="email" id="email" value=""  type="text" placeholder="Email">
                                             </div>
                                             <div class="next-step">
                                                 <a href="#" class="def-min-bt">
