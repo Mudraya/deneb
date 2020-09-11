@@ -20,6 +20,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/mini.jpg',
                 'description' => 'Содержит ананас, беби/молодой кокос, маракую, гранадиллу, рамбутаны, тамаринд, кумкват, киви "Gold"',
                 'price' => 400,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Фруктовая коробочка Стандарт',
@@ -28,6 +29,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/standart.jpg',
                 'description' => 'Содержит только экзотические фрукты. Тайское манго/королевское манго, гранадилла, маракуйя, мангостаны, кумкват, тамаринд',
                 'price' => 750,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Фруктовая коробочка Экзотик',
@@ -36,6 +38,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/ekzotik.jpg',
                 'description' => 'Содержит только экзотические фрукты. Ананас беби/молодой кокос, гранадилла, мангостаны, маракуйя, рамбутаны, кумкват, тамаринд.',
                 'price' => 650,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Коробка "Розовая мечта"',
@@ -44,6 +47,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/pink_dream.webp',
                 'description' => 'Букет из клубники в шоколаде в коробке "Розовая мечта"',
                 'price' => 800,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Коробка "Шампанское"',
@@ -52,6 +56,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/champagne.webp',
                 'description' => 'Букет из клубники в шоколаде с шампанским',
                 'price' => 900,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Коробка "Мишка"',
@@ -60,6 +65,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/bear.webp',
                 'description' => 'Букет из клубники в шоколаде в коробке "Мишка"',
                 'price' => 550,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Набор макарун "Арахис"',
@@ -68,6 +74,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/peanut.jpg',
                 'description' => 'Набор макаронсов арахис в стильной упаковке, макаронсы со вкусом арахис на основе ганаша, приготовленного из белого и черного бельгийского шоколада с добавлением арахисовой пасты и арахиса',
                 'price' => 180,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Набор макарун "Грейпфрут"',
@@ -76,6 +83,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/grapefruit.jpg',
                 'description' => 'Набор макаронсов грейпфрут в стильной упаковке, начинка на основе ганаша из белого шоколада и натурального пюре грейпфрутов, кули клубничное на основе пюре клубники 100% и пюре груш Вильямс 100%',
                 'price' => 180,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Набор макарун "Банан-клубника"',
@@ -84,6 +92,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/banana-strawberry.jpg',
                 'description' => 'Стильный набор из 6 макаронсов, нежное французское миндальное печенье на основе бананового ганаша и клубничного кули',
                 'price' => 180,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Набор "Султан ассорти"',
@@ -92,6 +101,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/sultan.webp',
                 'description' => 'Рахат-Лукум Асорти Султан 1,5 кг',
                 'price' => 145,
+                'count' => rand(0, 10),
             ],
             [
                 'name' => 'Набор "Ореховое ассорти"',
@@ -100,6 +110,7 @@ class ProductsTableSeeder extends Seeder
                 'image' => 'products/nuts.webp',
                 'description' => 'Рахат-Лукум Асорти Ореховый 1,5 кг',
                 'price' => 116,
+                'count' => rand(0, 10),
             ],
         ]);
     }
