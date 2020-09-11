@@ -52,11 +52,12 @@ class MainController extends Controller
         return view('catalog', compact('current_category','categories', 'order', 'products'));
     }
 
-    public function product($category, $productId = null) {
+    public function product($category, $productCode)
+    {
         $category = Category::where('code', $category)->first();
         $order = $this->getBasket();
         $categories = $this->getCategories();
-        $product = Product::where('code', $productId)->first();
+        $product = Product::withTrashed()->byCode($productCode)->first();
         return view('product', compact('categories', 'order', 'product', 'category'));
     }
 }

@@ -24,9 +24,13 @@
                     <span>{{ $product->price }}</span> грн
                 </div>
                 <form action="{{ route('basket-add', $product) }}" method="POST">
+                    @if($product->isAvailable())
                     <button type="submit" class="btn btn-primary def-min-bt" role="button">
                         Купить
                     </button>
+                    @else
+                        Не доступен
+                    @endif
                     <br/>
                     <a href="{{ route('product', [isset($current_category) ? $current_category->code : $product->category->code, $product->code]) }}" class="def-min-bt">
                         Подробнее

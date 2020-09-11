@@ -55,9 +55,13 @@
                             <div class="btns-prod">
                                 <div class="product-bay">
                                     <form action="{{ route('basket-add', $product) }}" method="POST">
+                                        @if($product->isAvailable())
                                     <button type="submit" class="def-bt" role="button">
                                         Купить
                                     </button>
+                                        @else
+                                            Не доступен
+                                        @endif
                                     @csrf
                                     </form>
                                 </div>

@@ -4,10 +4,15 @@ namespace App\Models;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new'];
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new', 'count'
+    ];
 
     public function category()
     {
@@ -59,5 +64,15 @@ class Product extends Model
     public function scopeNew($query)
     {
         return $query->where('new', 1);
+    }
+
+    public function scopeByCode($query, $code)
+    {
+        return $query->where('code', $code);
+    }
+
+    public function isAvailable()
+    {
+        return !$this->trashed() && $this->count > 0;
     }
 }
