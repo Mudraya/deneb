@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Главная')
+@section('title', __('main.catalog'))
 
 @section('content')
 
@@ -8,8 +8,8 @@
     <div class="broad">
         <div class="container">
             <ul>
-                <li><a href={{route('index')}}><span>Главная</span></a></li>
-                <li><a><span>Наша кондитерская</span></a></li>
+                <li><a href={{route('index')}}><span>@lang('main.title')</span></a></li>
+                <li><a><span>@lang('main.our_bakery')</span></a></li>
                 <li>{{$current_category->name}}</li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
                 <!-- for mob bt -->
                 <div class="show-filter">
                     <a href="#" class="border-min-bt">
-                        Фильтры
+                        @lang('main.filter')
                     </a>
                 </div>
                 <!-- for mob bt -->
@@ -36,7 +36,7 @@
 
                     <!-- for mob -->
                     <div class="filt-mob-tit">
-                        Фильтр
+                        @lang('main.filter')
                         <div class="close-filt"></div>
                     </div>
 
@@ -45,28 +45,28 @@
                             @if(request()->has('new'))
                             <a href="#">
                                 <span>
-                                    Новые
+                                    @lang('main.filter_properties.new')
                                 </span>
                             </a>
                             @endif
                                 @if(request()->has('hit'))
                                     <a href="#">
                                         <span>
-                                            Хит
+                                            @lang('main.filter_properties.hit')
                                         </span>
                                     </a>
                                 @endif
                                 @if(request()->price_from)
                                     <a>
                                 <span>
-                                    от {{(request()->price_from)}}
+                                    @lang('main.from') {{(request()->price_from)}}
                                 </span>
                                     </a>
                                 @endif
                                 @if(request()->price_to)
                                     <a>
                                 <span>
-                                    до {{(request()->price_to)}}
+                                    @lang('main.to') {{(request()->price_to)}}
                                 </span>
                                     </a>
                                 @endif
@@ -105,15 +105,15 @@
                     <!-- one filter -->
                     <div class="one-filter">
                         <div class="one-filter-top active">
-                            Цена
+                            @lang('basket.price')
                         </div>
                         <div class="one-filter-descr" style="display: block;">
                             <div class="one-filter-descr-inp price-input-div">
-                                <label for="price_from">от
+                                <label for="price_from">@lang('main.from')
                                     <input type="text" name="price_from" id="price_from" size="6" value="{{ request()->price_from}}">
                                 </label>
 
-                                <label for="price_to">до
+                                <label for="price_to">@lang('main.to')
                                     <input type="text" name="price_to" id="price_to" size="6"  value="{{ request()->price_to }}">
                                 </label>
                             </div>
@@ -124,7 +124,7 @@
                     <!-- one filter -->
                     <div class="one-filter has-act-filt">
                         <div class="one-filter-top active">
-                            Метки
+                            @lang('main.tags')
                         </div>
                         <div class="one-filter-descr" style="display: block;">
                             <div class="one-filter-descr-inp">
@@ -132,7 +132,7 @@
                                     <label>
                                         <input type="checkbox" @if(request()->has('hit')) checked @endif name="hit" id="hit">
                                         <i></i>
-                                        <span>Хиты</span>
+                                        <span>@lang('main.filter_properties.hit')</span>
                                         <span class="num-filt">
                                                     ({{App\Models\Product::countHits()}})
                                         </span>
@@ -142,7 +142,7 @@
                                     <label>
                                         <input type="checkbox" name="new" id="new" @if(request()->has('new')) checked @endif>
                                         <i></i>
-                                        <span>Новые</span>
+                                        <span>@lang('main.filter_properties.new')</span>
                                         <span class="num-filt">
                                                     ({{App\Models\Product::countNews()}})
                                                 </span>
@@ -156,10 +156,10 @@
 
                     <div class="filter-bt">
                         <button type="submit" class="def-min-bt">
-                            Применить
+                            @lang('main.confirm')
                         </button>
                         <a href="{{ route('catalog', $current_category->code) }}" class="border-min-bt">
-                            Сбросить
+                            @lang('main.reset')
                         </a>
                     </div>
 
@@ -185,34 +185,34 @@
                 <!-- active filter -->
                 <div class="you-choose">
                     <div class="you-choose-name">
-                        Ваш выбор
+                        @lang('main.your_choice')
                     </div>
                     <div class="you-choose-in">
                         @if(request()->has('new'))
                             <a>
                                 <span>
-                                    Новые
+                                    @lang('main.filter_properties.new')
                                 </span>
                             </a>
                         @endif
                         @if(request()->has('hit'))
                             <a>
                                 <span>
-                                    Хит
+                                    @lang('main.filter_properties.hit')
                                 </span>
                             </a>
                         @endif
                             @if(request()->price_from)
                                 <a>
                                 <span>
-                                    от {{(request()->price_from)}}
+                                    @lang('main.from') {{(request()->price_from)}}
                                 </span>
                                 </a>
                             @endif
                             @if(request()->price_to)
                                 <a>
                                 <span>
-                                    до {{(request()->price_to)}}
+                                    @lang('main.to') {{(request()->price_to)}}
                                 </span>
                                 </a>
                             @endif

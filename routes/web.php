@@ -20,51 +20,55 @@ Auth::routes([
     'verify' => false,
 ]);
 
+Route::get('locale/{locale}', 'MainController@changeLocale')->name('locale');
+
 Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout');
 Route::post('subscription/{product}', 'MainController@subscribe')->name('subscription');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['set_locale'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
 
-    Route::group([
-        'prefix' => 'person',
-        'namespace' => 'Person',
-        'as' => 'person.',
-    ], function () {
-        Route::get('/orders', 'OrderController@index')->name('orders.index');
-        Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
-    });
-
-    Route::group([
-        'namespace' => 'Admin',
-        'prefix' => 'admin',
-        'as' => 'admin.'
-    ], function () {
-        Route::group(['middleware' => 'is_admin'], function () {
+        Route::group([
+            'prefix' => 'person',
+            'namespace' => 'Person',
+            'as' => 'person.',
+        ], function () {
             Route::get('/orders', 'OrderController@index')->name('orders.index');
             Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
-            Route::resource('categories', 'CategoryController');
-            Route::resource('products', 'ProductController');
+        });
+
+        Route::group([
+            'namespace' => 'Admin',
+            'prefix' => 'admin',
+            'as' => 'admin.'
+        ], function () {
+            Route::group(['middleware' => 'is_admin'], function () {
+                Route::get('/orders', 'OrderController@index')->name('orders.index');
+                Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+                Route::resource('categories', 'CategoryController');
+                Route::resource('products', 'ProductController');
+            });
+        });
+
+    });
+
+    Route::group(['prefix' => 'basket'], function () {
+        Route::post('/add/{product}', 'BasketController@basketAdd')->name('basket-add');
+
+        Route::group([
+            'middleware' => 'basket_not_empty',
+        ], function () {
+            Route::get('/', 'BasketController@basket')->name('basket');
+            Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
+            Route::post('/remove/{product}', 'BasketController@basketRemove')->name('basket-remove');
+            Route::post('/place', 'BasketController@basketConfirm')->name('basket-confirm');
         });
     });
 
+    Route::get('/', 'MainController@index')->name('index');
+    Route::get('reset', 'ResetController@reset')->name('reset');
+
+    Route::get('/{catalog}', 'MainController@catalog')->name('catalog');
+    Route::get('/{category}/{product?}', 'MainController@product')->name('product');
 });
-
-Route::group(['prefix' => 'basket'], function () {
-    Route::post('/add/{product}', 'BasketController@basketAdd')->name('basket-add');
-
-    Route::group([
-        'middleware' => 'basket_not_empty',
-    ], function () {
-        Route::get('/', 'BasketController@basket')->name('basket');
-        Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
-        Route::post('/remove/{product}', 'BasketController@basketRemove')->name('basket-remove');
-        Route::post('/place', 'BasketController@basketConfirm')->name('basket-confirm');
-    });
-});
-
-Route::get('/', 'MainController@index')->name('index');
-Route::get('reset', 'ResetController@reset')->name('reset');
-
-Route::get('/{catalog}', 'MainController@catalog')->name('catalog');
-Route::get('/{category}/{product?}', 'MainController@product')->name('product');
 

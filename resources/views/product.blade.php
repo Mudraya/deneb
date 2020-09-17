@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Главная')
+@section('title', $product->name)
 
 @section('content')
 
@@ -9,7 +9,7 @@
     <div class="broad">
         <div class="container">
             <ul>
-                <li><a href="{{ route('index') }}"><span>Главная</span></a></li>
+                <li><a href="{{ route('index') }}"><span>@lang('main.title')</span></a></li>
                 <li><a href="{{ route('catalog', $category->code) }}"><span>{{ $category->name }}</span></a></li>
                 <li>{{ $product->name }}</li>
             </ul>
@@ -48,7 +48,7 @@
                         <div class="product-info">
                             <div class="price-wrap">
                                 <div class="product-price">
-                                    <span>{{ $product->price }}</span> грн
+                                    <span>{{ $product->price }}</span> @lang('main.uah')
                                 </div>
                             </div>
 
@@ -62,9 +62,9 @@
                                             @csrf
                                         </form>
                                         @else
-                                            <span>Не доступен</span>
+                                            <span>@lang('main.not_available')</span>
                                             <br>
-                                            <span>Сообщить мне, когда товар появится в наличии:</span>
+                                            <span>@lang('product.tell_me'):</span>
                                             <div class="warning">
                                                 @if($errors->get('email'))
                                                     {!! $errors->get('email')[0] !!}
@@ -75,7 +75,7 @@
                                                 <div class="one-line">
                                                 <input type="text" name="email" id="email">
                                                 </div>
-                                                <button type="submit" class="def-bt" role="button">Отправить</button>
+                                                <button type="submit" class="def-bt" role="button">@lang('main.subscribe')</button>
                                             </form>
                                         @endif
 

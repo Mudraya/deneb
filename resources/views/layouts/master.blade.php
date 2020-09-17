@@ -37,10 +37,10 @@
             <div class="modal-wrap">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Вход</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">@lang('main.login')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Регистрация</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">@lang('main.registration')</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="one-line">
-                                    <input placeholder="Пароль" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input placeholder="@lang('main.password')" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,20 +71,20 @@
                                 <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="remember">
-                                    Запомнить меня
+                                    @lang('main.remember_me')
                                 </label>
                                 </div>
 
                                 <div class="forg-pass">
                                     {{--<a href="{{ route('password.request') }}">--}}
                                     <a href="#">
-                                        Забыли пароль?
+                                        @lang('main.forgot_password')
                                     </a>
                                 </div>
 
                                 <div class="modal-log-bt">
                                     <button type="submit" class="def-min-bt">
-                                        Войти
+                                        @lang('main.login')
                                     </button>
                                 </div>
                             </form>
@@ -98,7 +98,7 @@
                                 @csrf
 
                                 <div class="one-line">
-                                    <input placeholder="Имя" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input placeholder="@lang('main.name')" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
                                 </div>
 
                                 <div class="one-line">
-                                    <input placeholder="Пароль" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input placeholder="@lang('main.password')" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -127,12 +127,12 @@
                                 </div>
 
                                 <div class="one-line">
-                                    <input placeholder="Подтврдите пароль" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input placeholder="@lang('main.confirm_password')" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
 
                                 <div class="modal-log-bt">
                                     <button type="submit" class="def-min-bt">
-                                        Регистрация
+                                        @lang('main.registration')
                                     </button>
                                 </div>
 
@@ -155,7 +155,7 @@
             <div class="modal-wrap">
                 <div class="modal-bask">
                     <div class="modal-bask-tit">
-                        Корзина
+                        @lang('main.cart')
                     </div>
                     <div class="modal-bask-wrap">
                         @if(isset($order->products))
@@ -185,7 +185,7 @@
                                                             <div class="modal-item-info">
                                                                 <div class="modal-item-price">
                                                                     <div class="modal-item-price-in">
-                                                                        <span>{{ $product->price }}</span> грн
+                                                                        <span>{{ $product->price }}</span> @lang('main.uah')
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-item-number">
@@ -216,10 +216,10 @@
                                                         <div class="modal-item-td td-sum">
                                                             <div class="modal-item-sum">
                                                                 <div class="modal-item-sum-name">
-                                                                    Сумма
+                                                                    @lang('basket.price')
                                                                 </div>
                                                                 <div class="modal-item-sum-num">
-                                                                    <span>{{ $product->getPriceForCount() }}</span> грн
+                                                                    <span>{{ $product->getPriceForCount() }}</span> @lang('main.uah')
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -234,21 +234,21 @@
                                 <div class="one-modal-item-bay-info">
                                     <div class="one-modal-item-back">
                                         <a href="#" class="back-bask def-big-bt"  data-dismiss="modal">
-                                            Продолжить покупки
+                                            @lang('basket.continue_shopping')
                                         </a>
                                     </div>
                                     <div class="one-modal-item-sum">
                                         <div class="one-modal-item-top">
                                             <div class="one-modal-item-name">
-                                                Итого:
+                                                @lang('basket.total'):
                                             </div>
                                             <div class="one-modal-item-val">
-                                                {{ $order->getFullSum() }} грн
+                                                {{ $order->getFullSum() }} @lang('main.uah')
                                             </div>
                                         </div>
                                         <div class="one-modal-item-bt">
                                             <a href="{{route('basket')}}" class="def-big-bt">
-                                                Оформить заказ
+                                                @lang('basket.place_order')
                                             </a>
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@
                             </div>
                         @else
 
-                            <h4>Ваша корзинка пуста</h4>
+                            <h4>@lang('basket.cart_is_empty')</h4>
 
                         @endif
 
@@ -312,16 +312,16 @@
                     <ul class="sf-menu">
 
                         <li class="no-sub">
-                            <a href="#">О нас</a>
+                            <a href="#">@lang('main.about_us')</a>
                         </li>
                         <li>
-                            <a href="#">Каталог</a>
+                            <a href="#">@lang('main.catalog')</a>
 
                             <ul class="sub-menu">
                                 <li class="li-top-tablet">
                                     <div class="back-menu"></div>
                                     <div class="tit-menu">
-                                        Каталог
+                                        @lang('main.catalog')
                                     </div>
                                     <div class="close-menu"></div>
                                 </li>
@@ -353,10 +353,10 @@
                         <div class="lang">
                             <ul>
                                 <li>
-                                    <a class="active" href="#">RU</a>
+                                    <a class="active" href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a>
                                 </li>
                                 <li>
-                                    <a href="#">UA</a>
+                                    <a href="#">@lang('main.current_lang')</a>
                                 </li>
                             </ul>
                         </div>
@@ -376,7 +376,7 @@
                                 </svg>
                             </i>
                             <span>
-                                Вход/Регистрация
+                                @lang('main.login')/@lang('main.registration')
                             </span>
                         </a>
                     @endguest
@@ -389,12 +389,12 @@
                             @endadmin
 
                             <span>
-                                Мой кабинет
+                                @lang('main.my_office')
                             </span>
                         </a>
                             <a href="{{route('logout')}}">
                                 <span>
-                                    Выход
+                                    @lang('main.logout')
                                 </span>
                             </a>
                     @endauth
@@ -413,7 +413,7 @@
                             </div>
 
                             <div class="search-body">
-                                <input type="text" placeholder="Я ищу...">
+                                <input type="text" placeholder="@lang('main.i_search')">
                                 <div class="close-search"></div>
                                 <div class="search-res">
                                     <ul>
@@ -461,10 +461,10 @@
                     <div class="lang">
                         <ul>
                             <li>
-                                <a class="active" href="#">RU</a>
+                                <a class="active" href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a>
                             </li>
                             <li>
-                                <a href="#">UA</a>
+                                <a href="#">@lang('main.current_lang')</a>
                             </li>
                         </ul>
                     </div>
@@ -482,7 +482,7 @@
                 </div>
                 <div class="header-tabl-search">
                     <div class="search-body">
-                        <input type="text" placeholder="Я ищу...">
+                        <input type="text" placeholder="@lang('main.i_search')">
                         <!-- <div class="close-search"></div>
                         <div class="search-res">
                             <ul>
@@ -521,7 +521,7 @@
         <div class="container">
             <div class="footer-menu">
                 <ul>
-                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">@lang('main.about_us')</a></li>
                     @foreach($categories as $category)
                         <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
                     @endforeach

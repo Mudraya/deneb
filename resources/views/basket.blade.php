@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Главная')
+@section('title', __('main.ordering'))
 
 @section('content')
 
@@ -8,8 +8,8 @@
     <div class="broad">
         <div class="container">
             <ul>
-                <li><a href="{{route('index')}}"><span>Главная</span></a></li>
-                <li>Оформление заказа</li>
+                <li><a href="{{route('index')}}"><span>@lang('main.title')</span></a></li>
+                <li>@lang('basket.ordering')</li>
             </ul>
         </div>
     </div>
@@ -40,11 +40,11 @@
                         <div class="one-step-title">
                             <i>1</i>
                             <span>
-                                Корзина
+                                @lang('basket.cart')
                             </span>
 
                             <a class="change-step" href="#">
-                                Посмотреть
+                                @lang('basket.see')
                             </a>
                         </div>
                         <div class="one-step-descr" style="display: block;">
@@ -69,13 +69,13 @@
                                                 <div class="one-lk-bask-price">
                                                     <div class="one-lk-bask-price-in">
                                                         <span>{{ $product->price }}</span>
-                                                        грн
+                                                        @lang('main.uah')
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="one-lk-bask-td num-td">
                                                 <div class="one-lk-bask-num-name">
-                                                    Количество
+                                                    @lang('basket.count')
                                                 </div>
                                                 <div class="one-lk-bask-num-val">
                                                     <span>{{ $product->pivot->count }}</span> шт
@@ -83,10 +83,10 @@
                                             </div>
                                             <div class="one-lk-bask-td sum-td">
                                                 <div class="one-lk-bask-sum-name">
-                                                    Сумма
+                                                    @lang('basket.full_cost')
                                                 </div>
                                                 <div class="one-lk-bask-sum-val">
-                                                    <span>{{ $product->getPriceForCount() }}</span> грн
+                                                    <span>{{ $product->getPriceForCount() }}</span> @lang('main.uah')
                                                 </div>
                                             </div>
                                         </div>
@@ -96,10 +96,10 @@
                                 <div class="last-inside-sum">
                                     <div class="last-inside-sum-in">
                                         <div class="inside-name">
-                                            Итого:
+                                            @lang('basket.total'):
                                         </div>
                                         <div class="inside-val">
-                                            {{ $order->calculateFullSum() }} грн
+                                            {{ $order->calculateFullSum() }} @lang('main.uah')
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
 
                             <div class="next-step">
                                 <a href="#" class="def-min-bt go-last">
-                                    Далее
+                                    @lang('basket.next')
                                 </a>
                             </div>
                         </div>
@@ -120,10 +120,10 @@
                         <div class="one-step-title">
                             <i>2</i>
                             <span>
-                                        Контактные данные
+                                        @lang('basket.contact_details')
                                     </span>
                             <a class="change-step" href="#">
-                                Изменить
+                                @lang('basket.change')
                             </a>
                         </div>
                         <div class="one-step-descr" >
@@ -158,7 +158,7 @@
                                             </div>
                                             <div class="next-step">
                                                 <a href="#" class="def-min-bt">
-                                                    Далее
+                                                    @lang('basket.next')
                                                 </a>
                                             </div>
                                         </div>
@@ -223,7 +223,7 @@
                         <div class="one-step-title">
                             <i>3</i>
                             <span>
-                                        Доставка и оплата
+                                        @lang('basket.shipping_payment')
                                     </span>
                         </div>
                         <div class="one-step-descr">
@@ -291,7 +291,7 @@
                                 </div>
                             </div>
                             @csrf
-                            <input type="submit" class="btn btn-order" value="Подтвердить заказ">
+                            <input type="submit" class="btn btn-order" value="@lang('basket.confirm_order')">
                         </div>
                     </div>
                     <!-- / one step -->
