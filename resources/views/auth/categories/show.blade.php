@@ -24,11 +24,19 @@
             </tr>
             <tr>
                 <td>Название</td>
-                <td>{{ $category->name }}</td>
+                <td>{{ $category->__('name') }}</td>
+            </tr>
+            <tr>
+                <td>Название en</td>
+                <td>{{ $category->__('name')_en }}</td>
             </tr>
             <tr>
                 <td>Описание</td>
-                <td>{{ $category->description }}</td>
+                <td>{{ $category->__('description') }}</td>
+            </tr>
+            <tr>
+                <td>Описание en</td>
+                <td>{{ $category->__('description')_en }}</td>
             </tr>
             <tr>
                 <td>Картинка</td>

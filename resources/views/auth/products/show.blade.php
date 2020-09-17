@@ -3,7 +3,7 @@
 @section('title', 'Продукт ' . $product->name)
 
 @section('content')
-        <h1>{{ $product->name }}</h1>
+        <h1>{{ $product->__('name') }}</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -24,11 +24,19 @@
             </tr>
             <tr>
                 <td>Название</td>
-                <td>{{ $product->name }}</td>
+                <td>{{ $product->__('name') }}</td>
+            </tr>
+            <tr>
+                <td>Название en</td>
+                <td>{{ $product->__('name')_en }}</td>
             </tr>
             <tr>
                 <td>Описание</td>
-                <td>{{ $product->description }}</td>
+                <td>{{ $product->__('description') }}</td>
+            </tr>
+            <tr>
+                <td>Описание en</td>
+                <td>{{ $product->__('description')_en }}</td>
             </tr>
             <tr>
                 <td>Картинка</td>

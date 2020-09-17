@@ -17,7 +17,7 @@
         </div>
         <div class="one-item-descr">
             <div class="one-item-tit">
-                {{ $product->name }}
+                {{ $product->__('name') }}
             </div>
             <div class="one-item-info">
                 <div class="one-item-price">

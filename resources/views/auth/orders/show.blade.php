@@ -27,7 +27,7 @@
                                         <img height="56px"
                                              {{--src="{{ Storage::url(Storage::url($product->image)) }}"--}}
                                         >
-                                        {{ $product->name }}
+                                        {{ $product->__('name') }}
                                     </a>
                                 </td>
                                 <td><span class="badge">1</span></td>

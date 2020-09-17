@@ -10,8 +10,8 @@
         <div class="container">
             <ul>
                 <li><a href="{{ route('index') }}"><span>@lang('main.title')</span></a></li>
-                <li><a href="{{ route('catalog', $category->code) }}"><span>{{ $category->name }}</span></a></li>
-                <li>{{ $product->name }}</li>
+                <li><a href="{{ route('catalog', $category->code) }}"><span>{{ $category->__('name') }}</span></a></li>
+                <li>{{ $product->__('name') }}</li>
             </ul>
         </div>
     </div>
@@ -26,7 +26,7 @@
                 <div class="product-top">
 
                     <div class="mobile-title">
-                        {{ $product->name }}
+                        {{ $product->__('name') }}
                     </div>
 
                     <div class="product-thumb">
@@ -37,12 +37,12 @@
                     <div class="product-descr">
                         <div class="product-tit">
                             <h1>
-                                {{ $product->name }}
+                                {{ $product->__('name') }}
                             </h1>
                         </div>
 
                         <div class="product-text">
-                            {{ $product->description }}
+                            {{ $product->__('description') }}
                         </div>
 
                         <div class="product-info">
@@ -75,7 +75,7 @@
                                                 <div class="one-line">
                                                 <input type="text" name="email" id="email">
                                                 </div>
-                                                <button type="submit" class="def-bt" role="button">@lang('main.subscribe')</button>
+                                                <button type="submit" class="def-bt" role="button">@lang('product.subscribe')</button>
                                             </form>
                                         @endif
 

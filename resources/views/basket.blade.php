@@ -63,7 +63,7 @@
                                             <div class="one-lk-bask-td descr-td">
                                                 <div class="one-lk-bask-tit">
                                                     <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                                        {{ $product->name }}
+                                                        {{ $product->__('name') }}
                                                     </a>
                                                 </div>
                                                 <div class="one-lk-bask-price">

@@ -89,7 +89,7 @@
                                                     <img src="{{ Storage::url($category->svg) }}" alt="">
                                                 </i>
                                                 <span>
-                                                        {{ $category->name }}
+                                                        {{ $category->__('name') }}
                                                 </span>
                                             </a>
                                         </li>

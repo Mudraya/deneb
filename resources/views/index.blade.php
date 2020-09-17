@@ -22,7 +22,7 @@
                                 <img src="{{ Storage::url($category->image) }}" alt="">
                                 <div class="one-home-cat-in">
                                     <div class="one-home-cat-tit">
-                                        {{ $category->name }}
+                                        {{ $category->__('name') }}
                                     </div>
                                 </div>
                             </div>

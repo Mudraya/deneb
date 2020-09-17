@@ -180,7 +180,7 @@
                                                     <div class="modal-item-tr">
                                                         <div class="modal-item-td td-wrap">
                                                             <div class="modal-item-name">
-                                                                {{ $product->name }}
+                                                                {{ $product->__('name') }}
                                                             </div>
                                                             <div class="modal-item-info">
                                                                 <div class="modal-item-price">
@@ -326,7 +326,7 @@
                                     <div class="close-menu"></div>
                                 </li>
                                 @foreach($categories as $category)
-                                    <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('catalog', $category->code) }}">{{ $category->__('name') }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -418,7 +418,7 @@
                                 <div class="search-res">
                                     <ul>
                                         @foreach($categories as $category)
-                                            <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
+                                            <li><a href="{{ route('catalog', $category->code) }}">{{ $category->__('name') }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -523,7 +523,7 @@
                 <ul>
                     <li><a href="#">@lang('main.about_us')</a></li>
                     @foreach($categories as $category)
-                        <li><a href="{{ route('catalog', $category->code) }}">{{ $category->name }}</a></li>
+                        <li><a href="{{ route('catalog', $category->code) }}">{{ $category->__('name') }}</a></li>
                     @endforeach
                 </ul>
             </div>
