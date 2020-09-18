@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class CurrencySeeder extends Seeder
@@ -19,12 +20,16 @@ class CurrencySeeder extends Seeder
                 'symbol' => '₴',
                 'is_main' => 1,
                 'rate' => 1,
+                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now(),
             ],
             [
                 'code' => 'USD',
                 'symbol' => '$',
                 'is_main' => 0,
-                'rate' => 25,
+                'rate' => 0,
+                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now(),
             ]
         ]);
     }

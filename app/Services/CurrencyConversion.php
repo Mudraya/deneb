@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Currency;
+use Carbon\Carbon;
 
 class CurrencyConversion
 {
@@ -31,10 +32,23 @@ class CurrencyConversion
 
         $originCurrency = self::$container[$originCurrencyCode];
 
+        if ($originCurrency->rate == 0 || $originCurrency->updated_at->startOfDay()->toString() != Carbon::now()->startOfDay()->toString()) {
+            CurrencyRates::getRates();
+            self::loadContainer();
+            $originCurrency = self::$container[$originCurrencyCode];
+        }
+
         if (is_null($targetCurrencyCode)) {
             $targetCurrencyCode = session('currency', 'UAH');
         }
+
         $targetCurrency = self::$container[$targetCurrencyCode];
+
+        if ($targetCurrency->rate == 0 || $targetCurrency->updated_at->startOfDay()->toString() != Carbon::now()->startOfDay()->toString()) {
+            CurrencyRates::getRates();
+            self::loadContainer();
+            $targetCurrency = self::$container[$targetCurrencyCode];
+        }
 
         return $sum * $originCurrency->rate / $targetCurrency->rate;
     }
@@ -47,5 +61,16 @@ class CurrencyConversion
 
         $currency = self::$container[$currencyFromSession];
         return $currency->symbol;
+    }
+
+    public static function getBaseCurrency()
+    {
+        self::loadContainer();
+
+        foreach (self::$container as $code => $currency) {
+            if ($currency->isMain()) {
+                return $currency;
+            }
+        }
     }
 }
