@@ -185,7 +185,7 @@
                                                             <div class="modal-item-info">
                                                                 <div class="modal-item-price">
                                                                     <div class="modal-item-price-in">
-                                                                        <span>{{ $product->price }}</span> @lang('main.uah')
+                                                                        <span>{{ $product->price }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-item-number">
@@ -219,7 +219,7 @@
                                                                     @lang('basket.price')
                                                                 </div>
                                                                 <div class="modal-item-sum-num">
-                                                                    <span>{{ $product->getPriceForCount() }}</span> @lang('main.uah')
+                                                                    <span>{{ $product->getPriceForCount() }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -243,7 +243,7 @@
                                                 @lang('basket.total'):
                                             </div>
                                             <div class="one-modal-item-val">
-                                                {{ $order->getFullSum() }} @lang('main.uah')
+                                                {{ $order->getFullSum() }} {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                                             </div>
                                         </div>
                                         <div class="one-modal-item-bt">
@@ -467,7 +467,16 @@
                                 <a href="#">@lang('main.current_lang')</a>
                             </li>
                         </ul>
+
+                        <ul>
+                            @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                                <li>
+                                    <a href="{{ route('currency', $currency->code) }}">{{ $currency->code }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
+
                 </div>
             </div>
         </div>

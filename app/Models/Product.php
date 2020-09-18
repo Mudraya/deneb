@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Category;
 use App\Models\Traits\Translatable;
+use App\Services\CurrencyConversion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,8 +13,7 @@ class Product extends Model
     use SoftDeletes, Translatable;
 
     protected $fillable = [
-        'name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new', 'count', 'name_en',
-        'description_en'
+        'name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new', 'count', 'name_en', 'description_en'
     ];
 
     public function category()
@@ -76,5 +76,10 @@ class Product extends Model
     public function isAvailable()
     {
         return !$this->trashed() && $this->count > 0;
+    }
+
+    public function getPriceAttribute($value)
+    {
+        return round(CurrencyConversion::convert($value), 2);
     }
 }

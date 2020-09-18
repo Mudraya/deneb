@@ -21,7 +21,7 @@
             </div>
             <div class="one-item-info">
                 <div class="one-item-price">
-                    <span>{{ $product->price }}</span> @lang('main.uah')
+                    <span>{{ $product->price }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                 </div>
                 <form action="{{ route('basket-add', $product) }}" method="POST">
                     @if($product->isAvailable())

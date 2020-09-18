@@ -94,7 +94,7 @@ header {
 
 .header-mid {
 	float: left;
-	width: 640px;
+	width: 620px;
 	margin-left: 15px;
 }
 
@@ -212,7 +212,7 @@ header {
 
 .header-right {
 	float: right;
-	width: 262px;
+	width: 292px;
 }
 
 .header-login {
