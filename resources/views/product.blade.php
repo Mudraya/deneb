@@ -48,7 +48,7 @@
                         <div class="product-info">
                             <div class="price-wrap">
                                 <div class="product-price">
-                                    <span>{{ $product->price }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                    <span>{{ $product->price }}</span> {{ $currencySymbol }}
                                 </div>
                             </div>
 

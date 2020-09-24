@@ -185,7 +185,7 @@
                                                             <div class="modal-item-info">
                                                                 <div class="modal-item-price">
                                                                     <div class="modal-item-price-in">
-                                                                        <span>{{ $product->price }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                                        <span>{{ $product->price }}</span> {{ $currencySymbol }}
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-item-number">
@@ -219,7 +219,7 @@
                                                                     @lang('basket.price')
                                                                 </div>
                                                                 <div class="modal-item-sum-num">
-                                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ $currencySymbol }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -243,7 +243,7 @@
                                                 @lang('basket.total'):
                                             </div>
                                             <div class="one-modal-item-val">
-                                                {{ $order->getFullSum() }} {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                {{ $order->getFullSum() }} {{ $currencySymbol }}
                                             </div>
                                         </div>
                                         <div class="one-modal-item-bt">

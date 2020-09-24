@@ -12,9 +12,7 @@ class BasketController extends Controller
 {
     public function basket()
     {
-        $categories = $this->getCategories();
-        $order = (new Basket())->getOrder();
-        return view('basket', compact('order', 'categories'));
+        return view('basket');
     }
 
     public function basketConfirm(Request $request)

@@ -10,10 +10,8 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $order = $this->getBasket();
-        $categories = $this->getCategories();
         $orders = Order::where('status', 1)->paginate(10);
-        return view('auth.orders.index', compact('orders', 'oreder', 'categories'));
+        return view('auth.orders.index', compact('orders'));
     }
 
 

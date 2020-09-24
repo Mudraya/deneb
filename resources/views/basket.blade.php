@@ -69,7 +69,7 @@
                                                 <div class="one-lk-bask-price">
                                                     <div class="one-lk-bask-price-in">
                                                         <span>{{ $product->price }}</span>
-                                                        {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                        {{ $currencySymbol }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                                     @lang('basket.full_cost')
                                                 </div>
                                                 <div class="one-lk-bask-sum-val">
-                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ $currencySymbol }}
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                             @lang('basket.total'):
                                         </div>
                                         <div class="inside-val">
-                                            {{ $order->getFullSum() }} {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                            {{ $order->getFullSum() }} {{ $currencySymbol }}
                                         </div>
                                     </div>
                                 </div>

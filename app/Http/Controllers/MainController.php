@@ -17,15 +17,11 @@ class MainController extends Controller
 
 
     public function index() {
-        $order = $this->getBasket();
-        $categories = $this->getCategories();
-        return view('index', compact('categories', 'order'));
+        return view('index');
     }
 
     public function catalog($code, ProductsFilterRequest $request) {
         $current_category = Category::where('code', $code)->first();
-        $order = $this->getBasket();
-        $categories = $this->getCategories();
 
         $productsQuery = Product::query();
 
@@ -53,16 +49,14 @@ class MainController extends Controller
 
         $products = $productsQuery->paginate(2)->withPath("?" . http_build_query($input));
 
-        return view('catalog', compact('current_category','categories', 'order', 'products'));
+        return view('catalog', compact('current_category', 'products'));
     }
 
     public function product($category, $productCode)
     {
         $category = Category::where('code', $category)->firstOrFail();
-        $order = $this->getBasket();
-        $categories = $this->getCategories();
         $product = Product::withTrashed()->byCode($productCode)->first();
-        return view('product', compact('categories', 'order', 'product', 'category'));
+        return view('product', compact( 'product', 'category'));
     }
 
     public function subscribe(SubscriptionRequest $request, Product $product)
