@@ -15,10 +15,7 @@ class Controller extends BaseController
 
     public function getBasket() {
         $order = null;
-        $orderId = session('orderId');
-        if (!is_null($orderId)) {
-            $order = Order::findOrFail($orderId);
-        }
+        $order = session('order');
         return $order;
     }
 

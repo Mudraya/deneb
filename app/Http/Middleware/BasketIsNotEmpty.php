@@ -16,16 +16,15 @@ class BasketIsNotEmpty
      */
     public function handle($request, Closure $next)
     {
-        $orderId = session('orderId');
+        $order = session('order');
 
-        if (!is_null($orderId)) {
-            $order = Order::findOrFail($orderId);
-            if ($order->products->count() == 0) {
-                session()->flash('warning', __('basket.cart_is_empty'));
-                return redirect()->route('index');
-            }
+        if (!is_null($order)  && $order->getFullSum() > 0) {
+            return $next($request);
+
         }
 
-        return $next($request);
+        session()->forget('order');
+        session()->flash('warning', __('basket.cart_is_empty'));
+        return redirect()->route('index');
     }
 }

@@ -51,7 +51,7 @@
 
                             <div class="basket-inside">
                                 <div class="one-lk-bask-table">
-                                    @foreach($order->products()->with('category')->get() as $product)
+                                    @foreach($order->products as $product)
                                         <div class="one-lk-bask-tr">
                                             <div class="one-lk-bask-td thumb-td">
                                                 <div class="one-lk-bask-thumb">
@@ -78,7 +78,7 @@
                                                     @lang('basket.count')
                                                 </div>
                                                 <div class="one-lk-bask-num-val">
-                                                    <span>{{ $product->pivot->count }}</span> шт
+                                                    <span>{{ $product->countInOrder }}</span> шт
                                                 </div>
                                             </div>
                                             <div class="one-lk-bask-td sum-td">
@@ -86,7 +86,7 @@
                                                     @lang('basket.full_cost')
                                                 </div>
                                                 <div class="one-lk-bask-sum-val">
-                                                    <span>{{ $product->getPriceForCount() }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                             @lang('basket.total'):
                                         </div>
                                         <div class="inside-val">
-                                            {{ $order->calculateFullSum() }} {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                            {{ $order->getFullSum() }} {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                                         </div>
                                     </div>
                                 </div>

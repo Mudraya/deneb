@@ -199,7 +199,7 @@
                                                                                             class="minus dis" aria-hidden="true"></span></button>
                                                                                     @csrf
                                                                                 </form>
-                                                                                <input type="text" class="in-num" value="{{ $product->pivot->count }}" readonly="">
+                                                                                <input type="text" class="in-num" value="{{ $product->countInOrder  }}" readonly="">
                                                                                 <form action="{{ route('basket-add', $product) }}" method="POST">
                                                                                     <button type="submit" class="btn btn-success"
                                                                                             href=""><span
@@ -219,7 +219,7 @@
                                                                     @lang('basket.price')
                                                                 </div>
                                                                 <div class="modal-item-sum-num">
-                                                                    <span>{{ $product->getPriceForCount() }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -461,7 +461,7 @@
                     <div class="lang">
                         <ul>
                             <li>
-                                <a class="active" href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a>
+                                <a href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a>
                             </li>
                             <li>
                                 <a href="#">@lang('main.current_lang')</a>
