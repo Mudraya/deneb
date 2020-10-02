@@ -15,6 +15,7 @@ class Product extends Model
     protected $fillable = [
         'name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new', 'count', 'name_en', 'description_en'
     ];
+    protected $visible = ['name_en', 'count', 'price'];
 
     public function category()
     {
@@ -81,5 +82,10 @@ class Product extends Model
     public function getPriceAttribute($value)
     {
         return round(CurrencyConversion::convert($value), 2);
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('count', '>', 0);
     }
 }
