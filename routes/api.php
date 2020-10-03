@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// http://deneb/api/products?api_token=
 
-Route::get('products', 'Api\ProductController@getProducts');
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('products', 'Api\ProductController@getProducts');
+});

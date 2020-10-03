@@ -10,9 +10,6 @@ class ProductController extends Controller
 {
     public function getProducts()
     {
-        return Product::get()->toArray();
-//            ->available()
-//            ->get();
-//            ->append('product_name');
+        return Product::get();
     }
 }

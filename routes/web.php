@@ -48,6 +48,8 @@ Route::middleware(['set_locale'])->group(function () {
                 Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
                 Route::resource('categories', 'CategoryController');
                 Route::resource('products', 'ProductController');
+                Route::resource('merchants', 'MerchantController');
+                Route::get('merchant/{merchant}/update_token', 'MerchantController@updateToken')->name('merchants.update_token');
             });
         });
 

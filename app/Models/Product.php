@@ -15,7 +15,7 @@ class Product extends Model
     protected $fillable = [
         'name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new', 'count', 'name_en', 'description_en'
     ];
-    protected $visible = ['name_en', 'count', 'price'];
+    protected $visible = ['name', 'count', 'price'];
 
     public function category()
     {

@@ -201,6 +201,9 @@
                                 <a href="{{route('admin.products.index')}}">Продукты</a>
                             </li>
                             <li class="no-sub">
+                                <a href="{{ route('admin.merchants.index') }}">Поставщики</a>
+                            </li>
+                            <li class="no-sub">
                                 <a class="red" href="{{route('reset')}}">Перезагрузить проект</a>
                             </li>
                         </ul>
