@@ -4,7 +4,7 @@
 
 @section('content')
         <h1>Товары</h1>
-        <table class="table">
+        <table class="table product-table">
             <tbody>
             <tr>
                 <th>
@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ $product->id}}</td>
                     <td>{{ $product->code }}</td>
-                    <td>{{ $product->__('name') }}</td>
+                    <td>{{ $product->name }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->count }}</td>

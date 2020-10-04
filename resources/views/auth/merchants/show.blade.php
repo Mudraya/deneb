@@ -3,7 +3,6 @@
 @section('title', 'Поставщик ' . $merchant->name)
 
 @section('content')
-    <div class="col-md-12">
         <h1>Поставщик {{ $merchant->name }}</h1>
         <table class="table">
             <tbody>
@@ -29,5 +28,4 @@
             </tr>
             </tbody>
         </table>
-    </div>
 @endsection

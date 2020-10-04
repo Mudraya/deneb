@@ -224,34 +224,34 @@ $('.close-filt, .show-filter a').click(function(event) {
 
 /////////////////// product
 // Количество товара +/-
-$(document).ready(function() {
-  $('.minus').click(function () {
-      var $input = $(this).parentsUntil('.num-block').find('input.in-num');
-      var count = parseFloat($input.val()) - 1;
-      count = count < 1 ? 1 : count;
-      if (count < 2) {
-        $(this).addClass('dis');
-      }
-      else {
-        $(this).removeClass('dis');
-      }
-      $input.val(count);
-      $input.change();
-      return false;
-  });
-  $('.plus').click(function () {
-      var $input = $(this).parentsUntil('.num-block').find('input.in-num');
-      $input.val(parseFloat($input.val()) + 1);
-      $input.change();
-      if ($input.val(parseFloat($input.val())) < 2) {
-        $(this).parentsUntil('.num-block').find(('.minus')).addClass('dis');
-      }
-      else {
-        $(this).parentsUntil('.num-block').find(('.minus')).removeClass('dis');
-      }
-      return false;
-  });
-});
+// $(document).ready(function() {
+//   $('.minus').click(function () {
+//       var $input = $(this).parentsUntil('.num-block').find('input.in-num');
+//       var count = parseFloat($input.val()) - 1;
+//       count = count < 1 ? 1 : count;
+//       if (count < 2) {
+//         $(this).addClass('dis');
+//       }
+//       else {
+//         $(this).removeClass('dis');
+//       }
+//       $input.val(count);
+//       $input.change();
+//       return false;
+//   });
+//   $('.plus').click(function () {
+//       var $input = $(this).parentsUntil('.num-block').find('input.in-num');
+//       $input.val(parseFloat($input.val()) + 1);
+//       $input.change();
+//       if ($input.val(parseFloat($input.val())) < 2) {
+//         $(this).parentsUntil('.num-block').find(('.minus')).addClass('dis');
+//       }
+//       else {
+//         $(this).parentsUntil('.num-block').find(('.minus')).removeClass('dis');
+//       }
+//       return false;
+//   });
+// });
 // Конец Количество товара +/-
 
 $('.other-prod-car').slick({

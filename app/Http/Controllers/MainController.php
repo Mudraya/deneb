@@ -71,7 +71,7 @@ class MainController extends Controller
 
     public function changeLocale($locale)
     {
-        $availableLocales = ['ru', 'en'];
+        $availableLocales = ['RU', 'EN'];
         if (!in_array($locale, $availableLocales)) {
             $locale = config('app.locale');
         }

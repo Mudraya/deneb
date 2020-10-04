@@ -3,7 +3,6 @@
 @section('title', 'Поставщики')
 
 @section('content')
-    <div class="col-md-12">
         <h1>Поставщики</h1>
         @if(session()->has('success'))
             <p class="alert alert-success">{{ session()->get('success') }}</p>
@@ -47,5 +46,4 @@
         {{ $merchants->links() }}
         <a class="btn btn-success" type="button"
            href="{{ route('admin.merchants.create') }}">Добавить поставщика</a>
-    </div>
 @endsection

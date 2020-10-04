@@ -2699,6 +2699,7 @@ img.center {
 	height: 1px;
 	background-color: #723e91;
 	top: 50%;
+    cursor: default;
 }
 
 .num-in span.plus:after {
@@ -2706,6 +2707,7 @@ img.center {
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);
+    cursor: default;
 }
 
 .product-tabs-body {
@@ -8059,6 +8061,10 @@ span.badge.badge-danger {
 
 .price-input-div {
     padding-left: 10px;
+}
+
+.product-table th, .product-table td {
+    padding: .5rem;
 }
 
 

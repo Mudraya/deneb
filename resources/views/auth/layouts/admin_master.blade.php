@@ -235,18 +235,18 @@
                         </div>
                     </div>
 
-                    <div class="tablet-mess-lang">
-                        <div class="lang">
-                            <ul>
-                                <li>
-                                    <a class="active" href="#">RU</a>
-                                </li>
-                                <li>
-                                    <a href="#">UA</a>
-                                </li>
-                            </ul>
+                        <div class="tablet-mess-lang">
+                            <div class="lang">
+                                <ul>
+                                    <li>
+                                        <a class="active" href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">@lang('main.current_lang')</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
                 </div>
 
 
@@ -304,11 +304,19 @@
                     <div class="lang">
                         <ul>
                             <li>
-                                <a class="active" href="#">RU</a>
+                                <a href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a>
                             </li>
                             <li>
-                                <a href="#">UA</a>
+                                <a href="#">@lang('main.current_lang')</a>
                             </li>
+                        </ul>
+
+                        <ul>
+                            @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                                <li>
+                                    <a href="{{ route('currency', $currency->code) }}">{{ $currency->code }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -328,19 +336,6 @@
         <!-- / header line tablet -->
     </header>
     <!-- / header -->
-
-    @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {{ session()->get('success') }}
-        </div>
-    @endif
-    @if(session()->has('warning'))
-        <div class="alert alert-warning alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {{ session()->get('warning') }}
-        </div>
-    @endif
 
     <main class="catalog">
         <div class="container">

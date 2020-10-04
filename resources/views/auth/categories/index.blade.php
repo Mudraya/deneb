@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->code }}</td>
-                    <td>{{ $category->__('name') }}</td>
+                    <td>{{ $category->name }}</td>
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">

@@ -24,19 +24,19 @@
             </tr>
             <tr>
                 <td>Название</td>
-                <td>{{ $product->__('name') }}</td>
+                <td>{{ $product->name }}</td>
             </tr>
             <tr>
                 <td>Название en</td>
-                <td>{{ $product->__('name')_en }}</td>
+                <td>{{ $product->name_en }}</td>
             </tr>
             <tr>
                 <td>Описание</td>
-                <td>{{ $product->__('description') }}</td>
+                <td>{{ $product->description }}</td>
             </tr>
             <tr>
                 <td>Описание en</td>
-                <td>{{ $product->__('description')_en }}</td>
+                <td>{{ $product->description_en }}</td>
             </tr>
             <tr>
                 <td>Картинка</td>
