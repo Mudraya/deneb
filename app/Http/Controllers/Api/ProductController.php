@@ -10,6 +10,7 @@ class ProductController extends Controller
 {
     public function getProducts()
     {
-        return Product::get();
+        $products = Product::get();
+        return json_encode($products, JSON_UNESCAPED_UNICODE);
     }
 }
