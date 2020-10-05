@@ -12,7 +12,7 @@ trait Translatable
     {
         $locale = App::getLocale() ?? $this->defaultLocale;
 
-        if ($locale === 'en') {
+        if ($locale === 'EN') {
             $fieldName = $originFieldName . '_en';
         } else {
             $fieldName = $originFieldName;
@@ -24,7 +24,7 @@ trait Translatable
             throw new \LogicException('no such attribute for model ' . get_class($this));
         }
 
-        if ($locale === 'en' && (is_null($this->$fieldName) || empty($this->$fieldName))) {
+        if ($locale === 'EN' && (is_null($this->$fieldName) || empty($this->$fieldName))) {
             return $this->$originFieldName;
         }
 

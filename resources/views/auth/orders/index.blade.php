@@ -1,9 +1,9 @@
 @extends('auth.layouts.admin_master')
 
-@section('title', 'Заказы')
+@section('title', __('admin.orders'))
 
 @section('content')
-        <h1>Заказы</h1>
+        <h1>@lang('admin.orders')</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -11,19 +11,19 @@
                     #
                 </th>
                 <th>
-                    Имя
+                    @lang('admin.name_col')
                 </th>
                 <th>
-                    Телефон
+                    @lang('admin.phone')
                 </th>
                 <th>
-                    Когда отправлен
+                    @lang('admin.confirm_data')
                 </th>
                 <th>
-                    Сумма
+                    @lang('admin.sum')
                 </th>
                 <th>
-                    Действия
+                    @lang('admin.actions')
                 </th>
             </tr>
             @foreach($orders as $order)
@@ -41,7 +41,7 @@
                                @else
                                href="{{ route('person.orders.show', $order) }}"
                                @endadmin
-                            >Открыть</a>
+                            >@lang('admin.open')</a>
                         </div>
                     </td>
                 </tr>

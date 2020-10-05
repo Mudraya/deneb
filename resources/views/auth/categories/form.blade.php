@@ -1,16 +1,16 @@
 @extends('auth.layouts.admin_master')
 
 @isset($category)
-    @section('title', 'Редактировать категорию ' . $category->name)
+    @section('title', __('admin.edit_category') . ' ' . $category->__('name'))
 @else
-    @section('title', 'Создать категорию')
+    @section('title', __('admin.create_category'))
 @endisset
 
 @section('content')
         @isset($category)
-            <h1>Редактировать Категорию <b>{{ $category->__('name') }}</b></h1>
+            <h1>@lang('admin.edit_category') <b>{{ $category->__('name') }}</b></h1>
         @else
-            <h1>Добавить Категорию</h1>
+            <h1>@lang('admin.add_category')</h1>
         @endisset
 
         <form method="POST" enctype="multipart/form-data"
@@ -26,7 +26,7 @@
                 @endisset
                 @csrf
                 <div class="input-group row">
-                    <label for="code" class="col-sm-2 col-form-label">Код: </label>
+                    <label for="code" class="col-sm-2 col-form-label">@lang('admin.code'): </label>
                     <div class="col-sm-6">
                         @error('code')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -37,7 +37,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Название: </label>
+                    <label for="name" class="col-sm-2 col-form-label">@lang('admin.name_col'): </label>
                     <div class="col-sm-6">
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -48,7 +48,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Название en: </label>
+                    <label for="name" class="col-sm-2 col-form-label">@lang('admin.name_col') en: </label>
                     <div class="col-sm-6">
                         @error('name_en')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -60,7 +60,7 @@
 
                 <br>
                 <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Описание: </label>
+                    <label for="description" class="col-sm-2 col-form-label">@lang('admin.description'): </label>
                     <div class="col-sm-6">
                         @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -71,7 +71,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="description" class="col-sm-2 col-form-label">Описание en: </label>
+                    <label for="description" class="col-sm-2 col-form-label">@lang('admin.description') en: </label>
                     <div class="col-sm-6">
                         @error('description_en')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -82,14 +82,14 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="image" class="col-sm-2 col-form-label">Картинка: </label>
+                    <label for="image" class="col-sm-2 col-form-label">@lang('admin.image'): </label>
                     <div class="col-sm-10">
                         <label class="btn btn-default btn-file">
-                            Загрузить <input type="file" style="display: none;" name="image" id="image">
+                            @lang('admin.download') <input type="file" style="display: none;" name="image" id="image">
                         </label>
                     </div>
                 </div>
-                <button class="btn btn-success">Сохранить</button>
+                <button class="btn btn-success">@lang('admin.save')</button>
             </div>
         </form>
 @endsection

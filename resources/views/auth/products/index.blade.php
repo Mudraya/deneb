@@ -1,9 +1,9 @@
 @extends('auth.layouts.admin_master')
 
-@section('title', 'Товары')
+@section('title', __('admin.products'))
 
 @section('content')
-        <h1>Товары</h1>
+        <h1>@lang('admin.products')</h1>
         <table class="table product-table">
             <tbody>
             <tr>
@@ -11,42 +11,42 @@
                     #
                 </th>
                 <th>
-                    Код
+                    @lang('admin.code')
                 </th>
                 <th>
-                    Название
+                    @lang('admin.name_col')
                 </th>
                 <th>
-                    Категория
+                    @lang('admin.category')
                 </th>
                 <th>
-                    Цена
+                    @lang('admin.price')
                 </th>
                 <th>
-                    Кол-во
+                    @lang('admin.count')
                 </th>
                 <th>
-                    Действия
+                    @lang('admin.actions')
                 </th>
             </tr>
             @foreach($products as $product)
                 <tr>
                     <td>{{ $product->id}}</td>
                     <td>{{ $product->code }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->category->name }}</td>
+                    <td>{{ $product->__('name') }}</td>
+                    <td>{{ $product->category->__('name') }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->count }}</td>
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
                                 <a class="btn btn-success" type="button"
-                                   href="{{ route('admin.products.show', $product) }}">Открыть</a>
+                                   href="{{ route('admin.products.show', $product) }}">@lang('admin.open')</a>
                                 <a class="btn btn-warning" type="button"
-                                   href="{{ route('admin.products.edit', $product) }}">Редактировать</a>
+                                   href="{{ route('admin.products.edit', $product) }}">@lang('admin.edit')</a>
                                 @csrf
                                 @method('DELETE')
-                                <input class="btn btn-danger" type="submit" value="Удалить"></form>
+                                <input class="btn btn-danger" type="submit" value="@lang('admin.delete')"></form>
                         </div>
                     </td>
                 </tr>
@@ -54,5 +54,5 @@
             </tbody>
         </table>
         {{ $products->links() }}
-        <a class="btn btn-success" type="button" href="{{ route('admin.products.create') }}">Добавить товар</a>
+        <a class="btn btn-success" type="button" href="{{ route('admin.products.create') }}">@lang('admin.add_product')</a>
 @endsection

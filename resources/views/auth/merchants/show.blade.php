@@ -1,17 +1,17 @@
 @extends('auth.layouts.admin_master')
 
-@section('title', 'Поставщик ' . $merchant->name)
+@section('title', __('admin.merchant') . ' ' . $merchant->name)
 
 @section('content')
-        <h1>Поставщик {{ $merchant->name }}</h1>
+        <h1>@lang('admin.merchant') {{ $merchant->name }}</h1>
         <table class="table">
             <tbody>
             <tr>
                 <th>
-                    Поле
+                    @lang('admin.field')
                 </th>
                 <th>
-                    Значение
+                    @lang('admin.value')
                 </th>
             </tr>
             <tr>
@@ -19,7 +19,7 @@
                 <td>{{ $merchant->id }}</td>
             </tr>
             <tr>
-                <td>Название</td>
+                <td>@lang('admin.name_col')</td>
                 <td>{{ $merchant->name }}</td>
             </tr>
             <tr>

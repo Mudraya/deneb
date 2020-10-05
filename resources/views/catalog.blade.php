@@ -10,7 +10,7 @@
             <ul>
                 <li><a href={{route('index')}}><span>@lang('main.title')</span></a></li>
                 <li><a><span>@lang('main.our_bakery')</span></a></li>
-                <li>{{$current_category->name}}</li>
+                <li>{{$current_category->__('name')}}</li>
             </ul>
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="container">
             <aside class="sidebar">
                 <div class="title-tablet">
-                    {{$current_category->name}}
+                    {{$current_category->__('name')}}
                 </div>
 
                 <!-- for mob bt -->

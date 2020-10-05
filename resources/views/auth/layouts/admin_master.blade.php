@@ -37,10 +37,10 @@
             <div class="modal-wrap">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Вход</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">@lang('main.login')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Регистрация</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">@lang('main.registration')</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="one-line">
-                                    <input placeholder="Пароль" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input placeholder="@lang('main.password')" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,20 +71,20 @@
                                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        Запомнить меня
+                                        @lang('main.remember_me')
                                     </label>
                                 </div>
 
                                 <div class="forg-pass">
                                     {{--<a href="{{ route('password.request') }}">--}}
                                     <a href="#">
-                                        Забыли пароль?
+                                        @lang('main.forgot_password')
                                     </a>
                                 </div>
 
                                 <div class="modal-log-bt">
                                     <button type="submit" class="def-min-bt">
-                                        Войти
+                                        @lang('main.login')
                                     </button>
                                 </div>
                             </form>
@@ -98,7 +98,7 @@
                                 @csrf
 
                                 <div class="one-line">
-                                    <input placeholder="Имя" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input placeholder="@lang('main.name')" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
                                 </div>
 
                                 <div class="one-line">
-                                    <input placeholder="Пароль" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input placeholder="@lang('main.password')" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -127,12 +127,12 @@
                                 </div>
 
                                 <div class="one-line">
-                                    <input placeholder="Подтврдите пароль" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input placeholder="@lang('main.confirm_password')" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
 
                                 <div class="modal-log-bt">
                                     <button type="submit" class="def-min-bt">
-                                        Регистрация
+                                        @lang('main.registration')
                                     </button>
                                 </div>
 
@@ -192,28 +192,28 @@
                     @admin
                         <ul class="sf-menu">
                             <li class="no-sub">
-                                <a href="{{route('admin.orders.index')}}">Заказы</a>
+                                <a href="{{route('admin.orders.index')}}">@lang('admin.orders')</a>
                             </li>
                             <li class="no-sub">
-                                <a href="{{route('admin.categories.index')}}">Категории</a>
+                                <a href="{{route('admin.categories.index')}}">@lang('admin.categories')</a>
                             </li>
                             <li class="no-sub">
-                                <a href="{{route('admin.products.index')}}">Продукты</a>
+                                <a href="{{route('admin.products.index')}}">@lang('admin.products')</a>
                             </li>
                             <li class="no-sub">
-                                <a href="{{ route('admin.merchants.index') }}">Поставщики</a>
+                                <a href="{{ route('admin.merchants.index') }}">@lang('admin.merchants')</a>
                             </li>
                             <li class="no-sub">
-                                <a class="red" href="{{route('reset')}}">Перезагрузить проект</a>
+                                <a class="red" href="{{route('reset')}}">@lang('admin.reload_the_project')</a>
                             </li>
                         </ul>
                     @else
                         <ul class="sf-menu">
                             <li class="no-sub">
-                                <a href="{{route('person.orders.index')}}">Мои заказы</a>
+                                <a href="{{route('person.orders.index')}}">@lang('admin.my_orders')</a>
                             </li>
                             <li class="no-sub">
-                                <a href="#">Личный кабинет</a>
+                                <a href="#">@lang('admin.my_office')</a>
                             </li>
                         </ul>
                     @endadmin
@@ -262,7 +262,7 @@
                                 </svg>
                             </i>
                             <span>
-                                Вход/Регистрация
+                                @lang('main.login')/@lang('main.registration')
                             </span>
                         </a>
                     @endguest
@@ -274,12 +274,12 @@
                             <a href="{{route('index')}}">
                         @endadmin
                             <span>
-                                На сайт
+                                @lang('admin.return_to_the_website')
                             </span>
                         </a>
                         <a href="{{route('logout')}}">
                             <span>
-                                Выход
+                                @lang('main.logout')
                             </span>
                         </a>
                     @endauth

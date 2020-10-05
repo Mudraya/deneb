@@ -1,17 +1,16 @@
 @extends('auth.layouts.admin_master')
 
-@section('title', 'Категория ' . $category->name)
+@section('title', __('admin.category') . ' ' . $category->__('name'))
 
 @section('content')
-        <h1>Категория Бытовая техника</h1>
         <table class="table">
             <tbody>
             <tr>
                 <th>
-                    Поле
+                    @lang('admin.field')
                 </th>
                 <th>
-                    Значение
+                    @lang('admin.value')
                 </th>
             </tr>
             <tr>
@@ -19,32 +18,32 @@
                 <td>{{ $category->id }}</td>
             </tr>
             <tr>
-                <td>Код</td>
+                <td>@lang('admin.code')</td>
                 <td>{{ $category->code }}</td>
             </tr>
             <tr>
-                <td>Название</td>
+                <td>@lang('admin.name_col')</td>
                 <td>{{ $category->name }}</td>
             </tr>
             <tr>
-                <td>Название en</td>
+                <td>@lang('admin.name_col') en</td>
                 <td>{{ $category->name_en }}</td>
             </tr>
             <tr>
-                <td>Описание</td>
+                <td>@lang('admin.description')</td>
                 <td>{{ $category->description }}</td>
             </tr>
             <tr>
-                <td>Описание en</td>
+                <td>@lang('admin.description') en</td>
                 <td>{{ $category->description_en }}</td>
             </tr>
             <tr>
-                <td>Картинка</td>
+                <td>@lang('admin.image')</td>
                 <td><img src="{{ Storage::url($category->image) }}"
                          height="240px"></td>
             </tr>
             <tr>
-                <td>Кол-во товаров</td>
+                <td>@lang('admin.number_of_products')</td>
                 <td>{{ $category->products->count() }}</td>
             </tr>
             </tbody>
