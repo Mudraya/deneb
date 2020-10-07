@@ -32,9 +32,9 @@ class BasketController extends Controller
         $result = (new Basket(true))->addProduct($product);
 
         if ($result) {
-            session()->flash('success', __('basket.added').$product->name);
+            session()->flash('success', __('basket.added').$product->__('name'));
         } else {
-            session()->flash('warning', $product->name . __('basket.not_available_more'));
+            session()->flash('warning', $product->__('name') . __('basket.not_available_more'));
         }
 
         return back();
@@ -43,7 +43,7 @@ class BasketController extends Controller
     public function basketRemove(Product $product)
     {
         (new Basket())->removeProduct($product);
-        session()->flash('warning', __('basket.removed') . $product->name);
+        session()->flash('warning', __('basket.removed') . $product->__('name'));
 
         return back();
     }

@@ -23,8 +23,8 @@ return [
 
     'you_order_confirmed' => 'Your order confirmed!',
     'cart_is_empty' => 'Your Cart is empty!',
-    'not_available_more' => ' you can\'t order more',
-    'you_cant_order_more' => 'you can\'t order more',
+    'not_available_more' => ' is not available more',
+    'you_cant_order_more' => 'is not available more',
 
     'data' => [
         'name' => 'Name',

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class Basket
 {
-    protected $order;
+    public $order;
 
     /**
      * Basket constructor.

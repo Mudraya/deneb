@@ -19,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:api'])->group(function () {
     Route::get('products', 'Api\ProductController@getProducts');
 });
+
+Route::get('basket', 'Api\BasketController@getBasket');

@@ -176,7 +176,7 @@
                     </div>
                     <div class="catalog-about-descr">
                         <h1>
-                            {{$current_category->description}}
+                            {{$current_category->__('description')}}
                         </h1>
                     </div>
                 </div>
