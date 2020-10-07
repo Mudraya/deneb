@@ -204,9 +204,6 @@
                     </div>
                     <ul class="sf-menu">
 
-                        <li class="no-sub">
-                            <a href="#">@lang('main.about_us')</a>
-                        </li>
                         <li>
                             <a href="#">@lang('main.catalog')</a>
 
@@ -423,7 +420,6 @@
         <div class="container">
             <div class="footer-menu">
                 <ul>
-                    <li><a href="#">@lang('main.about_us')</a></li>
                     @foreach($categories as $category)
                         <li><a href="{{ route('catalog', $category->code) }}">{{ $category->__('name') }}</a></li>
                     @endforeach
