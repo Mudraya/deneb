@@ -395,3 +395,7 @@ $('.go-last').click(function(event) {
 $('.show-filt-com-mob a, .close-mob').click(function(event) {
   $('.comp-side').fadeToggle();
 });
+
+function trigger_basket_modal() {
+    document.getElementById("basket-a").click();
+}

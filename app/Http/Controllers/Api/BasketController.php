@@ -18,7 +18,23 @@ class BasketController extends Controller
 
     public function getBasket(Request $request)
     {
-        return response()->json(session('order'));
+        return response()->json();
 
+    }
+
+    public function deleteProduct($id)
+    {
+//        $pivotRow = (new Basket())->getOrder()->products->where('id', $product->id)->first();
+//        if ($pivotRow->countInOrder < 2) {
+//            $this->order->products->pop($product);
+//        } else {
+//            $pivotRow->countInOrder--;
+//        }
+        return response()->json("ok");
+    }
+
+    public function changeProductCount(Request $request)
+    {
+        return response()->json($request);
     }
 }

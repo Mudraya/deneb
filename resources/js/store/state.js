@@ -1,5 +1,5 @@
 let state = {
-    basket: {}
+    Basket: []
 }
 
 export default state

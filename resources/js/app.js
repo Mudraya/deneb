@@ -3,10 +3,12 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import BasketComponent from "./components/BasketComponent";
 
 require('./bootstrap');
 window.Vue = require('vue');
 import store from './store/index'
+import i18n from './i18n'
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,5 +32,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    store
+    store,
+    i18n,
 });

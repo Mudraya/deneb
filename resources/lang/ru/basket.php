@@ -14,7 +14,7 @@ return [
     'price' => 'Цена',
     'full_cost' => 'Общая стоимость',
     'cost' => 'Стоимость',
-    'total' => 'Total',
+    'total' => 'Всего',
     'continue_shopping' => 'Продолжить покупки',
     'place_order' => 'Оформить заказ',
     'ordering' => 'Оформление заказа',

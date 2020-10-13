@@ -1,6 +1,6 @@
 let getters = {
-    basket: state => {
-        return state.basket
+    Basket: state => {
+        return state.Basket
     }
 }
 

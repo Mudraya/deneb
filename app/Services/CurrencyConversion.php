@@ -65,7 +65,7 @@ class CurrencyConversion
 
         $targetCurrency = self::$container[$targetCurrencyCode];
 
-        if ($originCurrency->code != self::DEFAULT_CURRENCY_CODE) {
+        if ($targetCurrency->code != self::DEFAULT_CURRENCY_CODE) {
             if ($targetCurrency->rate == 0 || $targetCurrency->updated_at->startOfDay()->toString() != Carbon::now()->startOfDay()->toString()) {
                 CurrencyRates::getRates();
                 self::loadContainer();

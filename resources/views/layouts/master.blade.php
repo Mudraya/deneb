@@ -153,116 +153,119 @@
             <span class="close-modal" data-dismiss="modal" aria-label="Close"></span>
 
             <div class="modal-wrap">
-                <div class="modal-bask">
-                    <div class="modal-bask-tit">
-                        @lang('main.cart')
-                    </div>
-                    <div class="modal-bask-wrap">
-                        @if(isset($order->products))
-                            <div class="one-modal-bask-item">
-
-                                <div class="one-modal-item-table">
-                                @foreach($order->products as $product)
-                                    <!-- one item -->
-                                        <div class="modal-item-tr">
-                                            <div class="modal-item-td td-thumb">
-                                                <div class="modal-item-thumb">
-
-                                                    <div class="del-item"></div>
-                                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                                        <img src="{{ Storage::url($product->image) }}" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="modal-item-td td-descr">
-                                                <div class="modal-item-in-table">
-                                                    <div class="del-item mob"></div>
-                                                    <div class="modal-item-tr">
-                                                        <div class="modal-item-td td-wrap">
-                                                            <div class="modal-item-name">
-                                                                {{ $product->__('name') }}
-                                                            </div>
-                                                            <div class="modal-item-info">
-                                                                <div class="modal-item-price">
-                                                                    <div class="modal-item-price-in">
-                                                                        <span>{{ $product->price }}</span> {{ $currencySymbol }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-item-number">
-                                                                    <div class="num-block">
-                                                                        <div class="num-in">
-
-                                                                            <div class="btn-group form-inline">
-                                                                                <form action="{{ route('basket-remove', $product) }}" method="POST">
-                                                                                    <button type="submit" class="btn btn-danger"
-                                                                                            href=""><span
-                                                                                            class="minus dis" aria-hidden="true"></span></button>
-                                                                                    @csrf
-                                                                                </form>
-                                                                                <input type="text" class="in-num" value="{{ $product->countInOrder  }}" readonly="">
-                                                                                <form action="{{ route('basket-add', $product) }}" method="POST">
-                                                                                    <button type="submit" class="btn btn-success"
-                                                                                            href=""><span
-                                                                                            class="plus" aria-hidden="true"></span></button>
-                                                                                    @csrf
-                                                                                </form>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-item-td td-sum">
-                                                            <div class="modal-item-sum">
-                                                                <div class="modal-item-sum-name">
-                                                                    @lang('basket.price')
-                                                                </div>
-                                                                <div class="modal-item-sum-num">
-                                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ $currencySymbol }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- / one item -->
-                                    @endforeach
-                                </div>
-
-                                <div class="one-modal-item-bay-info">
-                                    <div class="one-modal-item-back">
-                                        <a href="#" class="back-bask def-big-bt"  data-dismiss="modal">
-                                            @lang('basket.continue_shopping')
-                                        </a>
-                                    </div>
-                                    <div class="one-modal-item-sum">
-                                        <div class="one-modal-item-top">
-                                            <div class="one-modal-item-name">
-                                                @lang('basket.total'):
-                                            </div>
-                                            <div class="one-modal-item-val">
-                                                {{ $order->getFullSum() }} {{ $currencySymbol }}
-                                            </div>
-                                        </div>
-                                        <div class="one-modal-item-bt">
-                                            <a href="{{route('basket')}}" class="def-big-bt">
-                                                @lang('basket.place_order')
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        @else
-
-                            <h4>@lang('basket.cart_is_empty')</h4>
-
-                        @endif
-
-                    </div>
+                <div id="app">
+                    <basket-component v-bind:locale="{{json_encode(strtolower(__('main.current_lang')))}}" v-bind:basket="{{isset($order->products) ? json_encode($order->getOrderArray()) : json_encode([])}}"></basket-component>
                 </div>
+                {{--<div class="modal-bask">--}}
+                    {{--<div class="modal-bask-tit">--}}
+                        {{--@lang('main.cart')--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-bask-wrap">--}}
+                        {{--@if(isset($order->products))--}}
+                            {{--<div class="one-modal-bask-item">--}}
+
+                                {{--<div class="one-modal-item-table">--}}
+                                {{--@foreach($order->products as $product)--}}
+                                    {{--<!-- one item -->--}}
+                                        {{--<div class="modal-item-tr">--}}
+                                            {{--<div class="modal-item-td td-thumb">--}}
+                                                {{--<div class="modal-item-thumb">--}}
+
+                                                    {{--<div class="del-item"></div>--}}
+                                                    {{--<a href="{{ route('product', [$product->category->code, $product->code]) }}">--}}
+                                                        {{--<img src="{{ Storage::url($product->image) }}" alt="">--}}
+                                                    {{--</a>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="modal-item-td td-descr">--}}
+                                                {{--<div class="modal-item-in-table">--}}
+                                                    {{--<div class="del-item mob"></div>--}}
+                                                    {{--<div class="modal-item-tr">--}}
+                                                        {{--<div class="modal-item-td td-wrap">--}}
+                                                            {{--<div class="modal-item-name">--}}
+                                                                {{--{{ $product->__('name') }}--}}
+                                                            {{--</div>--}}
+                                                            {{--<div class="modal-item-info">--}}
+                                                                {{--<div class="modal-item-price">--}}
+                                                                    {{--<div class="modal-item-price-in">--}}
+                                                                        {{--<span>{{ $product->price }}</span> {{ $currencySymbol }}--}}
+                                                                    {{--</div>--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="modal-item-number">--}}
+                                                                    {{--<div class="num-block">--}}
+                                                                        {{--<div class="num-in">--}}
+
+                                                                            {{--<div class="btn-group form-inline">--}}
+                                                                                {{--<form action="{{ route('basket-remove', $product) }}" method="POST">--}}
+                                                                                    {{--<button type="submit" class="btn btn-danger"--}}
+                                                                                            {{--href=""><span--}}
+                                                                                            {{--class="minus dis" aria-hidden="true"></span></button>--}}
+                                                                                    {{--@csrf--}}
+                                                                                {{--</form>--}}
+                                                                                {{--<input type="text" class="in-num" value="{{ $product->countInOrder  }}" readonly="">--}}
+                                                                                {{--<form action="{{ route('basket-add', $product) }}" method="POST">--}}
+                                                                                    {{--<button type="submit" class="btn btn-success"--}}
+                                                                                            {{--href=""><span--}}
+                                                                                            {{--class="plus" aria-hidden="true"></span></button>--}}
+                                                                                    {{--@csrf--}}
+                                                                                {{--</form>--}}
+                                                                            {{--</div>--}}
+
+                                                                        {{--</div>--}}
+                                                                    {{--</div>--}}
+                                                                {{--</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="modal-item-td td-sum">--}}
+                                                            {{--<div class="modal-item-sum">--}}
+                                                                {{--<div class="modal-item-sum-name">--}}
+                                                                    {{--@lang('basket.price')--}}
+                                                                {{--</div>--}}
+                                                                {{--<div class="modal-item-sum-num">--}}
+                                                                    {{--<span>{{ $product->price * $product->countInOrder }}</span> {{ $currencySymbol }}--}}
+                                                                {{--</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<!-- / one item -->--}}
+                                    {{--@endforeach--}}
+                                {{--</div>--}}
+
+                                {{--<div class="one-modal-item-bay-info">--}}
+                                    {{--<div class="one-modal-item-back">--}}
+                                        {{--<a href="#" class="back-bask def-big-bt"  data-dismiss="modal">--}}
+                                            {{--@lang('basket.continue_shopping')--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="one-modal-item-sum">--}}
+                                        {{--<div class="one-modal-item-top">--}}
+                                            {{--<div class="one-modal-item-name">--}}
+                                                {{--@lang('basket.total'):--}}
+                                            {{--</div>--}}
+                                            {{--<div class="one-modal-item-val">--}}
+                                                {{--{{ $order->getFullSum() }} {{ $currencySymbol }}--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="one-modal-item-bt">--}}
+                                            {{--<a href="{{route('basket')}}" class="def-big-bt">--}}
+                                                {{--@lang('basket.place_order')--}}
+                                            {{--</a>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+
+                            {{--</div>--}}
+                        {{--@else--}}
+
+                            {{--<h4>@lang('basket.cart_is_empty')</h4>--}}
+
+                        {{--@endif--}}
+
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>
@@ -444,7 +447,7 @@
                         <!-- / for tablet -->
                         <div class="header-bask">
                             <div class="header-btns-ico">
-                                <a data-toggle="modal" href="#basket">
+                                <a id="basket-a" data-toggle="modal" href="#basket">
                                     <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12.8876 26.6933H12.8894C12.8909 26.6933 12.8925 26.693 12.894 26.693H34.1406C34.6637 26.693 35.1236 26.346 35.2673 25.8431L39.9548 9.43683C40.0558 9.08313 39.985 8.70288 39.7638 8.4093C39.5422 8.11572 39.1959 7.94299 38.8281 7.94299H10.1849L9.34723 4.17316C9.2279 3.63696 8.75244 3.25549 8.20312 3.25549H1.17187C0.524597 3.25549 0 3.78009 0 4.42737C0 5.07465 0.524597 5.59924 1.17187 5.59924H7.26318C7.4115 6.26727 11.272 23.6397 11.4941 24.6392C10.2487 25.1805 9.375 26.4223 9.375 27.8649C9.375 29.8033 10.9521 31.3805 12.8906 31.3805H34.1406C34.7879 31.3805 35.3125 30.8559 35.3125 30.2086C35.3125 29.5613 34.7879 29.0367 34.1406 29.0367H12.8906C12.2446 29.0367 11.7187 28.5109 11.7187 27.8649C11.7187 27.2197 12.2427 26.6948 12.8876 26.6933ZM37.2745 10.2867L33.2565 24.3492H13.8306L10.7056 10.2867H37.2745Z" fill="#723e91"/>
                                         <path d="M11.7188 34.8961C11.7188 36.8346 13.2959 38.4117 15.2344 38.4117C17.1729 38.4117 18.75 36.8346 18.75 34.8961C18.75 32.9576 17.1729 31.3805 15.2344 31.3805C13.2959 31.3805 11.7188 32.9576 11.7188 34.8961ZM15.2344 33.7242C15.8804 33.7242 16.4063 34.2501 16.4063 34.8961C16.4063 35.5422 15.8804 36.068 15.2344 36.068C14.5883 36.068 14.0625 35.5422 14.0625 34.8961C14.0625 34.2501 14.5883 33.7242 15.2344 33.7242Z" fill="#723e91"/>
@@ -512,6 +515,11 @@
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{ session()->get('success') }}
         </div>
+        {{--<script>--}}
+            {{--document.addEventListener('DOMContentLoaded', function(){--}}
+                {{--trigger_basket_modal()--}}
+            {{--});--}}
+        {{--</script>--}}
     @endif
     @if(session()->has('warning'))
         <div class="alert alert-warning alert-dismissible">
