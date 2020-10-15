@@ -76,12 +76,12 @@
                                 </label>
                                 </div>
 
-                                <div class="forg-pass">
+                                {{--<div class="forg-pass">--}}
                                     {{--<a href="{{ route('password.request') }}">--}}
-                                    <a href="#">
-                                        @lang('main.forgot_password')
-                                    </a>
-                                </div>
+                                    {{--<a href="#">--}}
+                                        {{--@lang('main.forgot_password')--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
 
                                 <div class="modal-log-bt">
                                     <button type="submit" class="def-min-bt">
@@ -536,7 +536,7 @@
                     </div>
                 </div>
                 <div class="footer-mess-adr">
-                    ТОВ «BOX FOR TEA», 03057, <br />г. Киев, просп. Победы, FF
+                    ТОВ «BOX FOR TEA»
                 </div>
             </div>
             <div class="footer-soc">

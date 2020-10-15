@@ -57,7 +57,7 @@
                                         @if($product->isAvailable())
                                         <form action="{{ route('basket-add', $product) }}" method="POST">
                                             <button type="submit" class="def-bt" role="button">
-                                                Купить
+                                                @lang('main.buy')
                                             </button>
                                             @csrf
                                         </form>

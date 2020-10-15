@@ -93,7 +93,7 @@
                                                     @lang('basket.count')
                                                 </div>
                                                 <div class="one-lk-bask-num-val">
-                                                    <span>{{ $product->countInOrder }}</span> шт
+                                                    <span>{{ $product->countInOrder }}</span> @lang('basket.items')
                                                 </div>
                                             </div>
                                             <div class="one-lk-bask-td sum-td">

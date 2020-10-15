@@ -1,7 +1,4 @@
 $(document).ready(function(){
-    if ($(window).width() > 1200) {
-        $('ul.sf-menu').superfish();
-    }
 
     $('.company-more span').click(function(event) {
         $(this).toggleClass('open');

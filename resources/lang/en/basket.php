@@ -31,4 +31,5 @@ return [
         'email' => 'Email',
         'phone' => 'Phone number',
     ],
+    'items' => 'items'
 ];
