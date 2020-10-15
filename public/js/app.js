@@ -40018,7 +40018,9 @@ var render = function() {
       ? _c("div", { staticClass: "modal-bask" }, [
           _c("div", { staticClass: "modal-bask-tit" }, [
             _vm._v(
-              "\n            " + _vm._s(_vm.$t("message.cart")) + "\n        "
+              "\r\n            " +
+                _vm._s(_vm.$t("message.cart")) +
+                "\r\n        "
             )
           ]),
           _vm._v(" "),
@@ -40070,9 +40072,9 @@ var render = function() {
                                     { staticClass: "modal-item-name" },
                                     [
                                       _vm._v(
-                                        "\n                                            " +
+                                        "\r\n                                            " +
                                           _vm._s(_vm.getLocalName(product)) +
-                                          "\n                                        "
+                                          "\r\n                                        "
                                       )
                                     ]
                                   ),
@@ -40099,7 +40101,7 @@ var render = function() {
                                                   _vm._s(
                                                     _vm.Basket.currencySymbol
                                                   ) +
-                                                  "\n                                                "
+                                                  "\r\n                                                "
                                               )
                                             ]
                                           )
@@ -40188,9 +40190,9 @@ var render = function() {
                                       { staticClass: "modal-item-sum-name" },
                                       [
                                         _vm._v(
-                                          "\n                                                " +
+                                          "\r\n                                                " +
                                             _vm._s(_vm.$t("message.sum")) +
-                                            "\n                                            "
+                                            "\r\n                                            "
                                         )
                                       ]
                                     ),
@@ -40210,7 +40212,7 @@ var render = function() {
                                         _vm._v(
                                           " " +
                                             _vm._s(_vm.Basket.currencySymbol) +
-                                            "\n                                            "
+                                            "\r\n                                            "
                                         )
                                       ]
                                     )
@@ -40235,9 +40237,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            " +
+                            "\r\n                            " +
                               _vm._s(_vm.$t("message.continue_shopping")) +
-                              "\n                        "
+                              "\r\n                        "
                           )
                         ]
                       )
@@ -40247,19 +40249,19 @@ var render = function() {
                       _c("div", { staticClass: "one-modal-item-top" }, [
                         _c("div", { staticClass: "one-modal-item-name" }, [
                           _vm._v(
-                            "\n                                " +
+                            "\r\n                                " +
                               _vm._s(_vm.$t("message.total")) +
-                              ":\n                            "
+                              ":\r\n                            "
                           )
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "one-modal-item-val" }, [
                           _vm._v(
-                            "\n                                " +
+                            "\r\n                                " +
                               _vm._s(_vm.Basket.sum) +
                               " " +
                               _vm._s(_vm.Basket.currencySymbol) +
-                              "\n                            "
+                              "\r\n                            "
                           )
                         ])
                       ]),
@@ -40273,9 +40275,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                " +
+                              "\r\n                                " +
                                 _vm._s(_vm.$t("message.place_order")) +
-                                "\n                            "
+                                "\r\n                            "
                             )
                           ]
                         )
@@ -40305,9 +40307,9 @@ var render = function() {
                   _c("div", { staticClass: "one-lk-bask-tit" }, [
                     _c("a", { attrs: { href: product.a_href } }, [
                       _vm._v(
-                        "\n                            " +
+                        "\r\n                            " +
                           _vm._s(_vm.getLocalName(product)) +
-                          "\n                        "
+                          "\r\n                        "
                       )
                     ])
                   ]),
@@ -40318,7 +40320,7 @@ var render = function() {
                       _vm._v(
                         " " +
                           _vm._s(_vm.Basket.currencySymbol) +
-                          "\n                        "
+                          "\r\n                        "
                       )
                     ])
                   ])
@@ -40327,9 +40329,9 @@ var render = function() {
                 _c("div", { staticClass: "one-lk-bask-td num-td" }, [
                   _c("div", { staticClass: "one-lk-bask-num-name" }, [
                     _vm._v(
-                      "\n                        " +
+                      "\r\n                        " +
                         _vm._s(_vm.$t("message.count")) +
-                        "\n                    "
+                        "\r\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -40338,7 +40340,7 @@ var render = function() {
                     _vm._v(
                       " " +
                         _vm._s(_vm.$t("message.items")) +
-                        "\n                    "
+                        "\r\n                    "
                     )
                   ])
                 ]),
@@ -40346,9 +40348,9 @@ var render = function() {
                 _c("div", { staticClass: "one-lk-bask-td sum-td" }, [
                   _c("div", { staticClass: "one-lk-bask-sum-name" }, [
                     _vm._v(
-                      "\n                        " +
+                      "\r\n                        " +
                         _vm._s(_vm.$t("message.sum")) +
-                        "\n                    "
+                        "\r\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -40359,7 +40361,7 @@ var render = function() {
                     _vm._v(
                       " " +
                         _vm._s(_vm.Basket.currencySymbol) +
-                        "\n                    "
+                        "\r\n                    "
                     )
                   ])
                 ])
@@ -40372,19 +40374,19 @@ var render = function() {
             _c("div", { staticClass: "last-inside-sum-in" }, [
               _c("div", { staticClass: "inside-name" }, [
                 _vm._v(
-                  "\n                    " +
+                  "\r\n                    " +
                     _vm._s(_vm.$t("message.total")) +
-                    ":\n                "
+                    ":\r\n                "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "inside-val" }, [
                 _vm._v(
-                  "\n                    " +
+                  "\r\n                    " +
                     _vm._s(_vm.Basket.sum) +
                     " " +
                     _vm._s(_vm.Basket.currencySymbol) +
-                    "\n                "
+                    "\r\n                "
                 )
               ])
             ])

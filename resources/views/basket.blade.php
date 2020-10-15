@@ -64,7 +64,61 @@
                         </div>
                         <div class="one-step-descr" style="display: block;">
 
-                                <basket-component :temp="{{json_encode('checkout')}}" v-bind:locale="{{json_encode(strtolower(__('main.current_lang')))}}" v-bind:basket="{{isset($order->products) ? json_encode($order->getOrderArray()) : json_encode([])}}"></basket-component>
+                            <div class="basket-inside">
+                                <div class="one-lk-bask-table">
+                                    @foreach($order->products as $product)
+                                        <div class="one-lk-bask-tr">
+                                            <div class="one-lk-bask-td thumb-td">
+                                                <div class="one-lk-bask-thumb">
+                                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
+                                                        <img src="{{ Storage::url($product->image) }}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="one-lk-bask-td descr-td">
+                                                <div class="one-lk-bask-tit">
+                                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
+                                                        {{ $product->__('name') }}
+                                                    </a>
+                                                </div>
+                                                <div class="one-lk-bask-price">
+                                                    <div class="one-lk-bask-price-in">
+                                                        <span>{{ $product->price }}</span>
+                                                        {{ $currencySymbol }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="one-lk-bask-td num-td">
+                                                <div class="one-lk-bask-num-name">
+                                                    @lang('basket.count')
+                                                </div>
+                                                <div class="one-lk-bask-num-val">
+                                                    <span>{{ $product->countInOrder }}</span> шт
+                                                </div>
+                                            </div>
+                                            <div class="one-lk-bask-td sum-td">
+                                                <div class="one-lk-bask-sum-name">
+                                                    @lang('basket.full_cost')
+                                                </div>
+                                                <div class="one-lk-bask-sum-val">
+                                                    <span>{{ $product->price * $product->countInOrder }}</span> {{ $currencySymbol }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <div class="last-inside-sum">
+                                    <div class="last-inside-sum-in">
+                                        <div class="inside-name">
+                                            @lang('basket.total'):
+                                        </div>
+                                        <div class="inside-val">
+                                            {{ $order->getFullSum() }} {{ $currencySymbol }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="next-step">
                                 <a href="#" class="def-min-bt go-last">
@@ -135,9 +189,3 @@
 
 
 @endsection
-<script>
-    import ConfirmOrderButton from "../js/components/ConfirmOrderButton";
-    export default {
-        components: {ConfirmOrderButton}
-    }
-</script>
