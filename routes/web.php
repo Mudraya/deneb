@@ -64,6 +64,7 @@ Route::middleware(['set_locale'])->group(function () {
             Route::get('/', 'BasketController@basket')->name('basket');
             Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
             Route::post('/remove/{product}', 'BasketController@basketRemove')->name('basket-remove');
+            Route::post('/delete/{product}', 'BasketController@basketDelete')->name('basket-delete');
             Route::post('/place', 'BasketController@basketConfirm')->name('basket-confirm');
         });
     });

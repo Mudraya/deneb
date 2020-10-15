@@ -146,7 +146,7 @@
         </div>
     </div>
 </div>
-
+{{--{{dd($order->products)}}--}}
 <!-- Modal bask -->
 <div class="modal fade big-modal" id="basket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -159,7 +159,7 @@
                     @lang('main.cart')
                 </div>
                 <div class="modal-bask-wrap">
-                    @if(isset($order->products))
+                    @if(!($order->products->count() === 0))
                         <div class="one-modal-bask-item">
 
                             <div class="one-modal-item-table">
@@ -168,8 +168,11 @@
                                     <div class="modal-item-tr">
                                         <div class="modal-item-td td-thumb">
                                             <div class="modal-item-thumb">
+                                                <form action="{{ route('basket-delete', $product) }}" method="POST">
+                                                    <button class="del-item" type="submit"></button>
+                                                    @csrf
+                                                </form>
 
-                                                <div class="del-item"></div>
                                                 <a href="{{ route('product', [$product->category->code, $product->code]) }}">
                                                     <img src="{{ Storage::url($product->image) }}" alt="">
                                                 </a>
@@ -468,17 +471,34 @@
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{ session()->get('success') }}
         </div>
-        {{--<script>--}}
-            {{--document.addEventListener('DOMContentLoaded', function(){--}}
-                {{--trigger_basket_modal()--}}
-            {{--});--}}
-        {{--</script>--}}
     @endif
     @if(session()->has('warning'))
         <div class="alert alert-warning alert-dismissible">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {{ session()->get('warning') }}
         </div>
+    @endif
+    @if(session()->has('success_bask'))
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ session()->get('success_bask') }}
+        </div>
+        <script type="application/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+        trigger_basket_modal()
+        });
+        </script>
+    @endif
+    @if(session()->has('warning_bask'))
+        <div class="alert alert-warning alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ session()->get('warning_bask') }}
+        </div>
+        <script type="application/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+        trigger_basket_modal()
+        });
+        </script>
     @endif
 
     @yield('content')
