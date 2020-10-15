@@ -61,6 +61,9 @@ class Order extends Model
         return true;
     }
 
+    /**
+     * @return array
+     */
     public function getOrderArray()
     {
         $sum = 0;
@@ -71,9 +74,13 @@ class Order extends Model
 
         for ($i = 0; $i<sizeof($orderArray['products']) ; $i++)
         {
-            $orderArray['products'][$i]["countInOrder"] = $this->products->where('id', $orderArray['products'][$i]["id"])->first()->countInOrder;
-            $orderArray['products'][$i]["image"] = Storage::url($this->products->where('id', $orderArray['products'][$i]["id"])->first()->image);
-            $sum += $orderArray['products'][$i]["price"] * $orderArray['products'][$i]["countInOrder"];
+            if($orderArray['products'][$i]) {
+                $prod = $this->products->where('id', $orderArray['products'][$i]["id"])->first();
+                $orderArray['products'][$i]["countInOrder"] = $prod->countInOrder;
+                $orderArray['products'][$i]["image"] = Storage::url($prod->image);
+                $orderArray['products'][$i]["a_href"] = route('product', [$prod->category->code, $prod->code]);
+                $sum += $orderArray['products'][$i]["price"] * $orderArray['products'][$i]["countInOrder"];
+            }
         }
 
         $orderArray['sum'] = $sum;

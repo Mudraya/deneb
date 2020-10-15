@@ -2015,6 +2015,62 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2023,13 +2079,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {};
   },
   props: {
+    temp: String,
     locale: String,
-    basket: Array
+    basket: Object
   },
   methods: {
     prepareData: function prepareData() {
       this.setBasket();
-      this.setEmptyBasket();
       this.setLocale();
     },
     setBasket: function setBasket() {
@@ -2037,9 +2093,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     setLocale: function setLocale() {
       _i18n__WEBPACK_IMPORTED_MODULE_1__["default"].locale = this.locale;
-    },
-    setEmptyBasket: function setEmptyBasket() {
-      this.Basket.isEmpty = this.Basket.products[0] === undefined;
     },
     deleteProduct: function deleteProduct(product) {
       this.$store.dispatch('deleteProduct', product);
@@ -2063,7 +2116,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     this.prepareData();
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['Basket']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['Basket', 'isEmpty']))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BuyButtonComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BuyButtonComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../i18n */ "./resources/js/i18n.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ // {{--<buy-button-component :temp="{{json_encode('product-page')}}" :locale="{{json_encode(strtolower(__('main.current_lang')))}}"  :product="{{json_encode($product)}}"></buy-button-component>--}}
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BuyButtonComponent",
+  props: {
+    temp: String,
+    locale: String,
+    product: []
+  },
+  methods: {
+    addProduct: function addProduct() {
+      this.$store.dispatch('addProduct', this.product);
+    }
+  }
 });
 
 /***/ }),
@@ -2097,6 +2192,29 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "HiddenInputsOrder"
 });
 
 /***/ }),
@@ -39896,219 +40014,437 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "modal-bask" }, [
-      _c("div", { staticClass: "modal-bask-tit" }, [
-        _vm._v("\n            " + _vm._s(_vm.$t("message.cart")) + "\n        ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "modal-bask-wrap" }, [
-        !_vm.Basket.isEmpty
-          ? _c("div", { staticClass: "one-modal-bask-item" }, [
-              _c(
-                "div",
-                { staticClass: "one-modal-item-table" },
-                _vm._l(_vm.Basket.products, function(product) {
-                  return _c("div", { staticClass: "modal-item-tr" }, [
-                    _c("div", { staticClass: "modal-item-td td-thumb" }, [
-                      _c("div", { staticClass: "modal-item-thumb" }, [
-                        _c("div", {
-                          staticClass: "del-item",
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteProduct(product)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("a", { attrs: { href: "#" } }, [
-                          _c("img", { attrs: { src: product.image, alt: "" } })
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-item-td td-descr" }, [
-                      _c("div", { staticClass: "modal-item-in-table" }, [
-                        _c("div", {
-                          staticClass: "del-item mob",
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteProduct(product)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "modal-item-tr" }, [
-                          _c("div", { staticClass: "modal-item-td td-wrap" }, [
-                            _c("div", { staticClass: "modal-item-name" }, [
-                              _vm._v(
-                                "\n                                            " +
-                                  _vm._s(_vm.getLocalName(product)) +
-                                  "\n                                        "
-                              )
-                            ]),
+    this.temp == "basket"
+      ? _c("div", { staticClass: "modal-bask" }, [
+          _c("div", { staticClass: "modal-bask-tit" }, [
+            _vm._v(
+              "\n            " + _vm._s(_vm.$t("message.cart")) + "\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-bask-wrap" }, [
+            !_vm.isEmpty
+              ? _c("div", { staticClass: "one-modal-bask-item" }, [
+                  _c(
+                    "div",
+                    { staticClass: "one-modal-item-table" },
+                    _vm._l(_vm.Basket.products, function(product) {
+                      return _c("div", { staticClass: "modal-item-tr" }, [
+                        _c("div", { staticClass: "modal-item-td td-thumb" }, [
+                          _c("div", { staticClass: "modal-item-thumb" }, [
+                            _c("div", {
+                              staticClass: "del-item",
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteProduct(product)
+                                }
+                              }
+                            }),
                             _vm._v(" "),
-                            _c("div", { staticClass: "modal-item-info" }, [
-                              _c("div", { staticClass: "modal-item-price" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "modal-item-price-in" },
-                                  [
-                                    _c("span", [_vm._v(_vm._s(product.price))]),
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(_vm.Basket.currencySymbol) +
-                                        "\n                                                "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "modal-item-number" }, [
-                                _c("div", { staticClass: "num-block" }, [
-                                  _c("div", { staticClass: "num-in" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "btn-group form-inline" },
-                                      [
-                                        _c("span", {
-                                          staticClass: "minus dis",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.changeProductCount(
-                                                product,
-                                                -1
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          staticClass: "in-num",
-                                          attrs: {
-                                            type: "text",
-                                            readonly: "true"
-                                          },
-                                          domProps: {
-                                            value: product.countInOrder
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("span", {
-                                          staticClass: "plus",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.changeProductCount(
-                                                product,
-                                                1
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
+                            _c("a", { attrs: { href: product.a_href } }, [
+                              _c("img", {
+                                attrs: { src: product.image, alt: "" }
+                              })
                             ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "modal-item-td td-sum" }, [
-                            _c("div", { staticClass: "modal-item-sum" }, [
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-item-td td-descr" }, [
+                          _c("div", { staticClass: "modal-item-in-table" }, [
+                            _c("div", {
+                              staticClass: "del-item mob",
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteProduct(product)
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-item-tr" }, [
                               _c(
                                 "div",
-                                { staticClass: "modal-item-sum-name" },
+                                { staticClass: "modal-item-td td-wrap" },
                                 [
-                                  _vm._v(
-                                    "\n                                                " +
-                                      _vm._s(_vm.$t("message.sum")) +
-                                      "\n                                            "
+                                  _c(
+                                    "div",
+                                    { staticClass: "modal-item-name" },
+                                    [
+                                      _vm._v(
+                                        "\n                                            " +
+                                          _vm._s(_vm.getLocalName(product)) +
+                                          "\n                                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "modal-item-info" },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "modal-item-price" },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "modal-item-price-in"
+                                            },
+                                            [
+                                              _c("span", [
+                                                _vm._v(_vm._s(product.price))
+                                              ]),
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(
+                                                    _vm.Basket.currencySymbol
+                                                  ) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "modal-item-number" },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "num-block" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "num-in" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "btn-group form-inline"
+                                                    },
+                                                    [
+                                                      _c("span", {
+                                                        staticClass:
+                                                          "minus dis",
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeProductCount(
+                                                              product,
+                                                              -1
+                                                            )
+                                                          }
+                                                        }
+                                                      }),
+                                                      _vm._v(" "),
+                                                      _c("input", {
+                                                        staticClass: "in-num",
+                                                        attrs: {
+                                                          type: "text",
+                                                          readonly: "true"
+                                                        },
+                                                        domProps: {
+                                                          value:
+                                                            product.countInOrder
+                                                        }
+                                                      }),
+                                                      _vm._v(" "),
+                                                      _c("span", {
+                                                        staticClass: "plus",
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.changeProductCount(
+                                                              product,
+                                                              1
+                                                            )
+                                                          }
+                                                        }
+                                                      })
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
                                   )
                                 ]
                               ),
                               _vm._v(" "),
-                              _c("div", { staticClass: "modal-item-sum-num" }, [
-                                _c("span", [
-                                  _vm._v(
-                                    _vm._s(product.price * product.countInOrder)
-                                  )
-                                ]),
-                                _vm._v(
-                                  " " +
-                                    _vm._s(_vm.Basket.currencySymbol) +
-                                    "\n                                            "
-                                )
-                              ])
+                              _c(
+                                "div",
+                                { staticClass: "modal-item-td td-sum" },
+                                [
+                                  _c("div", { staticClass: "modal-item-sum" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "modal-item-sum-name" },
+                                      [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(_vm.$t("message.sum")) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "modal-item-sum-num" },
+                                      [
+                                        _c("span", [
+                                          _vm._v(
+                                            _vm._s(
+                                              product.price *
+                                                product.countInOrder
+                                            )
+                                          )
+                                        ]),
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(_vm.Basket.currencySymbol) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
                             ])
                           ])
                         ])
                       ])
-                    ])
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "one-modal-item-bay-info" }, [
-                _c("div", { staticClass: "one-modal-item-back" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "back-bask def-big-bt",
-                      attrs: { href: "#", "data-dismiss": "modal" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.$t("message.continue_shopping")) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "one-modal-item-sum" }, [
-                  _c("div", { staticClass: "one-modal-item-top" }, [
-                    _c("div", { staticClass: "one-modal-item-name" }, [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.$t("message.total")) +
-                          ":\n                            "
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "one-modal-item-bay-info" }, [
+                    _c("div", { staticClass: "one-modal-item-back" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "back-bask def-big-bt",
+                          attrs: { href: "#", "data-dismiss": "modal" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.$t("message.continue_shopping")) +
+                              "\n                        "
+                          )
+                        ]
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "one-modal-item-val" }, [
+                    _c("div", { staticClass: "one-modal-item-sum" }, [
+                      _c("div", { staticClass: "one-modal-item-top" }, [
+                        _c("div", { staticClass: "one-modal-item-name" }, [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.$t("message.total")) +
+                              ":\n                            "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "one-modal-item-val" }, [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.Basket.sum) +
+                              " " +
+                              _vm._s(_vm.Basket.currencySymbol) +
+                              "\n                            "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "one-modal-item-bt" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "def-big-bt",
+                            attrs: { href: _vm.Basket.routePlaceOrder }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.$t("message.place_order")) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              : _c("h4", [_vm._v(_vm._s(_vm.$t("message.cart_is_empty")))])
+          ])
+        ])
+      : this.temp == "checkout"
+      ? _c("div", { staticClass: "basket-inside" }, [
+          _c(
+            "div",
+            { staticClass: "one-lk-bask-table" },
+            _vm._l(_vm.Basket.products, function(product) {
+              return _c("div", { staticClass: "one-lk-bask-tr" }, [
+                _c("div", { staticClass: "one-lk-bask-td thumb-td" }, [
+                  _c("div", { staticClass: "one-lk-bask-thumb" }, [
+                    _c("a", { attrs: { href: product.a_href } }, [
+                      _c("img", { attrs: { src: product.image, alt: "" } })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "one-lk-bask-td descr-td" }, [
+                  _c("div", { staticClass: "one-lk-bask-tit" }, [
+                    _c("a", { attrs: { href: product.a_href } }, [
                       _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.Basket.sum) +
-                          " " +
-                          _vm._s(_vm.Basket.currencySymbol) +
-                          "\n                            "
+                        "\n                            " +
+                          _vm._s(_vm.getLocalName(product)) +
+                          "\n                        "
                       )
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "one-modal-item-bt" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "def-big-bt",
-                        attrs: { href: _vm.Basket.routePlaceOrder }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm.$t("message.place_order")) +
-                            "\n                            "
-                        )
-                      ]
+                  _c("div", { staticClass: "one-lk-bask-price" }, [
+                    _c("div", { staticClass: "one-lk-bask-price-in" }, [
+                      _c("span", [_vm._v(_vm._s(product.price))]),
+                      _vm._v(
+                        " " +
+                          _vm._s(_vm.Basket.currencySymbol) +
+                          "\n                        "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "one-lk-bask-td num-td" }, [
+                  _c("div", { staticClass: "one-lk-bask-num-name" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.$t("message.count")) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "one-lk-bask-num-val" }, [
+                    _c("span", [_vm._v(_vm._s(product.countInOrder))]),
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.$t("message.items")) +
+                        "\n                    "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "one-lk-bask-td sum-td" }, [
+                  _c("div", { staticClass: "one-lk-bask-sum-name" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.$t("message.sum")) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "one-lk-bask-sum-val" }, [
+                    _c("span", [
+                      _vm._v(_vm._s(product.price * product.countInOrder))
+                    ]),
+                    _vm._v(
+                      " " +
+                        _vm._s(_vm.Basket.currencySymbol) +
+                        "\n                    "
                     )
                   ])
                 ])
               ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "last-inside-sum" }, [
+            _c("div", { staticClass: "last-inside-sum-in" }, [
+              _c("div", { staticClass: "inside-name" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.$t("message.total")) +
+                    ":\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "inside-val" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.Basket.sum) +
+                    " " +
+                    _vm._s(_vm.Basket.currencySymbol) +
+                    "\n                "
+                )
+              ])
             ])
-          : _c("h4", [_vm._v(_vm._s(_vm.$t("message.cart_is_empty")))])
-      ])
-    ])
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    this.temp == "product-card"
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-primary def-min-bt",
+            attrs: { type: "submit", role: "button" },
+            on: {
+              click: function($event) {
+                return _vm.addProduct()
+              }
+            }
+          },
+          [_vm._v("\n        " + _vm._s(_vm.$t("message.buy")) + "\n    ")]
+        )
+      : this.temp == "product-page"
+      ? _c(
+          "button",
+          {
+            staticClass: "def-bt",
+            attrs: { type: "submit", role: "button" },
+            on: {
+              click: function($event) {
+                return _vm.addProduct()
+              }
+            }
+          },
+          [_vm._v("\n        " + _vm._s(_vm.$t("message.buy")) + "\n    ")]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -40159,6 +40495,30 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53742,6 +54102,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('basket-component', __webpack_require__(/*! ./components/BasketComponent.vue */ "./resources/js/components/BasketComponent.vue")["default"]);
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('buy-button-component', __webpack_require__(/*! ./components/BuyButtonComponent */ "./resources/js/components/BuyButtonComponent.vue")["default"]);
+Vue.component('hidden-inputs-order-component', __webpack_require__(/*! ./components/HiddenInputsOrder */ "./resources/js/components/HiddenInputsOrder.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -53870,6 +54232,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/BuyButtonComponent.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/BuyButtonComponent.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BuyButtonComponent_vue_vue_type_template_id_f7b86ca0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true& */ "./resources/js/components/BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true&");
+/* harmony import */ var _BuyButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BuyButtonComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/BuyButtonComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BuyButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BuyButtonComponent_vue_vue_type_template_id_f7b86ca0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BuyButtonComponent_vue_vue_type_template_id_f7b86ca0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "f7b86ca0",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/BuyButtonComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/BuyButtonComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/BuyButtonComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BuyButtonComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BuyButtonComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyButtonComponent_vue_vue_type_template_id_f7b86ca0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BuyButtonComponent.vue?vue&type=template&id=f7b86ca0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyButtonComponent_vue_vue_type_template_id_f7b86ca0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyButtonComponent_vue_vue_type_template_id_f7b86ca0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -53934,6 +54365,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/HiddenInputsOrder.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/HiddenInputsOrder.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& */ "./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&");
+/* harmony import */ var _HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HiddenInputsOrder.vue?vue&type=script&lang=js& */ "./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "01616280",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/HiddenInputsOrder.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HiddenInputsOrder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -54026,7 +54526,10 @@ var formatter = new _formatter__WEBPACK_IMPORTED_MODULE_2__["default"]({
         total: 'Всего',
         place_order: 'Оформить заказ',
         cart_is_empty: 'Ваша корзина пуста!',
-        you_want_too_much: 'Это весь товар в наличии'
+        you_want_too_much: 'Это весь товар в наличии',
+        count: 'Количество',
+        items: 'шт.',
+        buy: 'Купить'
       }
     },
     "en": {
@@ -54038,7 +54541,10 @@ var formatter = new _formatter__WEBPACK_IMPORTED_MODULE_2__["default"]({
         total: 'Total',
         place_order: 'Place your order',
         cart_is_empty: 'Your Cart is empty!',
-        you_want_too_much: 'It is a limit for this product'
+        you_want_too_much: 'It is a limit for this product',
+        count: 'Quantity',
+        items: 'items',
+        buy: 'Buy'
       }
     }
   }
@@ -54058,21 +54564,34 @@ __webpack_require__.r(__webpack_exports__);
 var actions = {
   fetchBasket: function fetchBasket(_ref, basket) {
     var commit = _ref.commit;
-    commit('FETCH_BASKET', basket);
+    axios.get("/api/basket").then(function (res) {
+      commit('FETCH_BASKET', res.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
   },
   deleteProduct: function deleteProduct(_ref2, product) {
     var commit = _ref2.commit;
-    axios["delete"]("/api/basket/" + product.id).then(function (res) {
-      console.log(res);
-      if (res.data === 'ok') commit('DELETE_PRODUCT', product);
+    axios["delete"]("/api/basket/" + product.code).then(function (res) {
+      commit('DELETE_PRODUCT', product);
     })["catch"](function (err) {
       console.log(err);
     });
   },
   changeProductCount: function changeProductCount(_ref3, data) {
     var commit = _ref3.commit;
-    axios.post("/api/basket/change", data.product).then(function (res) {
+    axios.post("/api/basket/change", data).then(function (res) {
       commit('CHANGE_PRODUCT_COUNT', data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  },
+  addProduct: function addProduct(_ref4, product) {
+    var commit = _ref4.commit;
+    axios.post("/api/basket/add", {
+      productCode: product.code
+    }).then(function (res) {
+      commit('ADD_PRODUCT', res.data);
     })["catch"](function (err) {
       console.log(err);
     });
@@ -54094,6 +54613,9 @@ __webpack_require__.r(__webpack_exports__);
 var getters = {
   Basket: function Basket(state) {
     return state.Basket;
+  },
+  isEmpty: function isEmpty(state) {
+    return state.isEmpty;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (getters);
@@ -54147,7 +54669,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 __webpack_require__.r(__webpack_exports__);
 var mutations = {
   FETCH_BASKET: function FETCH_BASKET(state, basket) {
-    return state.Basket = basket;
+    state.Basket = basket;
+    state.isEmpty = basket.products === undefined;
   },
   DELETE_PRODUCT: function DELETE_PRODUCT(state, product) {
     var index = state.Basket.products.findIndex(function (item) {
@@ -54166,6 +54689,10 @@ var mutations = {
         state.Basket.sum = parseInt(state.Basket.sum) + parseInt(state.Basket.products[index].price) * parseInt(data.step);
       }
     }
+  },
+  ADD_PRODUCT: function ADD_PRODUCT(state, basket) {
+    state.Basket = basket;
+    state.isEmpty = basket.products === undefined;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (mutations);
@@ -54182,7 +54709,8 @@ var mutations = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var state = {
-  Basket: []
+  Basket: {},
+  isEmpty: true
 };
 /* harmony default export */ __webpack_exports__["default"] = (state);
 

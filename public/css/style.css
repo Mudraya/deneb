@@ -114,7 +114,7 @@ header {
 	display: block;
 	cursor: pointer;
 	/*padding-left: 40px;*/
-	background: url(images/phone-ico.png) left center no-repeat;
+	/*background: url(images/phone-ico.png) left center no-repeat;*/
 }
 
 .header-mess {
@@ -1068,7 +1068,7 @@ footer {
 	display: block;
 	cursor: pointer;
 	/*padding-left: 40px;*/
-	background: url(images/phone-ico.png) left center no-repeat;
+	/*background: url(/images/phone-ico.png) left center no-repeat;*/
 }
 
 .footer-mess {
@@ -8065,6 +8065,10 @@ span.badge.badge-danger {
 
 .product-table th, .product-table td {
     padding: .5rem;
+}
+
+.invalid-feedback {
+    display: unset;
 }
 
 

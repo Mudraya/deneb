@@ -23,6 +23,8 @@ import i18n from './i18n'
 
 Vue.component('basket-component', require('./components/BasketComponent.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('buy-button-component', require('./components/BuyButtonComponent').default);
+Vue.component('hidden-inputs-order-component', require('./components/HiddenInputsOrder').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

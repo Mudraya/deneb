@@ -10,31 +10,53 @@ use Illuminate\Http\Request;
 
 class BasketController extends Controller
 {
+//    protected $basket = new Basket();
+//        {"currency_id":1,
+//        "products":[
+//            {"id":4,"category_id":2,
+    //        "name":"Коробка \"Розовая мечта\"",
+    //        "code":"pink_dream",
+    //        "image":"http://deneb/storage/products/pink_dream.webp",
+    //        "price":800,"count":3,"name_en":"Box of chocolate \"Pink dream\"",
+    //        "countInOrder":1,
+    //        "a_href":"http://deneb/chocolate/pink_dream"}],
+//        "currencySymbol":"₴",
+//        "routePlaceOrder":"http://deneb/basket",
+//        "sum":800}
 
-    public function index()
+
+
+    public function getBasket()
     {
-        return view('master');
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
     }
 
-    public function getBasket(Request $request)
+    public function deleteProduct($productCode)
     {
-        return response()->json();
-
-    }
-
-    public function deleteProduct($id)
-    {
-//        $pivotRow = (new Basket())->getOrder()->products->where('id', $product->id)->first();
-//        if ($pivotRow->countInOrder < 2) {
-//            $this->order->products->pop($product);
-//        } else {
-//            $pivotRow->countInOrder--;
-//        }
-        return response()->json("ok");
+        $product = Product::withTrashed()->byCode($productCode)->first();
+        (new Basket())->deleteProduct($product);
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
     }
 
     public function changeProductCount(Request $request)
     {
-        return response()->json($request);
+        $product = Product::withTrashed()->byCode($request->product['code'])->first();
+        if($request->step == 1) {
+            (new Basket(true))->addProduct($product);
+        } else {
+            (new Basket(true))->removeProduct($product);
+        }
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
+    }
+
+    public function addProduct(Request $request)
+    {
+        $product = Product::withTrashed()->byCode($request->productCode)->first();
+        (new Basket(true))->addProduct($product);
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
     }
 }

@@ -21,6 +21,9 @@ export default new VueI18n({
                 place_order: 'Оформить заказ',
                 cart_is_empty: 'Ваша корзина пуста!',
                 you_want_too_much: 'Это весь товар в наличии',
+                count: 'Количество',
+                items: 'шт.',
+                buy: 'Купить',
             }
         },
         "en": {
@@ -33,6 +36,9 @@ export default new VueI18n({
                 place_order: 'Place your order',
                 cart_is_empty: 'Your Cart is empty!',
                 you_want_too_much: 'It is a limit for this product',
+                count: 'Quantity',
+                items: 'items',
+                buy: 'Buy',
             }
         },
 

@@ -1,6 +1,7 @@
 let mutations = {
     FETCH_BASKET(state, basket) {
-        return state.Basket = basket
+        state.Basket = basket
+        state.isEmpty = (basket.products === undefined)
     },
 
     DELETE_PRODUCT(state, product) {
@@ -17,6 +18,11 @@ let mutations = {
                 state.Basket.sum = parseInt(state.Basket.sum) + parseInt(state.Basket.products[index].price)*parseInt(data.step);
             }
         }
+    },
+
+    ADD_PRODUCT(state, basket) {
+        state.Basket = basket
+        state.isEmpty = (basket.products === undefined)
     }
 }
 export default mutations

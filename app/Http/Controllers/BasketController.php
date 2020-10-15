@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Basket;
+use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -15,17 +16,30 @@ class BasketController extends Controller
         return view('basket');
     }
 
-    public function basketConfirm(Request $request)
+    public function basketConfirm(OrderRequest $request)
     {
-        $email = Auth::check() ? Auth::user()->email : $request->email;
-        if ((new Basket())->saveOrder($request->name, $request->phone, $email)) {
-            session()->flash('success', __('basket.you_order_confirmed'));
-        } else {
-            session()->flash('warning', __('basket.you_cant_order_more'));
-        }
 
+//        $email = Auth::check() ? Auth::user()->email : $request->email;
+//        if ((new Basket())->saveOrder($request->name, $request->phone, $email)) {
+//            session()->flash('success', __('basket.you_order_confirmed'));
+//        } else {
+//            session()->flash('warning', __('basket.you_cant_order_more'));
+//        }
+//
         return redirect()->route('index');
     }
+
+//    public function basketConfirm(Request $request)
+//    {
+//        $email = Auth::check() ? Auth::user()->email : $request->email;
+//        if ((new Basket())->saveOrder($request->name, $request->phone, $email)) {
+//            session()->flash('success', __('basket.you_order_confirmed'));
+//        } else {
+//            session()->flash('warning', __('basket.you_cant_order_more'));
+//        }
+//
+//        return redirect()->route('index');
+//    }
 
     public function basketAdd(Product $product)
     {

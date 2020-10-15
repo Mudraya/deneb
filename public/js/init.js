@@ -50,91 +50,52 @@ $(document).ready(function(){
         $(this).parents('ul.sub-menu').fadeOut();
     });
 
-    // слайдер на главной
+    // basket step
 
-    $('.home-slide-js').slick({
-        dots: true,
-        prevArrow: '<button type="button" class="slick-prev"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.0443 1.3398C14.6301 0.733514 15.6051 0.733514 16.2114 1.3398C16.7972 1.92561 16.7972 2.90058 16.2114 3.48502L5.22309 14.4733H41.4829C42.3282 14.4747 43 15.1465 43 15.9918C43 16.837 42.3282 17.5307 41.4829 17.5307H5.22309L16.2114 28.4985C16.7972 29.1048 16.7972 30.0811 16.2114 30.6656C15.6051 31.2718 14.6287 31.2718 14.0443 30.6656L0.454716 17.076C-0.151569 16.4902 -0.151569 15.5152 0.454716 14.9308L14.0443 1.3398Z" fill="#00A94F"/></svg></button>',
-        nextArrow: '<button type="button" class="slick-next"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.9557 1.3398C28.3699 0.733514 27.3949 0.733514 26.7886 1.3398C26.2028 1.92561 26.2028 2.90058 26.7886 3.48502L37.7769 14.4733H1.51708C0.671832 14.4747 0 15.1465 0 15.9918C0 16.837 0.671832 17.5307 1.51708 17.5307H37.7769L26.7886 28.4985C26.2028 29.1048 26.2028 30.0811 26.7886 30.6656C27.3949 31.2718 28.3713 31.2718 28.9557 30.6656L42.5453 17.076C43.1516 16.4902 43.1516 15.5152 42.5453 14.9308L28.9557 1.3398Z" fill="#00A94F"/></svg></button>'
+    $('.next-step a').click(function(event) {
+        $(this).parents('.one-step').find('.one-step-descr').slideUp();
+        $(this).parents('.one-step').removeClass('active').addClass('done').next().addClass('active').find('.one-step-descr').slideDown();
+
+        $('.mobile-step').addClass('active');
+        $('.one-mob-step').eq($(this).parents('.one-step').next().index()).addClass('active');
+        event.preventDefault();
     });
 
-});
+    $('.change-step').click(function(event) {
+        $('.one-step-descr').slideUp();
+        $('.one-step').removeClass('active');
+        $(this).parents('.one-step').find('.one-step-descr').slideDown();
+        $(this).parents('.one-step').removeClass('done').addClass('active');
+        event.preventDefault();
+    });
 
-// карусель Статьи
 
-$('.posts-js').slick({
-	dots: true,
-	infinite: true,
-	slidesToShow: 3,
-	slidesToScroll: 3,
-	prevArrow: '<button type="button" class="slick-prev"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.0443 1.3398C14.6301 0.733514 15.6051 0.733514 16.2114 1.3398C16.7972 1.92561 16.7972 2.90058 16.2114 3.48502L5.22309 14.4733H41.4829C42.3282 14.4747 43 15.1465 43 15.9918C43 16.837 42.3282 17.5307 41.4829 17.5307H5.22309L16.2114 28.4985C16.7972 29.1048 16.7972 30.0811 16.2114 30.6656C15.6051 31.2718 14.6287 31.2718 14.0443 30.6656L0.454716 17.076C-0.151569 16.4902 -0.151569 15.5152 0.454716 14.9308L14.0443 1.3398Z" fill="#00A94F"/></svg></button>',
-	nextArrow: '<button type="button" class="slick-next"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.9557 1.3398C28.3699 0.733514 27.3949 0.733514 26.7886 1.3398C26.2028 1.92561 26.2028 2.90058 26.7886 3.48502L37.7769 14.4733H1.51708C0.671832 14.4747 0 15.1465 0 15.9918C0 16.837 0.671832 17.5307 1.51708 17.5307H37.7769L26.7886 28.4985C26.2028 29.1048 26.2028 30.0811 26.7886 30.6656C27.3949 31.2718 28.3713 31.2718 28.9557 30.6656L42.5453 17.076C43.1516 16.4902 43.1516 15.5152 42.5453 14.9308L28.9557 1.3398Z" fill="#00A94F"/></svg></button>',
-	responsive: [
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
+    $('body').on('click', '.one-mob-step.active', function(event) {
+        if ($(this).index() == 0) {
+            $('.mobile-step').removeClass('active');
+            $('.one-mob-step').eq(1).removeClass('active');
+            $('.one-mob-step').eq(2).removeClass('active');
+            $('.basket-inside').fadeOut();
+        }
+        else if ($(this).index() == 1) {
+            $('.one-mob-step').eq(2).removeClass('active');
+            $('.basket-inside').fadeOut();
+        }
+        $(this).addClass('active');
+        $('.one-step-descr').slideUp();
+        $('.one-step-descr').eq($(this).index()).slideDown();
 
-// карусель Комплексные системы
+        event.preventDefault();
+    });
 
-$('.compl-car').slick({
-	dots: false,
-	infinite: true,
-	rows: 2,
-	slidesPerRow: 1,
-	slidesToShow: 4,
-	slidesToScroll: 2,
-	prevArrow: '<button type="button" class="slick-prev"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.0443 1.3398C14.6301 0.733514 15.6051 0.733514 16.2114 1.3398C16.7972 1.92561 16.7972 2.90058 16.2114 3.48502L5.22309 14.4733H41.4829C42.3282 14.4747 43 15.1465 43 15.9918C43 16.837 42.3282 17.5307 41.4829 17.5307H5.22309L16.2114 28.4985C16.7972 29.1048 16.7972 30.0811 16.2114 30.6656C15.6051 31.2718 14.6287 31.2718 14.0443 30.6656L0.454716 17.076C-0.151569 16.4902 -0.151569 15.5152 0.454716 14.9308L14.0443 1.3398Z" fill="#00A94F"/></svg></button>',
-	nextArrow: '<button type="button" class="slick-next"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.9557 1.3398C28.3699 0.733514 27.3949 0.733514 26.7886 1.3398C26.2028 1.92561 26.2028 2.90058 26.7886 3.48502L37.7769 14.4733H1.51708C0.671832 14.4747 0 15.1465 0 15.9918C0 16.837 0.671832 17.5307 1.51708 17.5307H37.7769L26.7886 28.4985C26.2028 29.1048 26.2028 30.0811 26.7886 30.6656C27.3949 31.2718 28.3713 31.2718 28.9557 30.6656L42.5453 17.076C43.1516 16.4902 43.1516 15.5152 42.5453 14.9308L28.9557 1.3398Z" fill="#00A94F"/></svg></button>',
-	responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
+    $('.go-last').click(function(event) {
+        $('.basket-inside').fadeIn();
+    });
+
+    $('.show-filt-com-mob a, .close-mob').click(function(event) {
+        $('.comp-side').fadeToggle();
+    });
+
 });
 
 // home page show more about
@@ -254,51 +215,7 @@ $('.close-filt, .show-filter a').click(function(event) {
 // });
 // Конец Количество товара +/-
 
-$('.other-prod-car').slick({
-  dots: true,
-  infinite: true,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  prevArrow: '<button type="button" class="slick-prev"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.0443 1.3398C14.6301 0.733514 15.6051 0.733514 16.2114 1.3398C16.7972 1.92561 16.7972 2.90058 16.2114 3.48502L5.22309 14.4733H41.4829C42.3282 14.4747 43 15.1465 43 15.9918C43 16.837 42.3282 17.5307 41.4829 17.5307H5.22309L16.2114 28.4985C16.7972 29.1048 16.7972 30.0811 16.2114 30.6656C15.6051 31.2718 14.6287 31.2718 14.0443 30.6656L0.454716 17.076C-0.151569 16.4902 -0.151569 15.5152 0.454716 14.9308L14.0443 1.3398Z" fill="#00A94F"/></svg></button>',
-  nextArrow: '<button type="button" class="slick-next"><svg width="43" height="32" viewBox="0 0 43 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.9557 1.3398C28.3699 0.733514 27.3949 0.733514 26.7886 1.3398C26.2028 1.92561 26.2028 2.90058 26.7886 3.48502L37.7769 14.4733H1.51708C0.671832 14.4747 0 15.1465 0 15.9918C0 16.837 0.671832 17.5307 1.51708 17.5307H37.7769L26.7886 28.4985C26.2028 29.1048 26.2028 30.0811 26.7886 30.6656C27.3949 31.2718 28.3713 31.2718 28.9557 30.6656L42.5453 17.076C43.1516 16.4902 43.1516 15.5152 42.5453 14.9308L28.9557 1.3398Z" fill="#00A94F"/></svg></button>',
-  responsive: [
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3
-      }
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
-
 // solution tablet slider
-if($(window).width() < 992) {
-  $('.sol-car-in').slick({
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  });
-}
 
 $(document).ready(function() {
 
@@ -347,53 +264,6 @@ $(document).ready(function() {
   }
 
 
-});
-
-
-// basket step
-
-$('.next-step a').click(function(event) {
-  $(this).parents('.one-step').find('.one-step-descr').slideUp();
-  $(this).parents('.one-step').removeClass('active').addClass('done').next().addClass('active').find('.one-step-descr').slideDown();
-
-  $('.mobile-step').addClass('active');
-  $('.one-mob-step').eq($(this).parents('.one-step').next().index()).addClass('active');
-  event.preventDefault();
-});
-
-$('.change-step').click(function(event) {
-  $('.one-step-descr').slideUp();
-  $('.one-step').removeClass('active');
-  $(this).parents('.one-step').find('.one-step-descr').slideDown();
-  $(this).parents('.one-step').removeClass('done').addClass('active');
-  event.preventDefault();
-});
-
-
-$('body').on('click', '.one-mob-step.active', function(event) {
-  if ($(this).index() == 0) {
-    $('.mobile-step').removeClass('active');
-    $('.one-mob-step').eq(1).removeClass('active');
-    $('.one-mob-step').eq(2).removeClass('active');
-    $('.basket-inside').fadeOut();
-  }
-  else if ($(this).index() == 1) {
-    $('.one-mob-step').eq(2).removeClass('active');
-    $('.basket-inside').fadeOut();
-  }
-  $(this).addClass('active');
-  $('.one-step-descr').slideUp();
-  $('.one-step-descr').eq($(this).index()).slideDown();
-
-  event.preventDefault();
-});
-
-$('.go-last').click(function(event) {
-  $('.basket-inside').fadeIn();
-});
-
-$('.show-filt-com-mob a, .close-mob').click(function(event) {
-  $('.comp-side').fadeToggle();
 });
 
 function trigger_basket_modal() {

@@ -91,6 +91,17 @@ class Basket
         }
     }
 
+    public function deleteProduct(Product $product)
+    {
+        if ($this->order->products->contains($product)) {
+            foreach ($this->order->products as $itemKey => $itemValue) {
+                if($itemValue->code == $product->code){
+                    $this->order->products->pull($itemKey);
+                }
+            }
+        }
+    }
+
     public function addProduct(Product $product)
     {
         if ($this->order->products->contains($product)) {

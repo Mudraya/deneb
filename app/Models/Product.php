@@ -15,7 +15,7 @@ class Product extends Model
     protected $fillable = [
         'name', 'code', 'price', 'category_id', 'description', 'image', 'hit', 'new', 'count', 'name_en', 'description_en'
     ];
-    protected $visible = ['id', 'name', 'name_en', 'count', 'price', 'image'];
+    protected $visible = ['id', 'code', 'category_id', 'name', 'name_en', 'count', 'price', 'image'];
 
     public function category()
     {
@@ -72,6 +72,11 @@ class Product extends Model
     public function scopeByCode($query, $code)
     {
         return $query->where('code', $code);
+    }
+
+    public function scopeById($query, $id)
+    {
+        return $query->where('id', $id);
     }
 
     public function isAvailable()
