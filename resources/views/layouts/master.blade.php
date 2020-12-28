@@ -159,7 +159,8 @@
                     @lang('main.cart')
                 </div>
                 <div class="modal-bask-wrap">
-                    @if(!($order->products->count() === 0))
+                    @if(isset($order->products) && !($order->products->count() === 0))
+
                         <div class="one-modal-bask-item">
 
                             <div class="one-modal-item-table">
