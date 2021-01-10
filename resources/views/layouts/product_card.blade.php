@@ -23,11 +23,9 @@
                 <div class="one-item-price">
                     <span>{{ $product->price }}</span> {{ $currencySymbol }}
                 </div>
-                <form action="{{ route('basket-add', $product) }}" method="POST">
-                    @if($product->isAvailable())
-                        <button type="submit" class="btn btn-primary def-min-bt" role="button">
-                            @lang('main.buy')
-                        </button>
+
+                @if($product->isAvailable())
+                    <buy-button-component :temp="{{json_encode('product-card')}}" :locale="{{json_encode(strtolower(__('main.current_lang')))}}"  :product="{{json_encode($product)}}"></buy-button-component>
                 @else
                     @lang('main.not_available')
                 @endif
@@ -36,8 +34,6 @@
                     <a href="{{ route('product', [isset($current_category) ? $current_category->code : $product->category->code, $product->code]) }}" class="def-min-bt">
                         @lang('main.more')
                     </a>
-                    @csrf
-                </form>
             </div>
 
         </div>

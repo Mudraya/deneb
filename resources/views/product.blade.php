@@ -55,12 +55,8 @@
                             <div class="btns-prod">
                                 <div class="product-bay">
                                         @if($product->isAvailable())
-                                        <form action="{{ route('basket-add', $product) }}" method="POST">
-                                            <button type="submit" class="def-bt" role="button">
-                                                @lang('main.buy')
-                                            </button>
-                                            @csrf
-                                        </form>
+                                            <buy-button-component :temp="{{json_encode('product-page')}}" :locale="{{json_encode(strtolower(__('main.current_lang')))}}"  :product="{{json_encode($product)}}"></buy-button-component>
+
                                         @else
                                             <span>@lang('main.not_available')</span>
                                             <br>

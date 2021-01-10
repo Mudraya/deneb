@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Product;
 use App\Services\CurrencyConversion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Order extends Model
 {
-    protected $fillable = ['user_id', 'currency_id', 'sum', 'products->countInOrder', 'countInOrder'];
+    protected $fillable = ['user_id', 'currency_id', 'sum', 'countInOrder'];
 
     public function products()
     {
@@ -72,9 +71,9 @@ class Order extends Model
         $orderArray['currencySymbol'] = CurrencyConversion::getCurrencySymbol();
         $orderArray['routePlaceOrder'] = route('basket');
 
-        for ($i = 0; $i<sizeof($orderArray['products']) ; $i++)
+        for ($i = 0; $i<=array_key_last($orderArray['products']) ; $i++)
         {
-            if($orderArray['products'][$i]) {
+            if(array_key_exists($i, $orderArray['products'])) {
                 $prod = $this->products->where('id', $orderArray['products'][$i]["id"])->first();
                 $orderArray['products'][$i]["countInOrder"] = $prod->countInOrder;
                 $orderArray['products'][$i]["image"] = Storage::url($prod->image);

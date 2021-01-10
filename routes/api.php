@@ -20,8 +20,4 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('products', 'Api\ProductController@getProducts');
 });
 
-    Route::post('basket/change', 'Api\BasketController@changeProductCount');
-    Route::post('basket/add', 'Api\BasketController@addProduct');
-    Route::delete('basket/{productCode}', 'Api\BasketController@deleteProduct');
-    Route::get('basket', 'Api\BasketController@getBasket');
 

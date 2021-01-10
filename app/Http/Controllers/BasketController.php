@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Classes\Basket;
 use App\Http\Requests\OrderRequest;
-use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use mysql_xdevapi\Exception;
 
 class BasketController extends Controller
 {
@@ -28,33 +28,37 @@ class BasketController extends Controller
         return redirect()->route('index');
     }
 
-    public function basketAdd(Product $product)
+    public function getBasket()
     {
-        $result = (new Basket(true))->addProduct($product);
-
-        if ($result) {
-            session()->flash('success_bask', __('basket.added').$product->__('name'));
-        } else {
-            session()->flash('warning_bask', $product->__('name') . __('basket.not_available_more'));
-        }
-
-        return back();
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
     }
 
-    public function basketRemove(Product $product)
+    public function deleteProduct($productCode)
     {
-        (new Basket())->removeProduct($product);
-        session()->flash('warning_bask', __('basket.removed') . $product->__('name'));
-
-        return back();
-    }
-
-    public function basketDelete(Product $product)
-    {
+        $product = Product::withTrashed()->byCode($productCode)->first();
         (new Basket())->deleteProduct($product);
-        session()->flash('warning_bask', __('basket.removed') . $product->__('name'));
-
-        return back();
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
     }
 
+    public function changeProductCount(Request $request)
+    {
+        $product = Product::withTrashed()->byCode($request->product['code'])->first();
+        if($request->step == 1) {
+            (new Basket(true))->addProduct($product);
+        } else {
+            (new Basket(true))->removeProduct($product);
+        }
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
+    }
+
+    public function addProduct(Request $request)
+    {
+        $product = Product::withTrashed()->byCode($request->productCode)->first();
+        (new Basket(true))->addProduct($product);
+        $order = session('order');
+        return response()->json(($order) ? $order->getOrderArray() : []);
+    }
 }

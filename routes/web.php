@@ -56,15 +56,17 @@ Route::middleware(['set_locale'])->group(function () {
     });
 
     Route::group(['prefix' => 'basket'], function () {
-        Route::post('/add/{product}', 'BasketController@basketAdd')->name('basket-add');
+
+        Route::post('/change', 'BasketController@changeProductCount');
+        Route::post('/add', 'BasketController@addProduct');
+        Route::delete('/{productCode}', 'BasketController@deleteProduct');
+        Route::get('/get-basket', 'BasketController@getBasket');
 
         Route::group([
             'middleware' => 'basket_not_empty',
         ], function () {
             Route::get('/', 'BasketController@basket')->name('basket');
             Route::get('/place', 'BasketController@basketPlace')->name('basket-place');
-            Route::post('/remove/{product}', 'BasketController@basketRemove')->name('basket-remove');
-            Route::post('/delete/{product}', 'BasketController@basketDelete')->name('basket-delete');
             Route::post('/place', 'BasketController@basketConfirm')->name('basket-confirm');
         });
     });

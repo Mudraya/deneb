@@ -1,6 +1,8 @@
+import i18n from '../i18n'
+
 let actions = {
-    fetchBasket({commit}, basket) {
-        axios.get("/api/basket")
+    fetchBasket({commit}) {
+        axios.get("/basket/get-basket")
             .then(res => {
                 commit('FETCH_BASKET', res.data);
             }).catch(err => {
@@ -9,28 +11,32 @@ let actions = {
     },
 
     deleteProduct({commit}, product) {
-        axios.delete("/api/basket/" + product.code)
+        axios.delete("/basket/" + product.code)
             .then(res => {
                 commit('DELETE_PRODUCT', product)
             }).catch(err => {
+            alert(i18n.messages[i18n.locale].message.something_went_wrong);
             console.log(err)
         })
     },
 
     changeProductCount({commit}, data) {
-        axios.post("/api/basket/change", data)
+        axios.post("/basket/change", data)
             .then(res => {
                 commit('CHANGE_PRODUCT_COUNT', data)
             }).catch(err => {
+            alert(i18n.messages[i18n.locale].message.something_went_wrong);
             console.log(err)
         })
     },
 
     addProduct({commit}, product) {
-        axios.post("/api/basket/add", {productCode: product.code})
+        axios.post("/basket/add", {productCode: product.code})
             .then(res => {
+                alert(i18n.messages[i18n.locale].message.product_added);
                 commit('ADD_PRODUCT', res.data)
             }).catch(err => {
+            alert(i18n.messages[i18n.locale].message.something_went_wrong);
             console.log(err)
         })
     },

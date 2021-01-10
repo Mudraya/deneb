@@ -164,8 +164,7 @@
         },
         props: {
             temp : String,
-            locale : String,
-            basket : Object,
+            locale : String
         },
         methods:{
             prepareData: function () {
@@ -173,7 +172,7 @@
                 this.setLocale();
             },
             setBasket: function () {
-                this.$store.dispatch('fetchBasket', this.basket);
+                this.$store.dispatch('fetchBasket');
             },
             setLocale: function () {
                 i18n.locale = this.locale;

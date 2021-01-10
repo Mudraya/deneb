@@ -14,7 +14,6 @@
 
 <script>
     import i18n from '../i18n'
-    // {{--<buy-button-component :temp="{{json_encode('product-page')}}" :locale="{{json_encode(strtolower(__('main.current_lang')))}}"  :product="{{json_encode($product)}}"></buy-button-component>--}}
 
     export default {
         name: "BuyButtonComponent",
@@ -25,7 +24,7 @@
         },
         methods:{
             addProduct() {
-                this.$store.dispatch('addProduct', this.product);
+                this.$store.dispatch('addProduct', this.product).then(console.log('eee')).catch('ttt');
             }
         }
     }

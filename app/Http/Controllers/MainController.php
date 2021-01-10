@@ -6,15 +6,12 @@ use App\Http\Requests\SubscriptionRequest;
 use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Currency;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\Subscription;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class MainController extends Controller
 {
-
 
     public function index() {
         return view('index');

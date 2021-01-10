@@ -2080,8 +2080,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   props: {
     temp: String,
-    locale: String,
-    basket: Object
+    locale: String
   },
   methods: {
     prepareData: function prepareData() {
@@ -2089,7 +2088,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.setLocale();
     },
     setBasket: function setBasket() {
-      this.$store.dispatch('fetchBasket', this.basket);
+      this.$store.dispatch('fetchBasket');
     },
     setLocale: function setLocale() {
       _i18n__WEBPACK_IMPORTED_MODULE_1__["default"].locale = this.locale;
@@ -2145,7 +2144,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
- // {{--<buy-button-component :temp="{{json_encode('product-page')}}" :locale="{{json_encode(strtolower(__('main.current_lang')))}}"  :product="{{json_encode($product)}}"></buy-button-component>--}}
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BuyButtonComponent",
@@ -2156,7 +2154,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addProduct: function addProduct() {
-      this.$store.dispatch('addProduct', this.product);
+      this.$store.dispatch('addProduct', this.product).then(console.log('eee'))["catch"]('ttt');
     }
   }
 });
@@ -2192,29 +2190,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Component mounted.');
   }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "HiddenInputsOrder"
 });
 
 /***/ }),
@@ -40018,9 +39993,7 @@ var render = function() {
       ? _c("div", { staticClass: "modal-bask" }, [
           _c("div", { staticClass: "modal-bask-tit" }, [
             _vm._v(
-              "\r\n            " +
-                _vm._s(_vm.$t("message.cart")) +
-                "\r\n        "
+              "\n            " + _vm._s(_vm.$t("message.cart")) + "\n        "
             )
           ]),
           _vm._v(" "),
@@ -40072,9 +40045,9 @@ var render = function() {
                                     { staticClass: "modal-item-name" },
                                     [
                                       _vm._v(
-                                        "\r\n                                            " +
+                                        "\n                                            " +
                                           _vm._s(_vm.getLocalName(product)) +
-                                          "\r\n                                        "
+                                          "\n                                        "
                                       )
                                     ]
                                   ),
@@ -40101,7 +40074,7 @@ var render = function() {
                                                   _vm._s(
                                                     _vm.Basket.currencySymbol
                                                   ) +
-                                                  "\r\n                                                "
+                                                  "\n                                                "
                                               )
                                             ]
                                           )
@@ -40190,9 +40163,9 @@ var render = function() {
                                       { staticClass: "modal-item-sum-name" },
                                       [
                                         _vm._v(
-                                          "\r\n                                                " +
+                                          "\n                                                " +
                                             _vm._s(_vm.$t("message.sum")) +
-                                            "\r\n                                            "
+                                            "\n                                            "
                                         )
                                       ]
                                     ),
@@ -40212,7 +40185,7 @@ var render = function() {
                                         _vm._v(
                                           " " +
                                             _vm._s(_vm.Basket.currencySymbol) +
-                                            "\r\n                                            "
+                                            "\n                                            "
                                         )
                                       ]
                                     )
@@ -40237,9 +40210,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\r\n                            " +
+                            "\n                            " +
                               _vm._s(_vm.$t("message.continue_shopping")) +
-                              "\r\n                        "
+                              "\n                        "
                           )
                         ]
                       )
@@ -40249,19 +40222,19 @@ var render = function() {
                       _c("div", { staticClass: "one-modal-item-top" }, [
                         _c("div", { staticClass: "one-modal-item-name" }, [
                           _vm._v(
-                            "\r\n                                " +
+                            "\n                                " +
                               _vm._s(_vm.$t("message.total")) +
-                              ":\r\n                            "
+                              ":\n                            "
                           )
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "one-modal-item-val" }, [
                           _vm._v(
-                            "\r\n                                " +
+                            "\n                                " +
                               _vm._s(_vm.Basket.sum) +
                               " " +
                               _vm._s(_vm.Basket.currencySymbol) +
-                              "\r\n                            "
+                              "\n                            "
                           )
                         ])
                       ]),
@@ -40275,9 +40248,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                " +
+                              "\n                                " +
                                 _vm._s(_vm.$t("message.place_order")) +
-                                "\r\n                            "
+                                "\n                            "
                             )
                           ]
                         )
@@ -40307,9 +40280,9 @@ var render = function() {
                   _c("div", { staticClass: "one-lk-bask-tit" }, [
                     _c("a", { attrs: { href: product.a_href } }, [
                       _vm._v(
-                        "\r\n                            " +
+                        "\n                            " +
                           _vm._s(_vm.getLocalName(product)) +
-                          "\r\n                        "
+                          "\n                        "
                       )
                     ])
                   ]),
@@ -40320,7 +40293,7 @@ var render = function() {
                       _vm._v(
                         " " +
                           _vm._s(_vm.Basket.currencySymbol) +
-                          "\r\n                        "
+                          "\n                        "
                       )
                     ])
                   ])
@@ -40329,9 +40302,9 @@ var render = function() {
                 _c("div", { staticClass: "one-lk-bask-td num-td" }, [
                   _c("div", { staticClass: "one-lk-bask-num-name" }, [
                     _vm._v(
-                      "\r\n                        " +
+                      "\n                        " +
                         _vm._s(_vm.$t("message.count")) +
-                        "\r\n                    "
+                        "\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -40340,7 +40313,7 @@ var render = function() {
                     _vm._v(
                       " " +
                         _vm._s(_vm.$t("message.items")) +
-                        "\r\n                    "
+                        "\n                    "
                     )
                   ])
                 ]),
@@ -40348,9 +40321,9 @@ var render = function() {
                 _c("div", { staticClass: "one-lk-bask-td sum-td" }, [
                   _c("div", { staticClass: "one-lk-bask-sum-name" }, [
                     _vm._v(
-                      "\r\n                        " +
+                      "\n                        " +
                         _vm._s(_vm.$t("message.sum")) +
-                        "\r\n                    "
+                        "\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -40361,7 +40334,7 @@ var render = function() {
                     _vm._v(
                       " " +
                         _vm._s(_vm.Basket.currencySymbol) +
-                        "\r\n                    "
+                        "\n                    "
                     )
                   ])
                 ])
@@ -40374,19 +40347,19 @@ var render = function() {
             _c("div", { staticClass: "last-inside-sum-in" }, [
               _c("div", { staticClass: "inside-name" }, [
                 _vm._v(
-                  "\r\n                    " +
+                  "\n                    " +
                     _vm._s(_vm.$t("message.total")) +
-                    ":\r\n                "
+                    ":\n                "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "inside-val" }, [
                 _vm._v(
-                  "\r\n                    " +
+                  "\n                    " +
                     _vm._s(_vm.Basket.sum) +
                     " " +
                     _vm._s(_vm.Basket.currencySymbol) +
-                    "\r\n                "
+                    "\n                "
                 )
               ])
             ])
@@ -40497,30 +40470,6 @@ var staticRenderFns = [
     ])
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& ***!
-  \********************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
 render._withStripped = true
 
 
@@ -54105,7 +54054,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('basket-component', __webpack_require__(/*! ./components/BasketComponent.vue */ "./resources/js/components/BasketComponent.vue")["default"]);
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('buy-button-component', __webpack_require__(/*! ./components/BuyButtonComponent */ "./resources/js/components/BuyButtonComponent.vue")["default"]);
-Vue.component('hidden-inputs-order-component', __webpack_require__(/*! ./components/HiddenInputsOrder */ "./resources/js/components/HiddenInputsOrder.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -54372,75 +54320,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/HiddenInputsOrder.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/HiddenInputsOrder.vue ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& */ "./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&");
-/* harmony import */ var _HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HiddenInputsOrder.vue?vue&type=script&lang=js& */ "./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  "01616280",
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/HiddenInputsOrder.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./HiddenInputsOrder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& ***!
-  \**************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/HiddenInputsOrder.vue?vue&type=template&id=01616280&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HiddenInputsOrder_vue_vue_type_template_id_01616280_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/formatter.js":
 /*!***********************************!*\
   !*** ./resources/js/formatter.js ***!
@@ -54529,6 +54408,9 @@ var formatter = new _formatter__WEBPACK_IMPORTED_MODULE_2__["default"]({
         place_order: 'Оформить заказ',
         cart_is_empty: 'Ваша корзина пуста!',
         you_want_too_much: 'Это весь товар в наличии',
+        something_went_wrong: 'Операция не была выполнена',
+        product_added: 'Продукт был успешно добавлен',
+        product_deleted: 'Продукт был успешно удалён',
         count: 'Количество',
         items: 'шт.',
         buy: 'Купить'
@@ -54544,6 +54426,9 @@ var formatter = new _formatter__WEBPACK_IMPORTED_MODULE_2__["default"]({
         place_order: 'Place your order',
         cart_is_empty: 'Your Cart is empty!',
         you_want_too_much: 'It is a limit for this product',
+        something_went_wrong: 'Something went wrong',
+        product_added: 'Product was added successfully',
+        product_deleted: 'Product was deleted successfully',
         count: 'Quantity',
         items: 'items',
         buy: 'Buy'
@@ -54563,10 +54448,12 @@ var formatter = new _formatter__WEBPACK_IMPORTED_MODULE_2__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../i18n */ "./resources/js/i18n.js");
+
 var actions = {
-  fetchBasket: function fetchBasket(_ref, basket) {
+  fetchBasket: function fetchBasket(_ref) {
     var commit = _ref.commit;
-    axios.get("/api/basket").then(function (res) {
+    axios.get("/basket/get-basket").then(function (res) {
       commit('FETCH_BASKET', res.data);
     })["catch"](function (err) {
       console.log(err);
@@ -54574,27 +54461,31 @@ var actions = {
   },
   deleteProduct: function deleteProduct(_ref2, product) {
     var commit = _ref2.commit;
-    axios["delete"]("/api/basket/" + product.code).then(function (res) {
+    axios["delete"]("/basket/" + product.code).then(function (res) {
       commit('DELETE_PRODUCT', product);
     })["catch"](function (err) {
+      alert(_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].messages[_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].locale].message.something_went_wrong);
       console.log(err);
     });
   },
   changeProductCount: function changeProductCount(_ref3, data) {
     var commit = _ref3.commit;
-    axios.post("/api/basket/change", data).then(function (res) {
+    axios.post("/basket/change", data).then(function (res) {
       commit('CHANGE_PRODUCT_COUNT', data);
     })["catch"](function (err) {
+      alert(_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].messages[_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].locale].message.something_went_wrong);
       console.log(err);
     });
   },
   addProduct: function addProduct(_ref4, product) {
     var commit = _ref4.commit;
-    axios.post("/api/basket/add", {
+    axios.post("/basket/add", {
       productCode: product.code
     }).then(function (res) {
+      alert(_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].messages[_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].locale].message.product_added);
       commit('ADD_PRODUCT', res.data);
     })["catch"](function (err) {
+      alert(_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].messages[_i18n__WEBPACK_IMPORTED_MODULE_0__["default"].locale].message.something_went_wrong);
       console.log(err);
     });
   }
@@ -54672,7 +54563,7 @@ __webpack_require__.r(__webpack_exports__);
 var mutations = {
   FETCH_BASKET: function FETCH_BASKET(state, basket) {
     state.Basket = basket;
-    state.isEmpty = basket.products === undefined;
+    state.isEmpty = basket.products === undefined || basket.products.length === 0;
   },
   DELETE_PRODUCT: function DELETE_PRODUCT(state, product) {
     var index = state.Basket.products.findIndex(function (item) {
@@ -54684,8 +54575,8 @@ var mutations = {
   CHANGE_PRODUCT_COUNT: function CHANGE_PRODUCT_COUNT(state, data) {
     if (!(parseInt(data.product.countInOrder) === 1 && parseInt(data.step) === -1)) {
       if (!(parseInt(data.product.countInOrder) === parseInt(data.product.count) && parseInt(data.step) === 1)) {
-        var index = state.Basket.products.findIndex(function (item) {
-          return item.id === data.product.id;
+        var index = Object.keys(state.Basket.products).find(function (key) {
+          return state.Basket.products[key] === data.product;
         });
         state.Basket.products[index].countInOrder = parseInt(data.product.countInOrder) + parseInt(data.step);
         state.Basket.sum = parseInt(state.Basket.sum) + parseInt(state.Basket.products[index].price) * parseInt(data.step);
@@ -54736,8 +54627,8 @@ var state = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\INSTALLED_PROGRAMMS\Open Server\OSPanel\domains\deneb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\INSTALLED_PROGRAMMS\Open Server\OSPanel\domains\deneb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\INSTALLED_PROGRAMMS\Open Server\OpenServer\domains\deneb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\INSTALLED_PROGRAMMS\Open Server\OpenServer\domains\deneb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
