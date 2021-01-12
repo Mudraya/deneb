@@ -614,7 +614,6 @@ header {
 	display: block;
 	padding-right: 24px;
 	cursor: pointer;
-	background: url(images/eye-post.svg) right center no-repeat;
 	color: #723e91;
 	text-decoration: none;
 }

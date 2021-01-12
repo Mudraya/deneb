@@ -93,4 +93,8 @@ class Product extends Model
     {
         return $query->where('count', '>', 0);
     }
+
+    static public function getNumberOfItemsAttribute() {
+        return self::get()->count();
+    }
 }

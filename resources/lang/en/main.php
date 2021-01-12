@@ -50,4 +50,5 @@ return [
     'password' => 'Password',
     'remember_me' => 'Remember me',
     'forgot_password' => 'Did you forget your password?',
+    'popular_products' => 'Popular products',
 ];

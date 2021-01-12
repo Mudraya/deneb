@@ -9,12 +9,28 @@ use App\Models\Currency;
 use App\Models\Product;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redis;
 
 class MainController extends Controller
 {
 
     public function index() {
-        return view('index');
+
+        $popular = Redis::zRevRange('productViews', 0, 3);
+
+        if(sizeof($popular) < 4) {
+            for ($i=0; $i < 4-sizeof($popular); $i++) {
+                $arr_popular_id[] = rand(0, Product::getNumberOfItemsAttribute());
+            }
+        }
+
+        foreach($popular as $value) {
+            $arr_popular_id[] = str_replace('product-', '', $value);
+        }
+
+        $popular_products = Product::whereIn('id', $arr_popular_id)->get();
+
+        return view('index', compact('popular_products'));
     }
 
     public function catalog($code, ProductsFilterRequest $request) {
@@ -53,6 +69,7 @@ class MainController extends Controller
     {
         $category = Category::where('code', $category)->firstOrFail();
         $product = Product::withTrashed()->byCode($productCode)->first();
+        Redis::zIncrBy('productViews', 1, 'product-'.$product->id);
         return view('product', compact( 'product', 'category'));
     }
 

@@ -35,6 +35,47 @@
     </section>
     <!-- / cats -->
 
+    <!-- posts -->
+    <section id="posts">
+        <div class="container">
+            <div class="section-tit">
+                <h3>
+                    @lang('main.popular_products')
+                </h3>
+            </div>
+            <div class="posts-wrap">
+                <div class="posts-js">
+
+                @foreach($popular_products as $product)
+                    <!-- one post -->
+                    <div class="one-post">
+                        <div class="one-post-in">
+                            <div class="one-post-thumb">
+                                <a href="{{ route('product', [isset($current_category) ? $current_category->code : $product->category->code, $product->code]) }}">
+                                    <img src="{{ Storage::url($product->image) }}" alt="">
+                                </a>
+                            </div>
+                            <div class="one-post-descr">
+                                <div class="one-post-tit">
+                                    {{ $product->__('name') }}
+                                </div>
+                                <div class="one-post-info">
+                                    <div class="post-detal">
+                                        <a href="{{ route('product', [isset($current_category) ? $current_category->code : $product->category->code, $product->code]) }}">
+                                            @lang('main.more')
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / one post -->
+                @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / posts -->
 
     <!-- about descr -->
     <section id="company">
