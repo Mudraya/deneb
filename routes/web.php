@@ -20,6 +20,9 @@ Auth::routes([
     'verify' => false,
 ]);
 
+Route::get('/import/products', 'Import\ProductsImportController@show');
+Route::post('/import/products', 'Import\ProductsImportController@store')->name('import-products-post');
+
 Route::get('locale/{locale}', 'MainController@changeLocale')->name('locale');
 Route::get('currency/{currencyCode}', 'MainController@changeCurrency')->name('currency');
 
