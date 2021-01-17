@@ -127,6 +127,8 @@ $(document).ready(function(){
             // instead of a settings object
         ]
     });
+
+    $(".one-post-thumb").height($(".one-post-thumb").width());
 });
 
 // home page show more about

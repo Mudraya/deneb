@@ -94,7 +94,11 @@ class Product extends Model
         return $query->where('count', '>', 0);
     }
 
-    static public function getNumberOfItemsAttribute() {
+    public function getImageAttribute() {
+        return $this->attributes['image'] ? $this->attributes['image'] : 'products/no_image.jpg';
+    }
+
+    public static function getNumberOfItemsAttribute() {
         return self::get()->count();
     }
 }

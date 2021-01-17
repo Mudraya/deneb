@@ -16,4 +16,8 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function getImageAttribute() {
+        return $this->attributes['image'] ? $this->attributes['image'] : 'categories/no_image.jpg';
+    }
 }
