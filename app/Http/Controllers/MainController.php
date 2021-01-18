@@ -14,21 +14,25 @@ use Illuminate\Support\Facades\Redis;
 class MainController extends Controller
 {
 
+    protected $arr_popular_id;
+
     public function index() {
 
         $popular = Redis::zRevRange('productViews', 0, 3);
 
         if(sizeof($popular) < 4) {
             for ($i=0; $i < 4-sizeof($popular); $i++) {
-                $arr_popular_id[] = rand(0, Product::getNumberOfItemsAttribute());
+                $this->arr_popular_id[] = rand(0, Product::getNumberOfItemsAttribute());
             }
         }
 
         foreach($popular as $value) {
-            $arr_popular_id[] = str_replace('product-', '', $value);
+            $this->arr_popular_id[] = str_replace('product-', '', $value);
         }
 
-        $popular_products = Product::whereIn('id', $arr_popular_id)->get();
+        $popular_products = cache()->remember('popular-products-query', 60*60*24, function () {
+            return Product::whereIn('id', $this->arr_popular_id)->with(['category'])->get();
+        });
 
         return view('index', compact('popular_products'));
     }
@@ -36,7 +40,7 @@ class MainController extends Controller
     public function catalog($code, ProductsFilterRequest $request) {
         $current_category = Category::where('code', $code)->first();
 
-        $productsQuery = Product::query();
+        $productsQuery = Product::query()->with(['category']);
 
         if ($request->filled('price_from')) {
             $productsQuery->where('price', '>=', $request->price_from);

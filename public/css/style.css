@@ -1908,11 +1908,11 @@ aside.sidebar {
 .one-item-info {
 	float: left;
 	width: 100%;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
+	/*display: -webkit-flex;*/
+	/*display: -moz-flex;*/
+	/*display: -ms-flex;*/
+	/*display: -o-flex;*/
+	/*display: flex;*/
 	align-content: center;
 	-ms-align-items: center;
 	align-items: center;
