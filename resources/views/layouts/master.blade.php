@@ -148,7 +148,7 @@
         </div>
     </div>
 </div>
-{{--{{dd($order->products)}}--}}
+
 <!-- Modal bask -->
 <div class="modal fade big-modal" id="basket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -175,11 +175,6 @@
             </div>
             <div class="header-mid">
                 <div class="header-top">
-                    <div class="header-phone">
-                        <a href="">
-                            0800 301 401
-                        </a>
-                    </div>
                     <div class="header-mess">
                         <div class="header-icons">
 								<span>
@@ -196,6 +191,7 @@
                             +3 (067) 999 88 77
                         </div>
                     </div>
+
                 </div>
                 <div class="header-nav">
                     <div class="close-menu"></div>
@@ -204,25 +200,6 @@
                             <h1 class="logo-text">Box for tea</h1>
                         </a>
                     </div>
-                    <ul class="sf-menu">
-
-                        <li>
-                            <a href="#">@lang('main.catalog')</a>
-
-                            <ul class="sub-menu">
-                                <li class="li-top-tablet">
-                                    <div class="back-menu"></div>
-                                    <div class="tit-menu">
-                                        @lang('main.catalog')
-                                    </div>
-                                    <div class="close-menu"></div>
-                                </li>
-                                @foreach($categories as $category)
-                                    <li><a href="{{ route('catalog', $category->code) }}">{{ $category->__('name') }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    </ul>
 
                     <div class="tablet-mess">
                         <div class="header-icons">
@@ -250,6 +227,13 @@
                                 <li>
                                     <a href="#">@lang('main.current_lang')</a>
                                 </li>
+                            </ul>
+                            <ul>
+                                @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                                    <li>
+                                        <a href="{{ route('currency', $currency->code) }}">{{ $currency->code }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
