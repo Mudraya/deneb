@@ -64,9 +64,12 @@ class MainController extends Controller
             $input = $request->all();
         }
 
-        $products = $productsQuery->paginate(2)->withPath("?" . http_build_query($input));
+        $products = $productsQuery->paginate(3)->withPath("?" . http_build_query($input));
 
-        return view('catalog', compact('current_category', 'products'));
+        $countHits = Product::countHits($current_category->id);
+        $countNews = Product::countNews($current_category->id);
+
+        return view('catalog', compact('current_category', 'products', 'countHits', 'countNews'));
     }
 
     public function product($category, $productCode)

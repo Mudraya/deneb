@@ -77,7 +77,7 @@
                     <!-- one filter -->
                     <div class="one-filter">
                         <div class="one-filter-top active">
-                            Тип продукции
+                            @lang('main.catalog')
                         </div>
                         <div class="one-filter-descr" style="display: block;">
                             <div class="filter-menu">
@@ -134,7 +134,7 @@
                                         <i></i>
                                         <span>@lang('main.filter_properties.hit')</span>
                                         <span class="num-filt">
-                                                    ({{App\Models\Product::countHits()}})
+                                                    ({{$countHits}})
                                         </span>
                                     </label>
                                 </div>
@@ -144,7 +144,7 @@
                                         <i></i>
                                         <span>@lang('main.filter_properties.new')</span>
                                         <span class="num-filt">
-                                                    ({{App\Models\Product::countNews()}})
+                                                    ({{$countNews}})
                                                 </span>
                                     </label>
                                 </div>

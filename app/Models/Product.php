@@ -49,14 +49,14 @@ class Product extends Model
         return $this->new === 1;
     }
 
-    public static function countHits()
+    public static function countHits($category_id)
     {
-        return Product::where('hit',1)->count();
+        return Product::where('hit',1)->where('category_id', $category_id)->count();
     }
 
-    public static function countNews()
+    public static function countNews($category_id)
     {
-        return Product::where('new',1)->count();
+        return Product::where('category_id', $category_id)->where('new',1)->count();
     }
 
     public function scopeHit($query)
