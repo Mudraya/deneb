@@ -223,7 +223,7 @@
                                     </li>
                                 </ul>
                                 <ul>
-                                    @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                                    @foreach ($currencies as $currency)
                                         <li>
                                             <a href="{{ route('currency', $currency->code) }}">{{ $currency->code }}</a>
                                         </li>
@@ -296,7 +296,7 @@
                         </ul>
 
                         <ul>
-                            @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                            @foreach ($currencies as $currency)
                                 <li>
                                     <a href="{{ route('currency', $currency->code) }}">{{ $currency->code }}</a>
                                 </li>

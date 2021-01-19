@@ -9,7 +9,7 @@
                 <div class="panel">
                     <h1>@lang('admin.order') №{{ $order->id }}</h1>
                     <p>@lang('admin.customer'): <b>{{ $order->name }}</b></p>
-                    <p>@lang('admin.phone'): <b>{{ $order->phomne }}</b></p>
+                    <p>@lang('admin.phone'): <b>{{ $order->phone }}</b></p>
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -24,7 +24,7 @@
                             <tr>
                                 <td>
                                     <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                        <img height="56px"
+                                        <img class="admin-image"
                                              src="{{ (Storage::url($product->image)) }}"
                                         >
                                         {{ $product->__('name') }}

@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td>@lang('admin.image')</td>
-                <td><img src="{{ Storage::url($product->image) }}" height="240px"></td>
+                <td><img class="admin-image" src="{{ Storage::url($product->image) }}" height="240px"></td>
             </tr>
             <tr>
                 <td>@lang('admin.category')</td>

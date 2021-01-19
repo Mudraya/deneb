@@ -38,7 +38,7 @@ class MainController extends Controller
     }
 
     public function catalog($code, ProductsFilterRequest $request) {
-        $current_category = Category::where('code', $code)->first();
+        $current_category = Category::where('code', $code)->firstOrFail();
 
         $productsQuery = Product::query()->with(['category']);
 
@@ -72,7 +72,7 @@ class MainController extends Controller
     public function product($category, $productCode)
     {
         $category = Category::where('code', $category)->firstOrFail();
-        $product = Product::withTrashed()->byCode($productCode)->first();
+        $product = Product::withTrashed()->byCode($productCode)->firstOrFail();
         Redis::zIncrBy('productViews', 1, 'product-'.$product->id);
         return view('product', compact( 'product', 'category'));
     }
@@ -84,7 +84,8 @@ class MainController extends Controller
             'product_id' => $product->id,
         ]);
 
-        return redirect()->back()->with('success', __('product.we_will_update'));
+        session()->flash('success', __('product.we_will_update', [], session()->get('locale')));
+        return redirect()->back();
     }
 
     public function changeLocale($locale)

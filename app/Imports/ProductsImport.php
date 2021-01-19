@@ -39,7 +39,7 @@ class ProductsImport implements
     public function model(array $row)
     {
         $this->successfulRows++;
-        $category = Category::where('code', $row['category_code'])->first();
+        $category = Category::where('code', $row['category_code'])->firstOrFail();
 
         return new Product([
             'category_id' => $category->id,

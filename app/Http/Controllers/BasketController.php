@@ -36,7 +36,7 @@ class BasketController extends Controller
 
     public function deleteProduct($productCode)
     {
-        $product = Product::withTrashed()->byCode($productCode)->first();
+        $product = Product::withTrashed()->byCode($productCode)->firstOrFail();
         (new Basket())->deleteProduct($product);
         $order = session('order');
         return response()->json(($order) ? $order->getOrderArray() : []);
@@ -44,7 +44,7 @@ class BasketController extends Controller
 
     public function changeProductCount(Request $request)
     {
-        $product = Product::withTrashed()->byCode($request->product['code'])->first();
+        $product = Product::withTrashed()->byCode($request->product['code'])->firstOrFail();
         if($request->step == 1) {
             (new Basket(true))->addProduct($product);
         } else {
@@ -56,7 +56,7 @@ class BasketController extends Controller
 
     public function addProduct(Request $request)
     {
-        $product = Product::withTrashed()->byCode($request->productCode)->first();
+        $product = Product::withTrashed()->byCode($request->productCode)->firstOrFail();
         (new Basket(true))->addProduct($product);
         $order = session('order');
         return response()->json(($order) ? $order->getOrderArray() : []);
