@@ -9,7 +9,9 @@ class CurrenciesComposer
 {
     public function compose(View $view)
     {
-        $currencies = CurrencyConversion::getCurrencies();
+        $currencies = cache()->remember('currency-query', 60*60*24, function () {
+            return CurrencyConversion::getCurrencies();
+        });
         $view->with('currencies', $currencies);
     }
 }

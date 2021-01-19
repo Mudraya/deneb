@@ -100,7 +100,7 @@ header {
 }
 
 .header-mid-admin {
-    width: 600px;
+    width: 525px;
 }
 
 .header-top {
@@ -162,7 +162,7 @@ header {
 .header-nav > ul > li {
 	float: left;
 	position: relative;
-	margin-right: 31px;
+	margin-right: 15px;
 }
 
 .header-nav > ul > li.no-sub > a:before {
@@ -227,7 +227,7 @@ header {
 }
 
 .header-right-admin {
-    width: 305px;
+    width: 355px;
 }
 
 .header-login {
