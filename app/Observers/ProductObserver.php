@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
+use App\Jobs\SendMessageJob;
 use App\Models\Product;
-use App\Models\Subscription;
 
 class ProductObserver
 {
@@ -12,7 +12,7 @@ class ProductObserver
         $oldCount = $product->getOriginal('count');
 
         if ($oldCount == 0 && $product->count > 0) {
-            Subscription::sendEmailsBySubscription($product);
+            SendMessageJob::dispatch($product);
         }
     }
 }
