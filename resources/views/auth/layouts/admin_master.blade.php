@@ -153,35 +153,12 @@
         <div class="container">
             <div class="logo">
                 <a href="{{route('index')}}">
-                    {{--<img src="/images/logo.png" alt=" " />--}}
                     <h1 class="logo-text">Box for tea</h1>
                 </a>
             </div>
-            <div class="header-mid">
-                <div class="header-top">
-                    <div class="header-phone">
-                        <a href="">
-                            0800 301 401
-                        </a>
-                    </div>
-                    <div class="header-mess">
-                        <div class="header-icons">
-								<span>
-									<img src="/images/phone-ico.png"  alt="">
-								</span>
-                            <span>
-									<img src="/images/telegram-ico.png" alt="">
-								</span>
-                            <span>
-									<img src="/images/viber-ico.png" alt="">
-								</span>
-                        </div>
-                        <div class="header-number">
-                            +3 (067) 999 88 77
-                        </div>
-                    </div>
-                </div>
-                <div class="header-nav">
+            <div class="header-mid header-mid-admin">
+
+                <div class="header-nav header-nav-admin">
                     <div class="close-menu"></div>
                     <div class="tablet-logo">
                         <a href="{{route('index')}}">
@@ -245,14 +222,21 @@
                                         <a href="#">@lang('main.current_lang')</a>
                                     </li>
                                 </ul>
+                                <ul>
+                                    @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                                        <li>
+                                            <a href="{{ route('currency', $currency->code) }}">{{ $currency->code }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                 </div>
 
 
             </div>
-            <div class="header-right">
-                <div class="header-login">
+            <div class="header-right header-right-admin">
+                <div class="header-login header-login-admin">
                     @guest
                         <a href="#" data-toggle="modal" data-target="#login">
                             <i>
@@ -399,18 +383,15 @@
     </footer>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{{asset('/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('/js/popper.min.js')}}"></script>
+<script src="{{asset('/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/js/hoverIntent.js')}}"></script>
+<script src="{{asset('/js/superfish.js')}}"></script>
+<script src="{{asset('/js/app.js')}}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-<script src="js/hoverIntent.js"></script>
-<script src="js/superfish.js"></script>
-
-<script src="js/init.js"></script>
+<script src="{{asset('/js/init.js')}}"></script>
+<script type="text/javascript" src="{{asset('/js/slick.min.js')}}"></script>
 
 </body>
 

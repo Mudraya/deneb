@@ -99,6 +99,10 @@ header {
     margin-top: 10px;
 }
 
+.header-mid-admin {
+    width: 600px;
+}
+
 .header-top {
 	float: left;
 	width: 100%;
@@ -142,6 +146,11 @@ header {
 	float: left;
 	width: 100%;
 	margin-top: 30px;
+}
+
+.header-nav-admin {
+    margin-top: 5px;
+    margin-left: 15px;
 }
 
 .header-nav > ul {
@@ -217,6 +226,10 @@ header {
     margin-top: 10px;
 }
 
+.header-right-admin {
+    width: 305px;
+}
+
 .header-login {
 	float: left;
 	margin-bottom: 22px;
@@ -232,6 +245,10 @@ header {
 	color: #000000;
 	position: relative;
 	text-decoration: none !important;
+}
+
+.header-login-admin a {
+    padding-left: 16px;
 }
 
 .header-login a i {
